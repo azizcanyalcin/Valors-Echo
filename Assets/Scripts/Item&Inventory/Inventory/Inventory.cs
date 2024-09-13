@@ -220,33 +220,33 @@ public class Inventory : MonoBehaviour, ISaveManager
     }
     public bool CanCraftEquipment(Equipment equipmentToCraft, List<InventoryItem> requiredMaterials)
     {
-        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
-
-        for (int i = 0; i < requiredMaterials.Count; i++)
+        foreach (var material in requiredMaterials)
         {
-            if (stashDictionary.TryGetValue(requiredMaterials[i].itemData, out InventoryItem stashValue))
+            if (stashDictionary.TryGetValue(material.itemData, out InventoryItem stashItem))
             {
-                if (stashValue.stackSize < requiredMaterials[i].stackSize)
+                if (stashItem.stackSize <= material.stackSize)
                 {
-                    Debug.Log($"Not enough materials");
+                    Debug.Log($"Not enough material.");
                     return false;
                 }
-                else materialsToRemove.Add(stashValue);
             }
             else
             {
-                Debug.Log($"Not enough materials");
+                Debug.Log($"No Material");
                 return false;
             }
         }
-        for (int i = 0; i < materialsToRemove.Count; i++)
+
+        foreach (var material in requiredMaterials)
         {
-            RemoveItem(materialsToRemove[i].itemData);
+            for (int i = 0; i < material.stackSize; i++)
+            {
+                RemoveItem(material.itemData);
+            }
         }
 
         AddItem(equipmentToCraft);
-        Debug.Log($"The {equipmentToCraft} is created!!");
-
+        Debug.Log($"Craft is successfull");
         return true;
     }
     public bool CanAddItem()
