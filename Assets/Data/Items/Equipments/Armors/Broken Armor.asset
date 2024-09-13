@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc347b40cfd06245b5adb1816161d6a, type: 3}
+  m_Name: Broken Armor
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Broken Armor
+  icon: {fileID: -965925972, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  dropChance: 50.3
+  itemCooldown: 0
+  equipmentType: 1
+  itemEffects:
+  - {fileID: 11400000, guid: 0d3a799b61126ea408a80f74466293bd, type: 2}
+  strength: 0
+  agility: 0
+  intelligence: 0
+  vitality: 2
+  damage: 0
+  critChance: 0
+  critPower: 0
+  maxHealth: 15
+  armor: 5
+  evasion: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  lightningDamage: 0
+  craftMaterials: []
