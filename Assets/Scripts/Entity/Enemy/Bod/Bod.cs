@@ -73,7 +73,7 @@ public class Bod : Enemy
 
         if (player.stateMachine.currentState == player.moveState)
         {
-            graspPosition = new(player.transform.position.x + player.facingDirection * 4,
+            graspPosition = new(player.transform.position.x + player.facingDirection * 3,
                 player.transform.position.y + 1);
         }
         else
