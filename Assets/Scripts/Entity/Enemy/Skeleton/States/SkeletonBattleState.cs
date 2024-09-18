@@ -7,6 +7,7 @@ public class SkeletonBattleState : EnemyState
     private Transform player;
     private Skeleton skeleton;
     private int moveDirection;
+
     public SkeletonBattleState(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Skeleton skeleton) : base(enemy, stateMachine, animatorBoolName)
     {
         this.skeleton = skeleton;
@@ -16,8 +17,13 @@ public class SkeletonBattleState : EnemyState
     {
         base.Enter();
         player = PlayerManager.instance.player.transform;
-        if(player.GetComponent<PlayerStats>().isDead) stateMachine.ChangeState(skeleton.moveState);
+
+        if (IsPlayerDead())
+        {
+            stateMachine.ChangeState(skeleton.moveState);
+        }
     }
+
     public override void Update()
     {
         base.Update();
@@ -25,26 +31,21 @@ public class SkeletonBattleState : EnemyState
         if (skeleton.IsPlayerDetected())
         {
             stateTimer = skeleton.battleTime;
-            if (skeleton.IsPlayerDetected().distance < skeleton.attackDistance && CanAttack())
-                stateMachine.ChangeState(skeleton.attackState);
+            HandlePlayerInRange();
         }
-        else if (stateTimer < 0 || Vector2.Distance(player.transform.position, skeleton.transform.position) > 15)
+        else if (ShouldReturnToIdle())
+        {
             stateMachine.ChangeState(skeleton.idleState);
+        }
 
-        if (player.position.x > skeleton.transform.position.x)
-            moveDirection = 1;
-        else
-            moveDirection = -1;
-
-        skeleton.SetVelocity(skeleton.moveSpeed * moveDirection, rb.velocity.y);
-
+        HandleMovement();
     }
 
     public override void Exit()
     {
         base.Exit();
-
     }
+
     private bool CanAttack()
     {
         if (Time.time >= skeleton.lastTimeAttacked + skeleton.attackCooldown)
@@ -53,5 +54,39 @@ public class SkeletonBattleState : EnemyState
             return true;
         }
         return false;
+    }
+
+    private void HandlePlayerInRange()
+    {
+        if (skeleton.IsPlayerDetected().distance < skeleton.attackDistance && CanAttack())
+        {
+            stateMachine.ChangeState(skeleton.attackState);
+        }
+    }
+
+    private bool ShouldReturnToIdle()
+    {
+        return stateTimer < 0 || Vector2.Distance(player.position, skeleton.transform.position) > 15;
+    }
+
+    private void HandleMovement()
+    {
+        float distanceToPlayerX = Mathf.Abs(player.position.x - skeleton.transform.position.x);
+
+        // Determine whether the skeleton should flip
+        bool shouldFlip = (player.position.x > skeleton.transform.position.x && moveDirection == -1) ||
+                          (player.position.x < skeleton.transform.position.x && moveDirection == 1);
+
+        // Update move direction only if the player is sufficiently far away OR if flipping is required
+        if (distanceToPlayerX > 1.5f || shouldFlip)
+        {
+            moveDirection = (player.position.x > skeleton.transform.position.x) ? 1 : -1;
+            skeleton.SetVelocity(skeleton.moveSpeed * moveDirection, rb.velocity.y);
+        }
+    }
+
+    private bool IsPlayerDead()
+    {
+        return player.GetComponent<PlayerStats>().isDead;
     }
 }

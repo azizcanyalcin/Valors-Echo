@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
@@ -7,6 +8,7 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private Item[] possibleDrops;
     [SerializeField] private int dropAmount;
     private List<Item> dropList = new();
+
 
     protected void DropItem(Item itemData)
     {
@@ -19,17 +21,26 @@ public class ItemDrop : MonoBehaviour
 
     public virtual void GenerateDrop()
     {
-        for (int i = 0; i < possibleDrops.Length; i++)
+        if (possibleDrops.Length == 0)
         {
-            if (Random.Range(0, 100) <= possibleDrops[i].dropChance) dropList.Add(possibleDrops[i]);
+            Debug.Log($"item pool is empty");
+            return;
         }
+
+        foreach (Item item in possibleDrops)
+        {
+            if (item && Random.Range(0, 100) <= item.dropChance) dropList.Add(item);
+        }
+
         for (int i = 0; i < dropAmount; i++)
         {
-            Item drop = dropList[Random.Range(0, dropList.Count - 1)];
+            if (dropList.Count > 0)
+            {
+                Item drop = dropList[Random.Range(0, dropList.Count - 1)];
 
-            dropList.Remove(drop);
-            DropItem(drop);
+                DropItem(drop);
+                dropList.Remove(drop);
+            }
         }
-
     }
 }

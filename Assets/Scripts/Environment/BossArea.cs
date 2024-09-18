@@ -9,15 +9,14 @@ public class BossArea : MonoBehaviour
     void Start()
     {
         // Store the initial transform values
-        initialPosition = transform.localPosition;
-        initialRotation = transform.localRotation;
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     void Update()
     {
         // Override the transform to keep it frozen
-        transform.localPosition = initialPosition;
-        transform.localRotation = initialRotation;
+        transform.SetPositionAndRotation(initialPosition, initialRotation);
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {

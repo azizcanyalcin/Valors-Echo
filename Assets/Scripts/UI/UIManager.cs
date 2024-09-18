@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour, ISaveManager
             if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransition>() == null)
                 return;
         }
+        GameManager.instance.PauseGame(true);
         Switch(inGameUI);
     }
 
