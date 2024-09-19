@@ -11,12 +11,14 @@ public class DialogueManager : MonoBehaviour
     public Image image;
     public float delay;
     private Queue<string> sentences;
+    private Player player;
 
     void Start()
     {
         sentences = new Queue<string>();
         image = GetComponentInChildren<Image>();
         image.color = Color.clear;
+        player = PlayerManager.instance.player;
     }
     public void StartDialogue(Dialogue dialogue)
     {
@@ -50,7 +52,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(delay);
         }
-        yield return new WaitForSeconds(delay * 4);
+        yield return new WaitForSeconds(2f);
         DisplayNextSentence();
     }
 

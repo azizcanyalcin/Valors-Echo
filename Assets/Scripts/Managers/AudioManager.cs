@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
         if (audioSource.isPlaying)
         {
-            StopSFX(index, true);  
+            StopSFX(index, true);
         }
 
         if (canFadeIn)
@@ -55,8 +55,11 @@ public class AudioManager : MonoBehaviour
 
     public void StopSFX(int index, bool canFadeOut)
     {
-        if (canFadeOut) StartCoroutine(FadeOutSFX(sfx[index], 1f));
-        else sfx[index].Stop();
+        if (sfx[index])
+        {
+            if (canFadeOut) StartCoroutine(FadeOutSFX(sfx[index], 1f));
+            else sfx[index].Stop();
+        }
     }
     public void PlayRandomBGM()
     {
@@ -95,7 +98,7 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
-        audioSource.volume = targetVolume; 
+        audioSource.volume = targetVolume;
     }
     private IEnumerator FadeOutSFX(AudioSource audioSource, float duration)
     {
@@ -109,8 +112,8 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
-        audioSource.volume = 0;  
-        audioSource.Stop();      
+        audioSource.volume = 0;
+        audioSource.Stop();
     }
 
 }
