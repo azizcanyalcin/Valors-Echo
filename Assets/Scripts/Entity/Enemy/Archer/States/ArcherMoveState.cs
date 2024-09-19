@@ -23,7 +23,7 @@ public class ArcherMoveState : EnemyState
         {
             archer.Flip();
             archer.SetVelocityToZero();
-            stateMachine.ChangeState(archer.idleState);
+            stateMachine.ChangeState(archer.battleState);
         }
         if(archer.IsPlayerDetected()) stateMachine.ChangeState(archer.battleState);
     }

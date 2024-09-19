@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4341184235395410862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4428075902189205211}
+  - component: {fileID: 4602998633835570967}
+  - component: {fileID: 562812887339036634}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4428075902189205211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341184235395410862}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0.000061035156}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4602998633835570967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341184235395410862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ac42e1840b57e4d82493506106e07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
+  stash: []
+  equipment: []
+  startingEquipment:
+  - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+  - {fileID: 11400000, guid: 7a4ffec58889919428c4bb7cfdf71dd5, type: 2}
+  - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+  - {fileID: 11400000, guid: 58fa1fb7ab0b5f849a92162e2e21b29e, type: 2}
+  - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+  - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+  - {fileID: 11400000, guid: 9d98d8b5a9ddb5641a10918b1d1066a5, type: 2}
+  - {fileID: 11400000, guid: f7a2354201717994183150cc8e1006bd, type: 2}
+  - {fileID: 11400000, guid: 6af0769c8e682b74cba5eabbe7834a68, type: 2}
+  - {fileID: 11400000, guid: 486ace4ca75436849b5fae614b93c7e4, type: 2}
+  - {fileID: 11400000, guid: 8e148cdf68c9b4c4fbd4fc17324461e9, type: 2}
+  - {fileID: 11400000, guid: 99696cf4b6765ca46bd048c3576a2aec, type: 2}
+  inventorySlotParent: {fileID: 0}
+  stashSlotParent: {fileID: 0}
+  equipmentSlotParent: {fileID: 0}
+  statSlotParent: {fileID: 0}
+  itemDatabase: []
+  loadedItems: []
+  loadedEquipments: []
+--- !u!222 &562812887339036634
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4341184235395410862}
+  m_CullTransparentMesh: 1

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Archer : Enemy
 {
+    Player player;
     [Header("Archer")]
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private float arrowSpeed;
@@ -41,7 +42,7 @@ public class Archer : Enemy
     {
         base.Start();
         stateMachine.Initialize(idleState);
-
+        player = PlayerManager.instance.player;
     }
     protected override void Update()
     {
@@ -61,7 +62,7 @@ public class Archer : Enemy
     public override void AnimationSpecialAttackTrigger()
     {
         GameObject newArrow = Instantiate(arrowPrefab, attackCheck.position, Quaternion.identity);
-        newArrow.GetComponent<ArrowController>().SetupArrow(arrowSpeed * facingDirection, stats);
+        newArrow.GetComponent<ArrowController>().SetupArrow(arrowSpeed * facingDirection, stats, player.transform.position, facingDirection);
     }
     public bool IsGroundBehind()
     {
@@ -75,7 +76,6 @@ public class Archer : Enemy
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireCube(groundBehindCheck.position, groundBehindCheckSize);
-       // Gizmos.DrawLine(wallCheck.position, Vector2.right * -facingDirection);
     }
     public override void Die()
     {

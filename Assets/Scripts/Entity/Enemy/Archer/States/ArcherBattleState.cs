@@ -37,7 +37,7 @@ public class ArcherBattleState : EnemyState
                 stateMachine.ChangeState(archer.attackState);
         }
         else if (stateTimer < 0 || Vector2.Distance(player.transform.position, archer.transform.position) > 15)
-            stateMachine.ChangeState(archer.idleState);
+            stateMachine.ChangeState(archer.moveState);
 
         moveDirection = player.position.x > archer.transform.position.x ? 1 : -1;
 

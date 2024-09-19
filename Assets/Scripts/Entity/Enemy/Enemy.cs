@@ -48,7 +48,7 @@ public class Enemy : Entity
     {
         base.Update();
         stateMachine.currentState.Update();
-        
+
     }
 
     public virtual bool CanBeStunned()
