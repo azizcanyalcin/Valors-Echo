@@ -6,9 +6,7 @@ public class DialogueTrigger : MonoBehaviour
 {
     public string tagName;
     public Dialogue dialogue;
-    public bool isTriggered = false;
-    private Canvas canvas;
-    
+    public bool isTriggered = false;    
     public void TriggerDialogue()
     {
         if (!isTriggered)
@@ -20,7 +18,6 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the other collider has the tag "Player"
         if (other.CompareTag(tagName))
         {
             TriggerDialogue();

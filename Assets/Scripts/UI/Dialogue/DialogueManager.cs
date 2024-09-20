@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image image;
+    public SpriteRenderer sr;
     public float delay;
     private Queue<string> sentences;
     private Player player;
@@ -17,12 +18,15 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         image = GetComponentInChildren<Image>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         image.color = Color.clear;
+        sr.color = Color.clear;
         player = PlayerManager.instance.player;
     }
     public void StartDialogue(Dialogue dialogue)
     {
         image.color = new Color(236f / 255f, 202f / 255f, 154f / 255f);
+        sr.color = new Color(236f / 255f, 202f / 255f, 154f / 255f);
         nameText.text = dialogue.name;
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -59,6 +63,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         image.color = Color.clear;
+        sr.color = Color.clear;
         dialogueText.text = "";
     }
 }
