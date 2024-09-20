@@ -27,33 +27,60 @@ public class ArcherBattleState : EnemyState
         if (archer.IsPlayerDetected())
         {
             stateTimer = archer.battleTime;
+            float playerDistance = archer.IsPlayerDetected().distance;
 
-            if (archer.IsPlayerDetected().distance < archer.safeDistance)
+            if (playerDistance < archer.safeDistance)
             {
-                if (CanJump()) stateMachine.ChangeState(archer.jumpState);
+                if (CanAttack2()) stateMachine.ChangeState(archer.attack2State);
+                else if (CanJump()) stateMachine.ChangeState(archer.jumpState);
             }
-
-            if (archer.IsPlayerDetected().distance < archer.attackDistance && CanAttack())
-                stateMachine.ChangeState(archer.attackState);
+            else if (playerDistance < archer.attackDistance)
+            {
+                if (CanUltimate()) stateMachine.ChangeState(archer.ultimateAttackState);
+                else if (CanAttack3()) stateMachine.ChangeState(archer.attack3State);
+                else if (CanAttack1()) stateMachine.ChangeState(archer.attackState);
+            }
         }
+
         else if (stateTimer < 0 || Vector2.Distance(player.transform.position, archer.transform.position) > 15)
             stateMachine.ChangeState(archer.moveState);
 
         moveDirection = player.position.x > archer.transform.position.x ? 1 : -1;
 
-        if(moveDirection != archer.facingDirection) archer.Flip();
-        
-
+        if (moveDirection != archer.facingDirection)
+            archer.Flip();
     }
-    private bool CanAttack()
+
+
+    private bool CanAttack(ref float lastTimeAttacked, float attackCooldown)
     {
-        if (Time.time >= archer.lastTimeAttacked + archer.attackCooldown)
+        if (Time.time >= lastTimeAttacked + attackCooldown)
         {
-            archer.lastTimeAttacked = Time.time;
+            lastTimeAttacked = Time.time;
             return true;
         }
         return false;
     }
+
+    private bool CanAttack1()
+    {
+        return CanAttack(ref archer.lastTimeAttacked, archer.attackCooldown);
+    }
+
+    private bool CanAttack2()
+    {
+        return CanAttack(ref archer.lastTimeAttack2, archer.attack2Cooldown);
+    }
+
+    private bool CanAttack3()
+    {
+        return CanAttack(ref archer.lastTimeAttack3, archer.attack3Cooldown);
+    }
+    private bool CanUltimate()
+    {
+        return CanAttack(ref archer.lastTimeUltimate, archer.ultimateAttackCooldown);
+    }
+
     private bool CanJump()
     {
         //if(!archer.IsGroundBehind()) return false;

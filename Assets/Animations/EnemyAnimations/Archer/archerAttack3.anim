@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: archerAttack3
+  serializedVersion: 7
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 21300000, guid: c0035859e21796c459be5621b4a1ce92, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: eb490a45f9049ac4284ec74ca17837fe, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: 52df305d62a3c544687a54e306301c61, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: dcc170eb902b32143beec76dedbfadc7, type: 3}
+    - time: 0.4
+      value: {fileID: 21300000, guid: 479c1d1e9cd0e5d42915d9ffb8b034a7, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: daa58af0e0767134cae69271e8c2f1ee, type: 3}
+    - time: 0.6
+      value: {fileID: 21300000, guid: 54ec2196535f6a748a9aec61096dae26, type: 3}
+    - time: 0.7
+      value: {fileID: 21300000, guid: cde07782cbd8da545a8505ef986e5669, type: 3}
+    - time: 0.8
+      value: {fileID: 21300000, guid: 300e87d9c7f92de47b982231a3129980, type: 3}
+    - time: 0.9
+      value: {fileID: 21300000, guid: 8fa11ed5dfc9ad64981d723a328025c0, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: c1b25886ce7fbf34da584ea4c38f5f61, type: 3}
+    - time: 1.1
+      value: {fileID: 21300000, guid: 84621582edef5f54ca64fe44155f3c43, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
+  m_SampleRate: 10
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: c0035859e21796c459be5621b4a1ce92, type: 3}
+    - {fileID: 21300000, guid: eb490a45f9049ac4284ec74ca17837fe, type: 3}
+    - {fileID: 21300000, guid: 52df305d62a3c544687a54e306301c61, type: 3}
+    - {fileID: 21300000, guid: dcc170eb902b32143beec76dedbfadc7, type: 3}
+    - {fileID: 21300000, guid: 479c1d1e9cd0e5d42915d9ffb8b034a7, type: 3}
+    - {fileID: 21300000, guid: daa58af0e0767134cae69271e8c2f1ee, type: 3}
+    - {fileID: 21300000, guid: 54ec2196535f6a748a9aec61096dae26, type: 3}
+    - {fileID: 21300000, guid: cde07782cbd8da545a8505ef986e5669, type: 3}
+    - {fileID: 21300000, guid: 300e87d9c7f92de47b982231a3129980, type: 3}
+    - {fileID: 21300000, guid: 8fa11ed5dfc9ad64981d723a328025c0, type: 3}
+    - {fileID: 21300000, guid: c1b25886ce7fbf34da584ea4c38f5f61, type: 3}
+    - {fileID: 21300000, guid: 84621582edef5f54ca64fe44155f3c43, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1.2
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events:
+  - time: 1
+    functionName: ThirdAttackTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1
+    functionName: AnimationTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

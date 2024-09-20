@@ -7,11 +7,22 @@ public class Archer : Enemy
     Player player;
     [Header("Archer")]
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private GameObject arrowShowerPrefab;
+    [SerializeField] private GameObject beamExtensionPrefab;
     [SerializeField] private float arrowSpeed;
+    [Header("Jump")]
     public Vector2 jump;
     public float jumpCooldown;
     public float safeDistance;
     [HideInInspector] public float lastTimeJumped;
+
+    [Header("Special Attacks")]
+    public float attack2Cooldown;
+    public float attack3Cooldown;
+    public float ultimateAttackCooldown;
+    [HideInInspector] public float lastTimeAttack2;
+    [HideInInspector] public float lastTimeAttack3;
+    [HideInInspector] public float lastTimeUltimate;
 
     [Header("Behind Collision")]
     [SerializeField] private Transform groundBehindCheck;
@@ -23,6 +34,9 @@ public class Archer : Enemy
     public ArcherJumpState jumpState { get; private set; }
     public ArcherBattleState battleState { get; private set; }
     public ArcherAttackState attackState { get; private set; }
+    public ArcherAttack2State attack2State { get; private set; }
+    public ArcherAttack3State attack3State { get; private set; }
+    public ArcherUltimateAttackState ultimateAttackState { get; private set; }
     public ArcherStunState stunState { get; private set; }
     public ArcherDeadState deadState { get; private set; }
     #endregion
@@ -34,6 +48,9 @@ public class Archer : Enemy
         jumpState = new ArcherJumpState(this, stateMachine, "Jump", this);
         battleState = new ArcherBattleState(this, stateMachine, "Idle", this);
         attackState = new ArcherAttackState(this, stateMachine, "Attack", this);
+        attack2State = new ArcherAttack2State(this, stateMachine, "Attack2", this);
+        attack3State = new ArcherAttack3State(this, stateMachine, "Attack3", this);
+        ultimateAttackState = new ArcherUltimateAttackState(this, stateMachine, "Ultimate", this);
         stunState = new ArcherStunState(this, stateMachine, "Stun", this);
         deadState = new ArcherDeadState(this, stateMachine, "Idle", this);
     }
@@ -63,6 +80,17 @@ public class Archer : Enemy
     {
         GameObject newArrow = Instantiate(arrowPrefab, attackCheck.position, Quaternion.identity);
         newArrow.GetComponent<ArrowController>().SetupArrow(arrowSpeed * facingDirection, stats, player.transform.position, facingDirection);
+    }
+    public override void AnimationThirdAttackTrigger()
+    {
+        GameObject newArrowShower = Instantiate(arrowShowerPrefab, new Vector3(player.transform.position.x, player.transform.position.y + 1.5f), Quaternion.identity);
+        newArrowShower.GetComponent<ArrowShower>().SetupArrowShower(stats);
+    }
+    public void AnimationUltimateTrigger()
+    {
+        
+        GameObject beamExtension = Instantiate(beamExtensionPrefab, new Vector3(transform.position.x + ( 20 * facingDirection), transform.position.y + 0.302f), Quaternion.identity);
+        beamExtension.GetComponent<BeamExtension>().SetupBeam(stats);
     }
     public bool IsGroundBehind()
     {

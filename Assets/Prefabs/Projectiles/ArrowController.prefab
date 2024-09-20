@@ -77,9 +77,9 @@ SpriteRenderer:
   m_SortingLayerID: -1758931923
   m_SortingLayer: 5
   m_SortingOrder: 10
-  m_Sprite: {fileID: 2110614751, guid: 29947697f4f443c45ba4dcee98b16271, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2af829dccbedf8241b8c6dbf7b2f6a4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.375, y: 0.1875}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLayer: Player
-  xVelocity: 12
+  speed: 0
   rb: {fileID: 7225073144744646541}
   canMove: 1
   flipped: 0
