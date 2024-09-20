@@ -7,6 +7,7 @@ public class Archer : Enemy
     Player player;
     [Header("Archer")]
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private GameObject diagonalArrowPrefab;
     [SerializeField] private GameObject arrowShowerPrefab;
     [SerializeField] private GameObject beamExtensionPrefab;
     [SerializeField] private float arrowSpeed;
@@ -79,8 +80,23 @@ public class Archer : Enemy
     public override void AnimationSpecialAttackTrigger()
     {
         GameObject newArrow = Instantiate(arrowPrefab, attackCheck.position, Quaternion.identity);
+
+        Vector3 direction = (player.transform.position - newArrow.transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
+
+        if (player.transform.position.x > transform.position.x)
+        {
+            newArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+        else
+        {
+            newArrow.transform.rotation = Quaternion.Euler(0, 0, -angle);
+            newArrow.transform.localScale = new Vector3(-newArrow.transform.localScale.x, newArrow.transform.localScale.y, newArrow.transform.localScale.z);
+        }
         newArrow.GetComponent<ArrowController>().SetupArrow(arrowSpeed * facingDirection, stats, player.transform.position, facingDirection);
     }
+
     public override void AnimationThirdAttackTrigger()
     {
         GameObject newArrowShower = Instantiate(arrowShowerPrefab, new Vector3(player.transform.position.x, player.transform.position.y + 1.5f), Quaternion.identity);
@@ -88,8 +104,7 @@ public class Archer : Enemy
     }
     public void AnimationUltimateTrigger()
     {
-        
-        GameObject beamExtension = Instantiate(beamExtensionPrefab, new Vector3(transform.position.x + ( 20 * facingDirection), transform.position.y + 0.302f), Quaternion.identity);
+        GameObject beamExtension = Instantiate(beamExtensionPrefab, new Vector3(transform.position.x + (20 * facingDirection), transform.position.y + 0.302f), Quaternion.identity);
         beamExtension.GetComponent<BeamExtension>().SetupBeam(stats);
     }
     public bool IsGroundBehind()
