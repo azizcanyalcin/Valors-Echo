@@ -53,7 +53,7 @@ public class Archer : Enemy
         attack3State = new ArcherAttack3State(this, stateMachine, "Attack3", this);
         ultimateAttackState = new ArcherUltimateAttackState(this, stateMachine, "Ultimate", this);
         stunState = new ArcherStunState(this, stateMachine, "Stun", this);
-        deadState = new ArcherDeadState(this, stateMachine, "Idle", this);
+        deadState = new ArcherDeadState(this, stateMachine, "Dead", this);
     }
 
     protected override void Start()

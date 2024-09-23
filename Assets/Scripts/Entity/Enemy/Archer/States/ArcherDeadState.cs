@@ -14,22 +14,11 @@ public class ArcherDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
-
-        archer.animator.SetBool(archer.lastAnimatorBoolName, true);
-        archer.animator.speed = 0;
-        enemy.capsuleCollider.enabled = false;
-
-        stateTimer = .1f;
+        archer.SetVelocityToZero();
     }
     public override void Update()
     {
         base.Update();
-
-        if (stateTimer > 0)
-        {
-            rb.velocity = new Vector2(0, 10);
-        }
-
     }
 
     public override void Exit()
