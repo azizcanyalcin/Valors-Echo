@@ -36,6 +36,7 @@ public class ArcherBattleState : EnemyState
             }
             else if (playerDistance < archer.attackDistance)
             {
+                if (archer.stats.currentHealth <= archer.stats.maxHealth.GetValue() / 2 && CanDefend()) stateMachine.ChangeState(archer.defendState);
                 if (CanUltimate()) stateMachine.ChangeState(archer.ultimateAttackState);
                 else if (CanAttack3()) stateMachine.ChangeState(archer.attack3State);
                 else if (CanAttack1()) stateMachine.ChangeState(archer.attackState);
@@ -52,7 +53,7 @@ public class ArcherBattleState : EnemyState
     }
 
 
-    private bool CanAttack(ref float lastTimeAttacked, float attackCooldown)
+    private bool CanPerform(ref float lastTimeAttacked, float attackCooldown)
     {
         if (Time.time >= lastTimeAttacked + attackCooldown)
         {
@@ -64,21 +65,25 @@ public class ArcherBattleState : EnemyState
 
     private bool CanAttack1()
     {
-        return CanAttack(ref archer.lastTimeAttacked, archer.attackCooldown);
+        return CanPerform(ref archer.lastTimeAttacked, archer.attackCooldown);
     }
 
     private bool CanAttack2()
     {
-        return CanAttack(ref archer.lastTimeAttack2, archer.attack2Cooldown);
+        return CanPerform(ref archer.lastTimeAttack2, archer.attack2Cooldown);
     }
 
     private bool CanAttack3()
     {
-        return CanAttack(ref archer.lastTimeAttack3, archer.attack3Cooldown);
+        return CanPerform(ref archer.lastTimeAttack3, archer.attack3Cooldown);
     }
     private bool CanUltimate()
     {
-        return CanAttack(ref archer.lastTimeUltimate, archer.ultimateAttackCooldown);
+        return CanPerform(ref archer.lastTimeUltimate, archer.ultimateAttackCooldown);
+    }
+    private bool CanDefend()
+    {
+        return CanPerform(ref archer.lastTimeDefend, archer.defendCooldown);
     }
 
     private bool CanJump()

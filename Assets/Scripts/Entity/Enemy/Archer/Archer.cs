@@ -17,13 +17,17 @@ public class Archer : Enemy
     public float safeDistance;
     [HideInInspector] public float lastTimeJumped;
 
-    [Header("Special Attacks")]
+    [Header("Attack Cooldowns")]
     public float attack2Cooldown;
     public float attack3Cooldown;
     public float ultimateAttackCooldown;
     [HideInInspector] public float lastTimeAttack2;
     [HideInInspector] public float lastTimeAttack3;
     [HideInInspector] public float lastTimeUltimate;
+
+    [Header("Defensive Cooldowns")]
+    public float defendCooldown;
+    [HideInInspector] public float lastTimeDefend;
 
     [Header("Behind Collision")]
     [SerializeField] private Transform groundBehindCheck;
@@ -40,6 +44,7 @@ public class Archer : Enemy
     public ArcherUltimateAttackState ultimateAttackState { get; private set; }
     public ArcherStunState stunState { get; private set; }
     public ArcherDeadState deadState { get; private set; }
+    public ArcherDefendState defendState { get; private set; }
     #endregion
     protected override void Awake()
     {
@@ -54,6 +59,7 @@ public class Archer : Enemy
         ultimateAttackState = new ArcherUltimateAttackState(this, stateMachine, "Ultimate", this);
         stunState = new ArcherStunState(this, stateMachine, "Stun", this);
         deadState = new ArcherDeadState(this, stateMachine, "Dead", this);
+        defendState = new ArcherDefendState(this, stateMachine, "Defend", this);
     }
 
     protected override void Start()
