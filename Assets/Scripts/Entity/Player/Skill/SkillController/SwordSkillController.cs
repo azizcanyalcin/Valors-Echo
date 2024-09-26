@@ -62,7 +62,6 @@ public class SwordSkillController : MonoBehaviour
     private void SwordDamage(Enemy enemy)
     {
         player.stats.DealElementalDamage(enemy.GetComponent<CharacterStats>());
-        Debug.Log($"Damage dealed with sword");
         if (player.skill.sword.timeStopUnlocked) FreezeEnemy(enemy);
         if (player.skill.sword.vulnerableUnlocked) enemy.stats.ApplyVulnerable(vulnerableDuration);
 

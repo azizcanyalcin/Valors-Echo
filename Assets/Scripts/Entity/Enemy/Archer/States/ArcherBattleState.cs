@@ -23,7 +23,7 @@ public class ArcherBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-
+        if (IsHealthBelowHalf() && CanDefend()) stateMachine.ChangeState(archer.defendState);
         if (archer.IsPlayerDetected())
         {
             stateTimer = archer.battleTime;
@@ -36,7 +36,6 @@ public class ArcherBattleState : EnemyState
             }
             else if (playerDistance < archer.attackDistance)
             {
-                if (archer.stats.currentHealth <= archer.stats.maxHealth.GetValue() / 2 && CanDefend()) stateMachine.ChangeState(archer.defendState);
                 if (CanUltimate()) stateMachine.ChangeState(archer.ultimateAttackState);
                 else if (CanAttack3()) stateMachine.ChangeState(archer.attack3State);
                 else if (CanAttack1()) stateMachine.ChangeState(archer.attackState);
@@ -52,6 +51,10 @@ public class ArcherBattleState : EnemyState
             archer.Flip();
     }
 
+    private bool IsHealthBelowHalf()
+    {
+        return archer.stats.currentHealth <= archer.stats.maxHealth.GetValue() / 2;
+    }
 
     private bool CanPerform(ref float lastTimeAttacked, float attackCooldown)
     {
