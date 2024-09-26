@@ -530,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 6046570827593158745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61, y: -0.55, z: 0}
+  m_LocalPosition: {x: 0.56, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -676,7 +676,7 @@ MonoBehaviour:
     baseValue: 200
     modifiers: 
   maxHealth:
-    baseValue: 1500
+    baseValue: 500
     modifiers: 
   armor:
     baseValue: 1
@@ -768,7 +768,7 @@ MonoBehaviour:
   groundCheck: {fileID: 8115363600083230813}
   groundCheckDistance: 2.94
   wallCheck: {fileID: 2592977816926379516}
-  wallCheckDistance: 2.17
+  wallCheckDistance: 3.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -787,6 +787,7 @@ MonoBehaviour:
   attackCooldown: 1.5
   lastTimeAttacked: 0
   arrowPrefab: {fileID: 2422219071070597138, guid: d49aaa2e7f8272841a57e12ed9a0cca4, type: 3}
+  diagonalArrowPrefab: {fileID: 2422219071070597138, guid: 1c9395beae8282a448363152215e87a1, type: 3}
   arrowShowerPrefab: {fileID: 3632732459520457894, guid: e76bc54c7db5265409f207358c55e5bc, type: 3}
   beamExtensionPrefab: {fileID: 6835019675975409348, guid: 358c7b18f9a54ce449dd8e6a01b9594c, type: 3}
   arrowSpeed: 15
@@ -800,6 +801,8 @@ MonoBehaviour:
   lastTimeAttack2: 0
   lastTimeAttack3: 0
   lastTimeUltimate: 0
+  defendCooldown: 7
+  lastTimeDefend: 0
   groundBehindCheck: {fileID: 8429131244166211668}
   groundBehindCheckSize: {x: 1.14, y: 3.59}
 --- !u!1 &7879584466882399263

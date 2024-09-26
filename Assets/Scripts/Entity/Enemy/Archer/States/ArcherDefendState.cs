@@ -33,7 +33,7 @@ public class ArcherDefendState : EnemyState
         base.Update();
 
         archer.SetVelocityToZero();
-        CheckFlip();
+        archer.CheckFlip();
         HealOverTime();
         if (triggerCalled)
             stateMachine.ChangeState(archer.battleState);
@@ -51,16 +51,6 @@ public class ArcherDefendState : EnemyState
     {
         archer.stats.currentHealth += archer.stats.maxHealth.GetValue() / 20;
         archer.stats.TakeDamage(1); // quick fix for updating health ui
-    }
-    private void CheckFlip()
-    {
-        float playerX = player.transform.position.x;
-        float archerX = archer.transform.position.x;
-
-        if ((playerX > archerX && archer.facingDirection == -1) || (playerX < archerX && archer.facingDirection == 1))
-        {
-            archer.Flip();
-        }
     }
     public override void Exit()
     {

@@ -14,6 +14,8 @@ public class Enemy : Entity
     public CapsuleCollider2D cd { get; private set; }
     public string lastAnimatorBoolName { get; private set; }
     public bool isTriggered;
+    private Player player => PlayerManager.instance.player;
+
     [Header("Stun")]
     public float stunDuration;
     public Vector2 stunKnockBackPower;
@@ -110,6 +112,16 @@ public class Enemy : Entity
         FreezeTime(true);
         yield return new WaitForSeconds(seconds);
         FreezeTime(false);
+    }
+    public virtual void CheckFlip()
+    {
+        float playerX = player.transform.position.x;
+        float enemyX = transform.position.x;
+
+        if ((playerX > enemyX && facingDirection == -1) || (playerX < enemyX && facingDirection == 1))
+        {
+            Flip();
+        }
     }
     public override void SlowEntity(float slowRate, float slowDuration)
     {
