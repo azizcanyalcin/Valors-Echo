@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArcherJumpState : EnemyState
 {
-    
+
     private Archer archer;
     public ArcherJumpState(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Archer archer) : base(enemy, stateMachine, animatorBoolName)
     {
@@ -12,6 +12,9 @@ public class ArcherJumpState : EnemyState
     public override void Enter()
     {
         base.Enter();
+
+        AudioManager.instance.PlayDelayedSFX(37, archer.transform, false, 0.3f);
+
         if (!archer.IsGroundBehind() || archer.IsWallBehind())
             rb.velocity = new Vector2(archer.jump.x * archer.facingDirection, archer.jump.y);
         else

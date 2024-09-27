@@ -1,15 +1,23 @@
+using System.Collections;
 using UnityEngine;
 
 public class ActivateAgents : MonoBehaviour
 {
     [SerializeField] private GameObject agent;
     [SerializeField] private string tagName;
+    [SerializeField] private float delay;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.CompareTag(tagName))
+        if (collider.CompareTag(tagName))
         {
-            agent.SetActive(true);
+            StartCoroutine("SetAgentActive");
         }
+    }
+
+    private IEnumerator SetAgentActive()
+    {
+        yield return new WaitForSeconds(delay);
+        agent.SetActive(true);
     }
 }

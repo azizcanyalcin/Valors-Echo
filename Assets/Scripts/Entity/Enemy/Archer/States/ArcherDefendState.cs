@@ -18,6 +18,7 @@ public class ArcherDefendState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlayDelayedSFX(42, archer.transform, false, 0.3f);
         defaultArmor = archer.stats.armor.GetValue();
         defaultMagicResistance = archer.stats.magicResistance.GetValue();
 

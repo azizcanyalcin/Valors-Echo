@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    public bool isPlayerActive;
     [Header("Movement")]
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
@@ -90,6 +91,7 @@ public class Player : Entity
     }
     protected override void Update()
     {
+        if(!isPlayerActive) return;
         if(Time.timeScale == 0) return;
         base.Update();
 

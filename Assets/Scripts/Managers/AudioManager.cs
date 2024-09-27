@@ -52,7 +52,16 @@ public class AudioManager : MonoBehaviour
 
         audioSource.Play();
     }
+    public void PlayDelayedSFX(int index, Transform source, bool canFadeIn, float delay)
+    {
+        StartCoroutine(PlaySFXAfterDelay(index, source, canFadeIn, delay));
+    }
 
+    private IEnumerator PlaySFXAfterDelay(int index, Transform source, bool canFadeIn, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlaySFX(index, source, canFadeIn);
+    }
     public void StopSFX(int index, bool canFadeOut)
     {
         if (sfx[index])

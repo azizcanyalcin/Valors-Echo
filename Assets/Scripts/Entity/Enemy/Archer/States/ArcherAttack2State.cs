@@ -6,7 +6,7 @@ public class ArcherAttack2State : EnemyState
 {
     private Archer archer;
 
-    public ArcherAttack2State(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName,Archer archer) : base(enemy, stateMachine, animatorBoolName)
+    public ArcherAttack2State(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Archer archer) : base(enemy, stateMachine, animatorBoolName)
     {
         this.archer = archer;
     }
@@ -14,7 +14,8 @@ public class ArcherAttack2State : EnemyState
     public override void Enter()
     {
         base.Enter();
-        archer.attackDistance ++;
+        archer.attackDistance++;
+        AudioManager.instance.PlaySFX(36, archer.transform, false);
     }
     public override void Update()
     {
