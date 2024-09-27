@@ -28,7 +28,7 @@ public class LevelBoundaryHandler : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             RemoveConfinerBounds();
-            transition.FadeOut();
+            transition.FadeIn();
         }
     }
     public void AssignNewBounds(PolygonCollider2D newBounds)
