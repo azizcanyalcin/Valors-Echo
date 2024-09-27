@@ -46,6 +46,7 @@ public class Player : Entity
     public SkillManager skill { get; private set; }
     public GameObject sword { get; private set; }
     public PlayerFx fx { get; private set; }
+    
     #endregion
 
     protected override void Awake()
@@ -78,6 +79,8 @@ public class Player : Entity
         base.Start();
         fx = GetComponent<PlayerFx>();
         skill = SkillManager.instance;
+        
+        fx.healthBar.SetActive(false);
 
         stateMachine.Initialize(idleState);
 

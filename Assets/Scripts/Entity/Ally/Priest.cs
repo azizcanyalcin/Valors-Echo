@@ -1,6 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class Priest : MonoBehaviour
 {
-    Player player => PlayerManager.instance.player;
+    Player player;
+
+    private void Start()
+    {
+        player = PlayerManager.instance.player;
+        
+    }
 }

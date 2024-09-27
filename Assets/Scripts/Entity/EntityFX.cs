@@ -27,7 +27,7 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private GameObject hitFx;
     [SerializeField] private GameObject criticalHitFx;
 
-    private GameObject healthBar;
+    public GameObject healthBar;
 
     protected virtual void Start()
     {

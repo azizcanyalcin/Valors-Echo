@@ -33,9 +33,6 @@ public class PlayerGroundedState : PlayerState
 
         if (Input.GetKeyDown(KeyCode.Q) && SkillManager.instance.parry.parryUnlocked)
             stateMachine.ChangeState(player.counterAttackState);
-
-
-
     }
     public override void Exit()
     {

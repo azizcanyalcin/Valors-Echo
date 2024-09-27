@@ -8,25 +8,18 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    public Image image;
-    public SpriteRenderer sr;
-    public float delay;
+    public float letterDelay = 0.04f;
+    public float sentenceDelay = 1.5f;
     private Queue<string> sentences;
     private Player player;
 
     void Start()
     {
         sentences = new Queue<string>();
-        image = GetComponentInChildren<Image>();
-        sr = GetComponentInChildren<SpriteRenderer>();
-        image.color = Color.clear;
-        sr.color = Color.clear;
         player = PlayerManager.instance.player;
     }
     public void StartDialogue(Dialogue dialogue)
     {
-        image.color = new Color(236f / 255f, 202f / 255f, 154f / 255f);
-        sr.color = new Color(236f / 255f, 202f / 255f, 154f / 255f);
         nameText.text = dialogue.name;
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
@@ -45,25 +38,23 @@ public class DialogueManager : MonoBehaviour
         }
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence, delay));
+        StartCoroutine(TypeSentence(sentence));
     }
 
-    IEnumerator TypeSentence(string sentence, float delay)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(letterDelay);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(sentenceDelay);
         DisplayNextSentence();
     }
 
     public void EndDialogue()
     {
-        image.color = Color.clear;
-        sr.color = Color.clear;
         dialogueText.text = "";
     }
 }
