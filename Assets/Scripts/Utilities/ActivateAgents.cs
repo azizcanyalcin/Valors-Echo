@@ -18,6 +18,7 @@ public class ActivateAgents : MonoBehaviour
     private IEnumerator SetAgentActive()
     {
         yield return new WaitForSeconds(delay);
-        agent.SetActive(true);
+        if (agent) agent.SetActive(true);
+        Destroy(gameObject);
     }
 }
