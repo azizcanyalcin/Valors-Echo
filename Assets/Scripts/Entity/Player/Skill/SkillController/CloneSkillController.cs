@@ -29,7 +29,8 @@ public class CloneSkillController : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        StartCoroutine(FlipToClosestEnemy());
+        FlipToClosestEnemy();
+
     }
     private void Update()
     {

@@ -56,8 +56,9 @@ public class LevelBoundaryHandler : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         RemoveConfinerBounds();
-        SetConfinerBounds(newBoundaries);
-        
+        if (newBoundaries)
+            SetConfinerBounds(newBoundaries);
+
         transition.FadeIn();
 
         player.isPlayerActive = true;
