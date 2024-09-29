@@ -28,7 +28,7 @@ public class MainMenuUI : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator SceneTransition(float delay)
+    IEnumerator SceneTransition(float delay) 
     {
         transition.FadeOut();
 

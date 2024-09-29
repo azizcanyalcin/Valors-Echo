@@ -1,11 +1,18 @@
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class LevelBoundaryHandler : MonoBehaviour
 {
     [SerializeField] private CinemachineConfiner2D cinemachineConfiner;
     [SerializeField] private PolygonCollider2D defaultBoundaries;
-    public SceneTransition transition;
-
+    [SerializeField] private SceneTransition transition;
+    private Player player;
+    private float delay = 2f;
+    private void Start()
+    {
+        player = PlayerManager.instance.player;
+    }
     public void RemoveConfinerBounds()
     {
         if (cinemachineConfiner != null)
@@ -27,12 +34,28 @@ public class LevelBoundaryHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            RemoveConfinerBounds();
-            transition.FadeIn();
+            StartCoroutine("SceneTransition", delay);
+
         }
     }
     public void AssignNewBounds(PolygonCollider2D newBounds)
     {
         SetConfinerBounds(newBounds);
+    }
+
+    IEnumerator SceneTransition(float delay)
+    {
+        transition.FadeOut();
+
+        player.isPlayerActive = false;
+        player.SetVelocityToZero();
+
+        yield return new WaitForSeconds(delay);
+
+        RemoveConfinerBounds();
+
+        transition.FadeIn();
+
+        player.isPlayerActive = true;
     }
 }
