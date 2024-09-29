@@ -6,6 +6,7 @@ public class LevelBoundaryHandler : MonoBehaviour
 {
     [SerializeField] private CinemachineConfiner2D cinemachineConfiner;
     [SerializeField] private PolygonCollider2D defaultBoundaries;
+    [SerializeField] private PolygonCollider2D newBoundaries;
     [SerializeField] private SceneTransition transition;
     private Player player;
     private float delay = 2f;
@@ -45,15 +46,18 @@ public class LevelBoundaryHandler : MonoBehaviour
 
     IEnumerator SceneTransition(float delay)
     {
+        defaultBoundaries.isTrigger = false;
         transition.FadeOut();
 
         player.isPlayerActive = false;
         player.SetVelocityToZero();
+        player.stateMachine.ChangeState(player.idleState);
 
         yield return new WaitForSeconds(delay);
 
         RemoveConfinerBounds();
-
+        SetConfinerBounds(newBoundaries);
+        
         transition.FadeIn();
 
         player.isPlayerActive = true;
