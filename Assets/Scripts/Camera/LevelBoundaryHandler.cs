@@ -25,7 +25,7 @@ public class LevelBoundaryHandler : MonoBehaviour
 
     public void SetConfinerBounds(PolygonCollider2D newBoundingShape)
     {
-        if (cinemachineConfiner != null)
+        if (cinemachineConfiner != null && newBoundaries)
         {
             cinemachineConfiner.m_BoundingShape2D = newBoundingShape;
             cinemachineConfiner.InvalidateCache();
