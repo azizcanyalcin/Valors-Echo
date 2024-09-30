@@ -49,12 +49,13 @@ public class LevelBoundaryHandler : MonoBehaviour
         defaultBoundaries.isTrigger = false;
         transition.FadeOut();
 
+        player.spriteRenderer.color = Color.clear;
         player.isPlayerActive = false;
         player.SetVelocityToZero();
         player.stateMachine.ChangeState(player.idleState);
-
+        
         yield return new WaitForSeconds(delay);
-
+        player.spriteRenderer.color = Color.white;
         RemoveConfinerBounds();
         if (newBoundaries)
             SetConfinerBounds(newBoundaries);

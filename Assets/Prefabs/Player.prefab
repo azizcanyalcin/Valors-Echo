@@ -4894,7 +4894,7 @@ RectTransform:
   m_Father: {fileID: 7703932849121417876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5119,7 +5119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &515579771601441631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 6993046268732607401}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5429,10 +5429,11 @@ MonoBehaviour:
   groundCheck: {fileID: 6519262773273366785}
   groundCheckDistance: 0.47
   wallCheck: {fileID: 3018386783474188781}
-  wallCheckDistance: 0.1
+  wallCheckDistance: 0.12
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  isPlayerActive: 1
   moveSpeed: 8
   jumpForce: 12
   dashSpeed: 25
@@ -5467,11 +5468,12 @@ MonoBehaviour:
   - {r: 0.9354515, g: 0.9433962, b: 0.12014952, a: 1}
   hitFx: {fileID: 5710790277604484333, guid: 8663ea9df0a58c54e98bc058cf033ec4, type: 3}
   criticalHitFx: {fileID: 7756283298699706496, guid: 6ae7546ad36fc334789ade1c76e8bdee, type: 3}
+  healthBar: {fileID: 0}
   cloneFlashImage: {fileID: 1547950344188861626, guid: d0e41a014fbeb034295ed0c4d4ca7674, type: 3}
   colorLooseRate: 5
   cloneFlashCooldown: 0.05
   shakeMultiplier: 0.2
-  shakePowerHit: {x: 1, y: 1, z: 0}
+  shakePowerHit: {x: 3, y: 1, z: 0}
   shakePowerHighDamage: {x: 2, y: 1, z: 0}
   dustFx: {fileID: 4912016684298587527}
 --- !u!70 &2599539344730454322
@@ -5506,8 +5508,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04773453, y: -0.31504798}
-  m_Size: {x: 0.8281556, y: 2.038188}
+  m_Offset: {x: -0.04773453, y: -0.29661462}
+  m_Size: {x: 0.8281556, y: 2.0013213}
   m_Direction: 0
 --- !u!50 &7869140706039463279
 Rigidbody2D:
@@ -5555,31 +5557,31 @@ MonoBehaviour:
     baseValue: 1
     modifiers: 
   intelligence:
-    baseValue: 200
+    baseValue: 20
     modifiers: 
   vitality:
     baseValue: 2
     modifiers: 
   damage:
-    baseValue: 15
+    baseValue: 50
     modifiers: 
   critChance:
-    baseValue: 100
+    baseValue: 20
     modifiers: 
   critPower:
     baseValue: 150
     modifiers: 
   maxHealth:
-    baseValue: 1000
+    baseValue: 15000
     modifiers: 
   armor:
-    baseValue: 1
+    baseValue: 10
     modifiers: 
   evasion:
     baseValue: 5
     modifiers: 
   magicResistance:
-    baseValue: 2
+    baseValue: 10
     modifiers: 
   fireDamage:
     baseValue: 15

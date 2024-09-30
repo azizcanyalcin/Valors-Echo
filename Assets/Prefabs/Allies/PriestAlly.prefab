@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2883609754715842729}
   - component: {fileID: 2548257092486687830}
   - component: {fileID: 512860772302641485}
+  - component: {fileID: 390684345601550833}
   m_Layer: 7
   m_Name: PriestAlly
   m_TagString: Priest
@@ -140,6 +141,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.009187698, y: 0.027562618}
   m_Size: {x: 0.99612427, y: 2.3781247}
   m_Direction: 0
+--- !u!114 &390684345601550833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661083076694223967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7874ddf7ce80b1469fbb0bccdc6d4ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1738250381152002648
 GameObject:
   m_ObjectHideFlags: 0

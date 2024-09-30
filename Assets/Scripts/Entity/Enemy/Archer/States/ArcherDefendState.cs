@@ -7,7 +7,7 @@ public class ArcherDefendState : EnemyState
     Player player => PlayerManager.instance.player;
     int defaultArmor;
     int defaultMagicResistance;
-    float healInterval = 1f; // Heal every second
+    float healInterval = 0.25f;
     float lastHealTime;
 
     public ArcherDefendState(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Archer archer) : base(enemy, stateMachine, animatorBoolName)
@@ -50,7 +50,7 @@ public class ArcherDefendState : EnemyState
     }
     private void Heal()
     {
-        archer.stats.currentHealth += archer.stats.maxHealth.GetValue() / 20;
+        archer.stats.currentHealth += archer.stats.maxHealth.GetValue() / 95;
         archer.stats.TakeDamage(1); // quick fix for updating health ui
     }
     public override void Exit()
