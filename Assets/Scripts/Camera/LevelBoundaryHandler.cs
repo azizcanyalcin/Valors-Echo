@@ -7,7 +7,7 @@ public class LevelBoundaryHandler : MonoBehaviour
     [SerializeField] private CinemachineConfiner2D cinemachineConfiner;
     [SerializeField] private PolygonCollider2D defaultBoundaries;
     [SerializeField] private PolygonCollider2D newBoundaries;
-    [SerializeField] private SceneTransition transition;
+    [SerializeField] private SceneTransitionUI transition;
     private Player player;
     private float delay = 2f;
     private void Start()

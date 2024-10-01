@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISaveManager
 {
-    public static GameManager instance;
-    private Transform player;
+    public static GameManager instance;    
+    private Player player;
     [SerializeField] private Checkpoint[] checkpoints;
     private string lastCheckpointId;
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     private void Start()
     {
         checkpoints = FindObjectsOfType<Checkpoint>();
-        player = PlayerManager.instance.player.transform;
+        player = PlayerManager.instance.player;
     }
     public void RestartScene()
     {
@@ -43,17 +44,20 @@ public class GameManager : MonoBehaviour, ISaveManager
         yield return new WaitForSeconds(0.1f);
         LoadLostCurrency(data);
         LoadActiveCheckpoints(data);
+        LoadPlayerInfo(data);
         PlacePlayerToLastCheckpoint();
     }
 
     public void SaveData(ref GameData data)
     {
         data.lostCurrencyAmount = lostCurrencyAmount;
-        data.lostCurrencyX = player.position.x;
-        data.lostCurrencyY = player.position.y;
+        data.lostCurrencyX = player.transform.position.x;
+        data.lostCurrencyY = player.transform.position.y;
 
         data.lastCheckpoint = LastCheckpoint();
         data.checkpoints.Clear();
+
+        data.isPlayerDeadOnce = player.isPlayerDeadOnce;
 
         foreach (Checkpoint checkpoint in checkpoints)
         {
@@ -86,6 +90,10 @@ public class GameManager : MonoBehaviour, ISaveManager
 
         lostCurrencyAmount = 0;
     }
+    private void LoadPlayerInfo(GameData data)
+    {
+        player.isPlayerDeadOnce = data.isPlayerDeadOnce;
+    }
 
     public string LastCheckpoint()
     {
@@ -97,16 +105,16 @@ public class GameManager : MonoBehaviour, ISaveManager
     }
     private void PlacePlayerToLastCheckpoint()
     {
-        
+
         foreach (Checkpoint checkpoint in checkpoints)
         {
             if (lastCheckpointId == checkpoint.id)
-                player.position = checkpoint.transform.position;
+                player.transform.position = checkpoint.transform.position;
         }
     }
     public void PauseGame(bool pause)
     {
-        if(pause) Time.timeScale = 0;
+        if (pause) Time.timeScale = 0;
         else Time.timeScale = 1;
     }
 

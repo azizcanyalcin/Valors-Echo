@@ -5007,7 +5007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5082,7 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5659,7 +5659,7 @@ MonoBehaviour:
   - {r: 0.9354515, g: 0.9433962, b: 0.12014952, a: 1}
   hitFx: {fileID: 5710790277604484333, guid: 8663ea9df0a58c54e98bc058cf033ec4, type: 3}
   criticalHitFx: {fileID: 7756283298699706496, guid: 6ae7546ad36fc334789ade1c76e8bdee, type: 3}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 2930366049089128343}
   cloneFlashImage: {fileID: 1547950344188861626, guid: d0e41a014fbeb034295ed0c4d4ca7674, type: 3}
   colorLooseRate: 5
   cloneFlashCooldown: 0.05
@@ -5763,7 +5763,7 @@ MonoBehaviour:
     baseValue: 150
     modifiers: 
   maxHealth:
-    baseValue: 15000
+    baseValue: 100
     modifiers: 
   armor:
     baseValue: 10
@@ -5804,8 +5804,8 @@ MonoBehaviour:
   dropPrefab: {fileID: 4551926125324593401, guid: e736d2b2d0ab0f847850ff67463e7952, type: 3}
   possibleDrops: []
   dropAmount: 2
-  equipmentDropChance: 99
-  materialDropChance: 99
+  equipmentDropChance: 10
+  materialDropChance: 10
 --- !u!114 &6993046268732607401
 MonoBehaviour:
   m_ObjectHideFlags: 0

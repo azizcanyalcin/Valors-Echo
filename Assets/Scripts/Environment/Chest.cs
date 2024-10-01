@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Chest : MonoBehaviour
 {
     public bool isOpened = false;
-    private ItemDrop itemDrop;
+    [SerializeField] private ItemDrop itemDrop;
     private Animator chestAnimator;
     private bool canKeyEnable = true;
     [SerializeField] private Image keyE;

@@ -15,7 +15,7 @@ public class GameData
     public int lostCurrencyAmount;
     public float lostCurrencyX;
     public float lostCurrencyY;
-
+    public bool isPlayerDeadOnce;
     public SerializableDictionary<string,float> volumeSettings;
     public GameData()
     {
@@ -23,6 +23,8 @@ public class GameData
         lostCurrencyX = 0;
         lostCurrencyY = 0;
         currency = 0;
+        
+        isPlayerDeadOnce = false;
 
         skillTree = new();
         inventory = new();

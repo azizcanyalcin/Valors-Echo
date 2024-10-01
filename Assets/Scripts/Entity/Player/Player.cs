@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : Entity
 {
     public bool isPlayerActive;
+    public bool isPlayerDeadOnce;
     [Header("Movement")]
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
@@ -47,7 +48,7 @@ public class Player : Entity
     public SkillManager skill { get; private set; }
     public GameObject sword { get; private set; }
     public PlayerFx fx { get; private set; }
-    
+
     #endregion
 
     protected override void Awake()
@@ -80,8 +81,6 @@ public class Player : Entity
         base.Start();
         fx = GetComponent<PlayerFx>();
         skill = SkillManager.instance;
-        
-        fx.healthBar.SetActive(false);
 
         stateMachine.Initialize(idleState);
 
@@ -91,8 +90,8 @@ public class Player : Entity
     }
     protected override void Update()
     {
-        if(!isPlayerActive) return;
-        if(Time.timeScale == 0) return;
+        if (!isPlayerActive) return;
+        if (Time.timeScale == 0) return;
         base.Update();
 
         stateMachine.currentState.Update();
@@ -170,11 +169,13 @@ public class Player : Entity
     }
     protected override void SetupZeroKnockbackPower()
     {
-        knockBackPower = new Vector2(0,0);
+        knockBackPower = new Vector2(0, 0);
     }
     public override void Die()
     {
         base.Die();
+        isPlayerDeadOnce = true;
+        SaveManager.instance.SaveGame();
         stateMachine.ChangeState(deadState);
     }
 }

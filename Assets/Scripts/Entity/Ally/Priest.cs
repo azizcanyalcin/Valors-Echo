@@ -7,7 +7,16 @@ public class Priest : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.instance.player;
-        player.isPlayerActive = false; // This will be false dont forget !!
+        if(!player.isPlayerDeadOnce)
+            player.isPlayerActive = false; // This will be false dont forget !!
+    }
+    private void Update()
+    {
+        if (player.isPlayerDeadOnce)
+        {
+            player.isPlayerActive = true;
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

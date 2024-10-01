@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour, ISaveManager
 {
-    public SceneTransition transition;
+    public SceneTransitionUI transition;
     [SerializeField] GameObject restartButton;
     [SerializeField] private VolumeSettingsUI[] volumeSettings;
     [Space]
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour, ISaveManager
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).GetComponent<SceneTransition>()) break;
+            if (transform.GetChild(i).GetComponent<SceneTransitionUI>()) break;
             transform.GetChild(i).gameObject.SetActive(false);
         }
         if (menu != null) menu.SetActive(true);
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour, ISaveManager
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransition>() == null)
+            if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransitionUI>() == null)
                 return;
         }
         GameManager.instance.PauseGame(true);

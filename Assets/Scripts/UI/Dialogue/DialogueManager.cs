@@ -8,8 +8,8 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    public float letterDelay = 0.04f;
-    public float sentenceDelay = 1.5f;
+    [SerializeField] private float letterDelay = 0.02f;
+    [SerializeField] private float sentenceDelay = 1.2f;
     private Queue<string> sentences;
     private Player player;
 

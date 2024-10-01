@@ -5,7 +5,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private string sceneName = "MainScene";
     [SerializeField] private GameObject continueButton;
-    [SerializeField] SceneTransition transition;
+    [SerializeField] SceneTransitionUI transition;
 
     private void Start()
     {
