@@ -18,7 +18,7 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(canKeyEnable)
+            if (canKeyEnable)
                 keyE.enabled = true;
         }
     }
@@ -42,6 +42,8 @@ public class Chest : MonoBehaviour
         canKeyEnable = false;
         isOpened = true;
         chestAnimator.SetTrigger("Open");
-        itemDrop.GenerateDrop();
+
+        if (itemDrop)
+            itemDrop.GenerateDrop();
     }
 }
