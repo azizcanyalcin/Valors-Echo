@@ -13,7 +13,7 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        
+
         if (comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)
             comboCounter = 0;
 
@@ -32,9 +32,12 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Update()
     {
         base.Update();
-
-        if (stateTimer < 0)
-            player.SetVelocityToZero();
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Mathf.Sign(mousePosition.x - player.transform.position.x) != player.facingDirection)
+            player.Flip();
+            
+            if (stateTimer < 0)
+                player.SetVelocityToZero();
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }
