@@ -8,6 +8,8 @@ public class LevelBoundaryHandler : MonoBehaviour
     [SerializeField] private PolygonCollider2D defaultBoundaries;
     [SerializeField] private PolygonCollider2D newBoundaries;
     [SerializeField] private SceneTransitionUI transition;
+    [SerializeField] private bool transitionEnabled = true;
+
     private Player player;
     private float delay = 2f;
     private void Start()
@@ -35,8 +37,8 @@ public class LevelBoundaryHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine("SceneTransition", delay);
-
+            if (transitionEnabled) StartCoroutine("SceneTransition", delay);
+            else ChangeConfiner();
         }
     }
     public void AssignNewBounds(PolygonCollider2D newBounds)
@@ -53,8 +55,9 @@ public class LevelBoundaryHandler : MonoBehaviour
         player.isPlayerActive = false;
         player.SetVelocityToZero();
         player.stateMachine.ChangeState(player.idleState);
-        
+
         yield return new WaitForSeconds(delay);
+
         player.spriteRenderer.color = Color.white;
         RemoveConfinerBounds();
         if (newBoundaries)
@@ -63,5 +66,12 @@ public class LevelBoundaryHandler : MonoBehaviour
         transition.FadeIn();
 
         player.isPlayerActive = true;
+    }
+    private void ChangeConfiner()
+    {
+        RemoveConfinerBounds();
+        if (newBoundaries)
+            SetConfinerBounds(newBoundaries);
+        cinemachineConfiner.InvalidateCache();
     }
 }
