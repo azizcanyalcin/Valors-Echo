@@ -18,7 +18,7 @@ public class LevelBoundaryHandler : MonoBehaviour
     }
     public void RemoveConfinerBounds()
     {
-        if (cinemachineConfiner != null)
+        if (cinemachineConfiner != null && defaultBoundaries)
         {
             cinemachineConfiner.m_BoundingShape2D = null;
             cinemachineConfiner.InvalidateCache();
@@ -37,15 +37,10 @@ public class LevelBoundaryHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (transitionEnabled) StartCoroutine("SceneTransition", delay);
+            if (transitionEnabled && newBoundaries && defaultBoundaries) StartCoroutine("SceneTransition", delay); // hotfix
             else ChangeConfiner();
         }
     }
-    public void AssignNewBounds(PolygonCollider2D newBounds)
-    {
-        SetConfinerBounds(newBounds);
-    }
-
     IEnumerator SceneTransition(float delay)
     {
         defaultBoundaries.isTrigger = false;
@@ -60,8 +55,7 @@ public class LevelBoundaryHandler : MonoBehaviour
 
         player.spriteRenderer.color = Color.white;
         RemoveConfinerBounds();
-        if (newBoundaries)
-            SetConfinerBounds(newBoundaries);
+        SetConfinerBounds(newBoundaries);
 
         transition.FadeIn();
 
@@ -70,8 +64,8 @@ public class LevelBoundaryHandler : MonoBehaviour
     private void ChangeConfiner()
     {
         RemoveConfinerBounds();
-        if (newBoundaries)
-            SetConfinerBounds(newBoundaries);
+        SetConfinerBounds(newBoundaries);
+
         cinemachineConfiner.InvalidateCache();
     }
 }

@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour, ISaveManager
     private void Start()
     {
         Switch(inGameUI);
+        skillTreeUI.SetActive(false);
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
     }
@@ -58,9 +59,9 @@ public class UIManager : MonoBehaviour, ISaveManager
         }
         if (menu != null) menu.SetActive(true);
 
-        if(GameManager.instance)
+        if (GameManager.instance)
         {
-            if(menu == optionsUI || menu == craftUI) GameManager.instance.PauseGame(true);
+            if (menu == optionsUI || menu == craftUI) GameManager.instance.PauseGame(true);
             else GameManager.instance.PauseGame(false);
         }
     }
@@ -83,7 +84,7 @@ public class UIManager : MonoBehaviour, ISaveManager
             if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransitionUI>() == null)
                 return;
         }
-        GameManager.instance.PauseGame(true);
+        //GameManager.instance.PauseGame(true);
         Switch(inGameUI);
     }
 
@@ -105,7 +106,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         {
             foreach (VolumeSettingsUI setting in volumeSettings)
             {
-                if(setting.param == pair.Key) setting.LoadSlider(pair.Value);
+                if (setting.param == pair.Key) setting.LoadSlider(pair.Value);
             }
         }
     }
