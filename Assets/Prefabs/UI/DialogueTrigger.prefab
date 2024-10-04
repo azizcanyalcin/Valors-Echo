@@ -481,9 +481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1648720749229171567}
   dialogueText: {fileID: 1099643094636445256}
-  image: {fileID: 0}
-  sr: {fileID: 0}
-  delay: 0.05
+  letterDelay: 0.02
+  sentenceDelay: 1.2
 --- !u!1 &4912995145819399275
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +539,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

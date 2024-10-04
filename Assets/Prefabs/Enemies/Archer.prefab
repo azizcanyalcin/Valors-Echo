@@ -227,6 +227,7 @@ MonoBehaviour:
   - {r: 0.9354515, g: 0.9433962, b: 0.12014952, a: 1}
   hitFx: {fileID: 5710790277604484333, guid: 8663ea9df0a58c54e98bc058cf033ec4, type: 3}
   criticalHitFx: {fileID: 7756283298699706496, guid: 6ae7546ad36fc334789ade1c76e8bdee, type: 3}
+  healthBar: {fileID: 0}
 --- !u!114 &4580203591228454146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +271,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  isTriggered: 0
   stunDuration: 0.7
   stunKnockBackPower: {x: 1, y: 2}
   counterImage: {fileID: 3807588859373774835}
@@ -281,11 +283,22 @@ MonoBehaviour:
   attackCooldown: 1.5
   lastTimeAttacked: 0
   arrowPrefab: {fileID: 2422219071070597138, guid: d49aaa2e7f8272841a57e12ed9a0cca4, type: 3}
+  diagonalArrowPrefab: {fileID: 0}
+  arrowShowerPrefab: {fileID: 0}
+  beamExtensionPrefab: {fileID: 0}
   arrowSpeed: 5
   jump: {x: 15, y: 20}
   jumpCooldown: 1
   safeDistance: 3
   lastTimeJumped: 0
+  attack2Cooldown: 0
+  attack3Cooldown: 0
+  ultimateAttackCooldown: 0
+  lastTimeAttack2: 0
+  lastTimeAttack3: 0
+  lastTimeUltimate: 0
+  defendCooldown: 0
+  lastTimeDefend: 0
   groundBehindCheck: {fileID: 4283590203119483604}
   groundBehindCheckSize: {x: 1.14, y: 3.59}
 --- !u!1 &1790223798688830604
@@ -484,7 +497,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -676,7 +689,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
