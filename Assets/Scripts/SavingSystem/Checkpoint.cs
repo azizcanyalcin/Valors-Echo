@@ -1,14 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Checkpoint : MonoBehaviour
 {
     Animator animator;
     public string id;
     public bool isActive;
+    private Light2D spotLight;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        spotLight = GetComponentInChildren<Light2D>();
     }
 
     [ContextMenu("Generate Checkpoint Id")]
@@ -24,6 +27,7 @@ public class Checkpoint : MonoBehaviour
     public void ActivateCheckpoints()
     {
         if (isActive) return;
+        spotLight.intensity = 2.7f;
         isActive = true;
         animator.SetBool("active", true);
         AudioManager.instance.PlaySFX(5, transform, true);
