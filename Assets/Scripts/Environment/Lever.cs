@@ -16,8 +16,8 @@ public class Lever : InteractableObject
     protected override void Start()
     {
         base.Start();
-
-        startPosition = new Vector3(platform.transform.position.x, startY, platform.transform.position.z);
+        startY = platform.transform.position.y;
+        startPosition = new Vector3(platform.transform.position.x, platform.transform.position.y, platform.transform.position.z);
         endPosition = new Vector3(platform.transform.position.x, endY, platform.transform.position.z);
 
         platform.transform.position = startPosition;
