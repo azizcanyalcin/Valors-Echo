@@ -27,7 +27,6 @@ public class AssassBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-        float distanceToPlayerX = Mathf.Abs(player.position.x - assass.transform.position.x);
         if (CanCastUlti())
         {
             stateTimer = assass.battleTime;
@@ -60,10 +59,6 @@ public class AssassBattleState : EnemyState
 
     private void HandleMovement()
     {
-        if(CanJump())
-        {
-            stateMachine.ChangeState(assass.jumpState);
-        }  
         float distanceToPlayerX = Mathf.Abs(player.position.x - assass.transform.position.x);
 
         // Determine whether the assass should flip
@@ -75,9 +70,21 @@ public class AssassBattleState : EnemyState
         {
             moveDirection = (player.position.x > assass.transform.position.x) ? 1 : -1;
             assass.SetVelocity(assass.moveSpeed * moveDirection, rb.velocity.y);
+            if (CanJump())
+            {
+                stateMachine.ChangeState(assass.jumpState);
+            }
         }
     }
-
+    private bool CheckCooldown(ref float lastActionTime, float cooldown)
+    {
+        if (Time.time >= lastActionTime + cooldown)
+        {
+            lastActionTime = Time.time;
+            return true;
+        }
+        return false;
+    }
     private bool CanAttack()
     {
         return CheckCooldown(ref assass.lastTimeAttacked, assass.attackCooldown);
@@ -93,15 +100,7 @@ public class AssassBattleState : EnemyState
         return CheckCooldown(ref assass.lastTimeJumped, assass.jumpCooldown);
     }
 
-    private bool CheckCooldown(ref float lastActionTime, float cooldown)
-    {
-        if (Time.time >= lastActionTime + cooldown)
-        {
-            lastActionTime = Time.time;
-            return true;
-        }
-        return false;
-    }
+
 
     public override void Exit()
     {

@@ -93,7 +93,7 @@ public class CharacterStats : MonoBehaviour
         if (isImmune) return;
 
         DecreaseHealth(damage);
-        GetComponent<Entity>().DamageImpact();
+        //GetComponent<Entity>().DamageImpact(); // Quick fix for player freeze
         fx.StartCoroutine("FlashFX");
 
     }
