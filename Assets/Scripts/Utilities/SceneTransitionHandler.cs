@@ -9,9 +9,9 @@ public class SceneTransitionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) StartCoroutine(SceneTransition(1.5f));
+        if (other.CompareTag("Player")) StartCoroutine(SceneTransition(1.5f, sceneName));
     }
-    IEnumerator SceneTransition(float delay)
+    public IEnumerator SceneTransition(float delay, string sceneName)
     {
         SaveManager.instance.SaveGame();
         transition.FadeOut();

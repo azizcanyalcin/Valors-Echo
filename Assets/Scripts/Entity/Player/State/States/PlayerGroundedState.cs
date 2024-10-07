@@ -25,11 +25,17 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Mouse0))
             stateMachine.ChangeState(player.primaryAttackState);
 
-        if (!player.IsGroundDetected())
+        if (!player.IsGroundDetected() && player.coyoteTimer < 0)
             stateMachine.ChangeState(player.airState);
 
-        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
+        if (player.jumpBufferTimer > 0 && player.coyoteTimer > 0)
+        {
             stateMachine.ChangeState(player.jumpState);
+            player.jumpBufferTimer = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && player.rb.velocity.y > 0)
+            player.coyoteTimer = 0f;
 
         if (Input.GetKeyDown(KeyCode.Q) && SkillManager.instance.parry.parryUnlocked)
             stateMachine.ChangeState(player.counterAttackState);

@@ -1,47 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Chest : MonoBehaviour
+public class Chest : AnimatedObject
 {
-    public bool isOpened = false;
     [SerializeField] private ItemDrop itemDrop;
-    private Animator chestAnimator;
-    private bool canKeyEnable = true;
-    [SerializeField] private Image keyE;
-    void Start()
+    protected override void Start()
     {
-        chestAnimator = GetComponent<Animator>();
+        base.Start();
         itemDrop = GetComponent<ItemDrop>();
-        keyE.enabled = false;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            if (canKeyEnable)
-                keyE.enabled = true;
-        }
+        base.OnTriggerEnter2D(other);
     }
-    private void OnTriggerStay2D(Collider2D other)
+    protected override void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !isOpened && Input.GetKeyDown(KeyCode.E))
-        {
-            OpenChest();
-        }
+        base.OnTriggerExit2D(other);
     }
-    private void OnTriggerExit2D(Collider2D other)
+    protected override void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            keyE.enabled = false;
-        }
+        base.OnTriggerStay2D(other);
     }
-    private void OpenChest()
+    
+    protected override void OpenObject()
     {
-        keyE.enabled = false;
-        canKeyEnable = false;
-        isOpened = true;
-        chestAnimator.SetTrigger("Open");
+        base.OpenObject();
 
         if (itemDrop)
             itemDrop.GenerateDrop();

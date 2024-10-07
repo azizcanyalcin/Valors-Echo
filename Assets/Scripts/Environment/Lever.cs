@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class Lever : InteractableObject
+public class Lever : AnimatedObject
 {
     [SerializeField] private GameObject platform;
     [SerializeField] private float speed;
-    [SerializeField] private float startY;
     [SerializeField] private float endY;
 
     private Vector3 startPosition;
@@ -16,20 +15,34 @@ public class Lever : InteractableObject
     protected override void Start()
     {
         base.Start();
-        startY = platform.transform.position.y;
         startPosition = new Vector3(platform.transform.position.x, platform.transform.position.y, platform.transform.position.z);
         endPosition = new Vector3(platform.transform.position.x, endY, platform.transform.position.z);
 
         platform.transform.position = startPosition;
     }
-
-    void Update()
+    private void Update()
     {
         if (canPlatformMove)
             MovePlatform();
     }
-
-    void MovePlatform()
+    protected override void OnTriggerStay2D(Collider2D other)
+    {
+        base.OnTriggerStay2D(other);
+    }
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+    }
+    protected override void OnTriggerExit2D(Collider2D other)
+    {
+        base.OnTriggerExit2D(other);
+    }
+    protected override void OpenObject()
+    {
+        base.OpenObject();
+        canPlatformMove = true;
+    }
+    private void MovePlatform()
     {
         if (movingToEnd)
         {
@@ -49,22 +62,5 @@ public class Lever : InteractableObject
                 movingToEnd = true;
             }
         }
-    }
-    protected override void OnTriggerStay2D(Collider2D other)
-    {
-        base.OnTriggerStay2D(other);
-    }
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-        base.OnTriggerEnter2D(other);
-    }
-    protected override void OnTriggerExit2D(Collider2D other)
-    {
-        base.OnTriggerExit2D(other);
-    }
-    protected override void OpenObject()
-    {
-        base.OpenObject();
-        canPlatformMove = true;
     }
 }

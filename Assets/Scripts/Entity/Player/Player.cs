@@ -12,6 +12,11 @@ public class Player : Entity
     public float jumpForce = 12f;
     private float defaultMoveSpeed;
     private float defaultJumpForce;
+    public float coyoteTime;
+    [HideInInspector] public float coyoteTimer;
+    public float jumpBufferTime;
+    [HideInInspector] public float jumpBufferTimer;
+
 
     [Header("Dash")]
     public float dashSpeed = 25f;
@@ -92,15 +97,41 @@ public class Player : Entity
     {
         if (!isPlayerActive) return;
         if (Time.timeScale == 0) return;
+        
         base.Update();
 
         stateMachine.currentState.Update();
 
         DashInput();
         CrystalInput();
+        UsePotion();
 
+        CheckCoyoteTime();
+        CheckJumpBuffer();
+
+    }
+
+    private static void UsePotion()
+    {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             Inventory.instance.UsePotion();
+    }
+
+    private void CheckCoyoteTime()
+    {
+        if (IsGroundDetected())
+        {
+            coyoteTimer = coyoteTime;
+        }
+        else
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
+    }
+    private void CheckJumpBuffer()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) jumpBufferTimer = jumpBufferTime;
+        else jumpBufferTimer -= Time.deltaTime;
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
