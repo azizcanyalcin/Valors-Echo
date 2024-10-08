@@ -146,16 +146,16 @@ MonoBehaviour:
   battleTime: 15
   attackDistance: 2.78
   agroDistance: 10
-  attackCooldown: 2
+  attackCooldown: 1
   lastTimeAttacked: 0
   tornado: {fileID: 5981853429874744803, guid: b9c8210cfc370c74998a3b4c758a6d9e, type: 3}
   tornadoSpeed: 10
   jump: {x: 10, y: 15}
-  jumpCooldown: 10
+  jumpCooldown: 8
   lastTimeJumped: 0
-  ultimateAttackCooldown: 10
+  ultimateAttackCooldown: 15
   lastTimeUltimate: 0
-  defendCooldown: 10
+  defendCooldown: 11
   lastTimeDefend: 0
 --- !u!50 &4596401344625032387
 Rigidbody2D:
@@ -216,8 +216,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009304047, y: 0.03366065}
-  m_Size: {x: 0.8857956, y: 1.8612905}
+  m_Offset: {x: -0.018933617, y: 0.06105853}
+  m_Size: {x: 1.1169791, y: 1.806495}
   m_Direction: 0
 --- !u!114 &5712455280368450624
 MonoBehaviour:
