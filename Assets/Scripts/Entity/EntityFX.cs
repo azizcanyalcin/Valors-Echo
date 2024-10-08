@@ -28,7 +28,6 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private GameObject criticalHitFx;
 
     public GameObject healthBar;
-
     protected virtual void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();

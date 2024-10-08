@@ -44,7 +44,6 @@ public class Entity : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
     }
     protected virtual void Update()
     {
@@ -132,7 +131,6 @@ public class Entity : MonoBehaviour
     }
     public virtual void Die()
     {
-
     }
 
 }
