@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStats : CharacterStats
@@ -7,6 +8,7 @@ public class EnemyStats : CharacterStats
     private Enemy enemy;
     private ItemDrop itemDrop;
     public Stat soulsDropAmount;
+    private HealthBarUI healthBarUI;
 
     [Header("Level")]
     [SerializeField] private int level = 1;
@@ -21,6 +23,7 @@ public class EnemyStats : CharacterStats
 
         enemy = GetComponent<Enemy>();
         itemDrop = GetComponent<ItemDrop>();
+        healthBarUI = GetComponentInChildren<HealthBarUI>();
 
     }
     private void ApplyLevelModifiers()
@@ -65,10 +68,10 @@ public class EnemyStats : CharacterStats
         base.Die();
 
         enemy.Die();
-        
+
         PlayerManager.instance.currency += soulsDropAmount.GetValue();
         itemDrop.GenerateDrop();
-
+        Destroy(healthBarUI.gameObject);
         Destroy(gameObject, 5f);
     }
 }
