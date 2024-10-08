@@ -49,6 +49,7 @@ public class Eye : Enemy
             aiPath.endReachedDistance = safeDistance;
             aiPath.whenCloseToDestination = CloseToDestinationMode.Stop;
         }
+        if (aiPath.desiredVelocity.x >= 0.01f && facingDirection != 1 || aiPath.desiredVelocity.x <= 0.01f && facingDirection != -1) Flip();
     }
     public override void AnimationSpecialAttackTrigger()
     {
