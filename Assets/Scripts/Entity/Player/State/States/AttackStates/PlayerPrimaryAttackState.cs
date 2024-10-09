@@ -25,7 +25,8 @@ public class PlayerPrimaryAttackState : PlayerState
             attackDirection = xInput;
         }
 
-        player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.attackMovement[comboCounter].y);
+        //player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.attackMovement[comboCounter].y);
+        player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.rb.velocity.y);
 
         stateTimer = .1f;
     }

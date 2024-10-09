@@ -20,6 +20,8 @@ public class PlayerJumpState : PlayerState
             player.SetVelocity(player.moveSpeed * .8f * xInput, rb.velocity.y);
         if (rb.velocity.y < 0)
             stateMachine.ChangeState(player.airState);
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            stateMachine.ChangeState(player.primaryAttackState);
     }
     public override void Exit()
     {

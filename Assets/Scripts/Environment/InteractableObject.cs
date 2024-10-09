@@ -4,6 +4,7 @@ using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider2D))]
 public class InteractableObject : MonoBehaviour
 {
     public bool isOpened = false;

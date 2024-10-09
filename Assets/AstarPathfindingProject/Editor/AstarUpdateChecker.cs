@@ -108,7 +108,7 @@ namespace Pathfinding {
 
 		static AstarUpdateChecker() {
 			// Add a callback so that we can parse the message when it has been downloaded
-			EditorApplication.update += UpdateCheckLoop;
+			//EditorApplication.update += UpdateCheckLoop;
 			EditorBase.getDocumentationURL = () => GetURL("documentation");
 		}
 
@@ -132,26 +132,26 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Initiate a check for updates now, regardless of when the last check was done</summary>
-		public static void CheckForUpdatesNow () {
-			lastUpdateCheck = System.DateTime.UtcNow.AddDays(-5);
+		// public static void CheckForUpdatesNow () {
+		// 	lastUpdateCheck = System.DateTime.UtcNow.AddDays(-5);
 
-			// Remove the callback if it already exists
-			EditorApplication.update -= UpdateCheckLoop;
+		// 	// Remove the callback if it already exists
+		// 	EditorApplication.update -= UpdateCheckLoop;
 
-			// Add a callback so that we can parse the message when it has been downloaded
-			EditorApplication.update += UpdateCheckLoop;
-		}
+		// 	// Add a callback so that we can parse the message when it has been downloaded
+		// 	EditorApplication.update += UpdateCheckLoop;
+		// }
 
 		/// <summary>
 		/// Checking for updates...
 		/// Should be called from EditorApplication.update
 		/// </summary>
-		static void UpdateCheckLoop () {
-			// Go on until the update check has been completed
-			if (!CheckForUpdates()) {
-				EditorApplication.update -= UpdateCheckLoop;
-			}
-		}
+		// static void UpdateCheckLoop () {
+		// 	// Go on until the update check has been completed
+		// 	if (!CheckForUpdates()) {
+		// 		EditorApplication.update -= UpdateCheckLoop;
+		// 	}
+		// }
 
 		/// <summary>
 		/// Checks for updates if there was some time since last check.
