@@ -227,13 +227,17 @@ public class Inventory : MonoBehaviour, ISaveManager
                 if (stashItem.stackSize <= material.stackSize)
                 {
                     Debug.Log($"Not enough material.");
+                    AudioManager.instance.PlaySFX(45, PlayerManager.instance.player.transform, false);
                     return false;
+
                 }
             }
             else
             {
                 Debug.Log($"No Material");
+                AudioManager.instance.PlaySFX(45, PlayerManager.instance.player.transform, false);
                 return false;
+
             }
         }
 
@@ -247,6 +251,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
         AddItem(equipmentToCraft);
         Debug.Log($"Craft is successfull");
+        AudioManager.instance.PlaySFX(44, PlayerManager.instance.player.transform, false);
         return true;
     }
     public bool CanAddItem()

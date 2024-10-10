@@ -81,8 +81,8 @@ public class Eye : Enemy
     public override void Die()
     {
         base.Die();
-
         stateMachine.ChangeState(deadState);
+        Destroy(gameObject, 0.3f);
     }
 }
 

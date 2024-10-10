@@ -29,7 +29,8 @@ public class Checkpoint : MonoBehaviour
         if (isActive) return;
         spotLight.intensity = 2.7f;
         isActive = true;
-        animator.SetBool("active", true);
+        if (animator)
+            animator.SetBool("active", true);
         AudioManager.instance.PlaySFX(5, transform, true);
     }
 }
