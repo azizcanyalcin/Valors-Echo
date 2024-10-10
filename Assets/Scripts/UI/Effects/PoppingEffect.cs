@@ -4,6 +4,9 @@ using DG.Tweening;
 public class PoppingEffect : MonoBehaviour
 {
     private Tween poppingTween;
+    [SerializeField] private float scaleX = 1.2f;
+    [SerializeField] private float scaleY = 1.2f;
+    [SerializeField] private float interval = 0.5f;
     private void OnEnable()
     {
         StartPoppingEffect();
@@ -18,7 +21,7 @@ public class PoppingEffect : MonoBehaviour
 
         if (letterRectTransform != null)
         {
-            poppingTween = letterRectTransform.DOScale(new Vector3(1.2f, 1.2f, 1f), 0.5f)
+            poppingTween = letterRectTransform.DOScale(new Vector3(scaleX, scaleY, 1f), interval)
                 .SetLoops(-1, LoopType.Yoyo);
         }
         else

@@ -50,6 +50,7 @@ public class Blacksmith : InteractableObject
         craftUI.SetActive(false);
         isOpened = false;
         keyE.enabled = true;
+        GameManager.instance.PauseGame(false);
     }
 
     protected virtual void OpenCraftPanel()
@@ -58,5 +59,6 @@ public class Blacksmith : InteractableObject
         keyE.enabled = false;
         isOpened = true;
         player.SetVelocityToZero();
+        GameManager.instance.PauseGame(true);
     }
 }

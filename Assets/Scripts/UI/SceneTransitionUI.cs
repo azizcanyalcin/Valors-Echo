@@ -3,6 +3,7 @@ using UnityEngine;
 public class SceneTransitionUI : MonoBehaviour
 {
     private Animator animator;
+    public float fadeOutDuration = 1.5f;
     private void Start()
     {
         animator = GetComponent<Animator>();

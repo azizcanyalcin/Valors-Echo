@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
@@ -6,8 +7,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour, ISaveManager
 {
     public SceneTransitionUI transition;
-    [SerializeField] GameObject restartButton;
+    [SerializeField] private GameObject restartButton;
     [SerializeField] private VolumeSettingsUI[] volumeSettings;
+
     [Space]
     [Header("Menus")]
     [SerializeField] private GameObject characterUI;
@@ -24,17 +26,21 @@ public class UIManager : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-        Switch(skillTreeUI);
-        skillTreeUI.SetActive(true);
-        transition.gameObject.SetActive(true);
+        Switch(skillTreeUI);  // Ensuring smooth initial UI transition
+        transition.gameObject.SetActive(true);  // Activating transition UI if needed
     }
+
     private void Start()
     {
-        Switch(inGameUI);
-        skillTreeUI.SetActive(false);
+        Switch(inGameUI);  // Start with inGameUI active
+        skillTreeUI.SetActive(false);  // Deactivate skillTree after transition
+
+        // Deactivating tooltips by default
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
+        skillToolTip.gameObject.SetActive(false);
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -43,71 +49,125 @@ public class UIManager : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.V))
             SwitchWithKey(skillTreeUI);
 
-        if (Input.GetKeyDown(KeyCode.B))
-            SwitchWithKey(craftUI);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.O))
             SwitchWithKey(optionsUI);
 
+        // Close all menus except InGameUI with "Esc"
+        if (Input.GetKeyDown(KeyCode.Escape))
+            CloseAllMenusExceptInGame();
     }
+
     public void Switch(GameObject menu)
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).GetComponent<SceneTransitionUI>()) break;
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
-        if (menu != null) menu.SetActive(true);
+        GameObject activeMenu = GetActiveMenu();  // Get the currently active menu
 
-        if (GameManager.instance)
+        // If there's an active menu that's not the same as the new one, deactivate it
+        if (activeMenu != null && activeMenu != menu)
+            activeMenu.SetActive(false);
+
+        // Activate the desired menu
+        if (menu != null)
+            menu.SetActive(true);
+
+        // Handling game pause logic
+        if (GameManager.instance != null)
         {
-            if (menu == optionsUI || menu == craftUI) GameManager.instance.PauseGame(true);
-            else GameManager.instance.PauseGame(false);
+            if (menu == characterUI || menu == inGameUI)
+                GameManager.instance.PauseGame(false);
+            else
+                GameManager.instance.PauseGame(true);
         }
     }
+
     public void SwitchWithKey(GameObject menu)
     {
-        if (menu != null && menu.activeSelf)
+        if (menu != null && menu.activeSelf)  // If the menu is already active, deactivate it
         {
             menu.SetActive(false);
-            SwitchToInGameUI();
+            SwitchToInGameUI();  // Switch back to in-game UI when a menu is closed
             return;
         }
-        Switch(menu);
 
+        Switch(menu);
     }
 
     private void SwitchToInGameUI()
     {
+        // Ensure no other UI (except SceneTransitionUI) is active before switching to inGameUI
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransitionUI>() == null)
                 return;
         }
-        //GameManager.instance.PauseGame(true);
-        Switch(inGameUI);
+
+        // Only switch if inGameUI is not already active
+        if (!inGameUI.activeSelf)
+            Switch(inGameUI);
+    }
+    private void CloseAllMenusExceptInGame()
+    {
+        // Loop through all the child objects (menus) and deactivate them, except for the inGameUI and SceneTransitionUI
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+
+            // Ignore InGameUI and SceneTransitionUI, close all others
+            if (child != inGameUI && child.GetComponent<SceneTransitionUI>() == null)
+            {
+                child.SetActive(false);
+            }
+        }
+
+        // Ensure the inGameUI is activated after closing all other menus
+        if (!inGameUI.activeSelf)
+        {
+            inGameUI.SetActive(true);
+        }
+    }
+
+    private GameObject GetActiveMenu()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.activeSelf && child.GetComponent<SceneTransitionUI>() == null)
+                return child.gameObject;
+        }
+        return null;
     }
 
     public void SwitchToEndScreen()
     {
-        transition.FadeOut();
-        StartCoroutine(EndScreen());
+        if (transition != null)
+        {
+            transition.FadeOut();
+            StartCoroutine(EndScreen());
+        }
+        else
+        {
+            restartButton.SetActive(true);  // Fallback if transition is not available
+        }
     }
+
     IEnumerator EndScreen()
     {
-        yield return new WaitForSeconds(1.5f);
+        float fadeDuration = transition != null ? transition.fadeOutDuration : 1.5f;
+        yield return new WaitForSeconds(fadeDuration);
         restartButton.SetActive(true);
     }
-    public void RestartGameButton() => GameManager.instance.RestartScene();
+
+    public void RestartGameButton()
+    {
+        if (GameManager.instance != null)
+            GameManager.instance.RestartScene();
+    }
 
     public void LoadData(GameData data)
     {
         foreach (KeyValuePair<string, float> pair in data.volumeSettings)
         {
-            foreach (VolumeSettingsUI setting in volumeSettings)
-            {
-                if (setting.param == pair.Key) setting.LoadSlider(pair.Value);
-            }
+            VolumeSettingsUI matchingSetting = Array.Find(volumeSettings, setting => setting.param == pair.Key);
+            if (matchingSetting != null)
+                matchingSetting.LoadSlider(pair.Value);
         }
     }
 
