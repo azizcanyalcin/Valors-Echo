@@ -27,6 +27,7 @@ public class Checkpoint : MonoBehaviour
     public void ActivateCheckpoints()
     {
         if (isActive) return;
+        GameManager.instance.lastCheckpointId = id; // Track the last activated checkpoint
         spotLight.intensity = 2.7f;
         isActive = true;
         if (animator)
