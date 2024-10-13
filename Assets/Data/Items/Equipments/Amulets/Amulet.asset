@@ -15,22 +15,30 @@ MonoBehaviour:
   itemType: 1
   itemName: Amulet
   icon: {fileID: -245851270, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemId: f7a2354201717994183150cc8e1006bd
   dropChance: 0
+  itemCooldown: 0
   equipmentType: 2
   itemEffects:
   - {fileID: 11400000, guid: 3a6e7ca8ffac35e4f80a1e4f7f3716b4, type: 2}
-  strength: 0
-  agility: 0
+  strength: 2
+  agility: 2
   intelligence: 2
-  vitality: 0
+  vitality: 2
   damage: 0
-  critChance: 12
-  critPower: 5
+  critChance: 15
+  critPower: 250
   maxHealth: 15
   armor: 0
-  evasion: 0
+  evasion: 25
   magicResistance: 0
-  fireDamage: 0
-  iceDamage: 0
+  fireDamage: 5
+  iceDamage: 4
   lightningDamage: 10
-  craftMaterials: []
+  craftMaterials:
+  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+    stackSize: 5
+  - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+    stackSize: 5
+  - itemData: {fileID: 11400000, guid: 99696cf4b6765ca46bd048c3576a2aec, type: 2}
+    stackSize: 1

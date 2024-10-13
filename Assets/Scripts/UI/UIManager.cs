@@ -26,16 +26,18 @@ public class UIManager : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-        Switch(skillTreeUI);  // Ensuring smooth initial UI transition
-        transition.gameObject.SetActive(true);  // Activating transition UI if needed
+        skillTreeUI.SetActive(true);  
+        characterUI.SetActive(true);
+        inGameUI.SetActive(true);
+        transition.gameObject.SetActive(true); 
     }
 
     private void Start()
     {
-        Switch(inGameUI);  // Start with inGameUI active
-        skillTreeUI.SetActive(false);  // Deactivate skillTree after transition
-
-        // Deactivating tooltips by default
+        Switch(inGameUI); 
+        skillTreeUI.SetActive(false);
+        characterUI.SetActive(false);
+        
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);

@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour, ISaveManager
         LoadLostCurrency(data);
         LoadActiveCheckpoints(data);
         LoadPlayerInfo(data);
+        
         PlacePlayerToLastCheckpoint();
     }
 
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour, ISaveManager
         }
         lastCheckpointId = data.lastCheckpoint; // Ensure this value is loaded
     }
-
+    
     private void LoadLostCurrency(GameData data)
     {
         lostCurrencyAmount = data.lostCurrencyAmount;

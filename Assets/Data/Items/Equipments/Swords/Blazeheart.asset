@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc347b40cfd06245b5adb1816161d6a, type: 3}
+  m_Name: Blazeheart
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Blazehearth
+  icon: {fileID: -1208026197, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemId: 01a45c93d42b93c4087d38daf4472768
+  dropChance: 10.4
+  itemCooldown: 3
+  equipmentType: 0
+  itemEffects:
+  - {fileID: 11400000, guid: e0d1dc6d12ad7a0419f0a1d5fa91d432, type: 2}
+  strength: 25
+  agility: 2
+  intelligence: 0
+  vitality: 2
+  damage: 100
+  critChance: 25
+  critPower: 200
+  maxHealth: 0
+  armor: 0
+  evasion: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  lightningDamage: 0
+  craftMaterials:
+  - itemData: {fileID: 11400000, guid: 58fa1fb7ab0b5f849a92162e2e21b29e, type: 2}
+    stackSize: 1
+  - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+    stackSize: 2
+  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+    stackSize: 2

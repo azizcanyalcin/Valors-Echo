@@ -343,6 +343,7 @@ public class Inventory : MonoBehaviour, ISaveManager
     {
         data.inventory.Clear();
         data.equipments.Clear();
+        
         foreach (KeyValuePair<Item, InventoryItem> pair in inventoryDictionary)
         {
             data.inventory.Add(pair.Key.itemId, pair.Value.stackSize);
