@@ -77,6 +77,7 @@ public class SwordSkill : Skill
                 dots[i].transform.position = DotsPosition(i * spaceBetweenDots);
             }
         }
+        SwordSwap();
 
     }
     #region Unlock Area
@@ -117,6 +118,26 @@ public class SwordSkill : Skill
             swordType = SwordType.Spin;
         }
     }
+    private void SwordSwap()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            List<SwordType> unlockedSwords = new();
+
+            if (bounceUnlockButton.unlocked) unlockedSwords.Add(SwordType.Bounce);
+            if (pierceUnlockButton.unlocked) unlockedSwords.Add(SwordType.Pierce);
+            if (spinUnlockButton.unlocked) unlockedSwords.Add(SwordType.Spin);
+
+            if (unlockedSwords.Count == 0) return;
+
+            int currentSwordIndex = unlockedSwords.IndexOf(swordType);
+            if (currentSwordIndex == -1) currentSwordIndex = 0;
+            currentSwordIndex = (currentSwordIndex + 1) % unlockedSwords.Count;
+
+            swordType = unlockedSwords[currentSwordIndex];
+        }
+    }
+
     private void InitializeUnlockButtons()
     {
         swordUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSword);
@@ -142,9 +163,11 @@ public class SwordSkill : Skill
                 newSwordScript.InitializeBounce(true, bounceAmount, bounceSpeed);
                 break;
             case SwordType.Pierce:
+                AudioManager.instance.PlaySFX(47, player.transform, false);
                 newSwordScript.InitializePierce(pierceAmount);
                 break;
             case SwordType.Spin:
+                AudioManager.instance.PlaySFX(27, player.transform, false);
                 newSwordScript.InitializeSpin(true, maxSpinDistance, spinDuration, hitCooldown);
                 break;
             default:

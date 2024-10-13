@@ -86,7 +86,7 @@ public class SwordSkillController : MonoBehaviour
             Enemy enemy = collision.GetComponent<Enemy>();
             SwordDamage(enemy);
         }
-        
+
         DetectEnemyForBounce(collision, 15);
         StickToCollision(collision);
     }

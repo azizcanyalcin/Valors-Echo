@@ -26,7 +26,7 @@ public class Chest : AnimatedObject
     protected override void OpenObject()
     {
         base.OpenObject();
-
+        AudioManager.instance.PlayDelayedSFX(22,transform,false,0.1f);
         if (itemDrop)
             itemDrop.GenerateDrop();
     }

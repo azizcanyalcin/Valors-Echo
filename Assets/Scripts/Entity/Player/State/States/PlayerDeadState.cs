@@ -12,6 +12,7 @@ public class PlayerDeadState : PlayerState
         base.Enter();
 
         GameObject.Find("Canvas").GetComponent<UIManager>().SwitchToEndScreen();
+        AudioManager.instance.PlaySFX(11,player.transform,false);
     }
     public override void Update()
     {
