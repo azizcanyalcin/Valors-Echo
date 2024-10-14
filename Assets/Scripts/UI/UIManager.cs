@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
-    [SerializeField] private GameObject instructionsUI;
 
     [Header("ToolTips")]
     public ItemToolTipUI itemToolTip;
@@ -55,9 +54,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.O))
             SwitchWithKey(optionsUI);
 
-        if (Input.GetKeyDown(KeyCode.H))
-            SwitchWithKey(instructionsUI);
-
+        // Close all menus except InGameUI with "Esc"
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseAllMenusExceptInGame();
@@ -79,7 +76,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         // Handling game pause logic
         if (GameManager.instance != null)
         {
-            if (menu == inGameUI)
+            if (menu == characterUI || menu == inGameUI)
                 GameManager.instance.PauseGame(false);
             else
                 GameManager.instance.PauseGame(true);

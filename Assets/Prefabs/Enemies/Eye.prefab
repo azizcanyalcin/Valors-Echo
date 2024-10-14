@@ -530,8 +530,8 @@ MonoBehaviour:
   soulsDropAmount:
     baseValue: 100
     modifiers: 
-  level: 4
-  percentageModifier: 0.101
+  level: 1
+  percentageModifier: 0.4
 --- !u!114 &1644091730172120896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,11 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7362fed364eba03468dcb8587a225bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropPrefab: {fileID: 4551926125324593401, guid: e736d2b2d0ab0f847850ff67463e7952, type: 3}
-  possibleDrops:
-  - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
-  - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-  dropAmount: 2
+  dropPrefab: {fileID: 0}
+  possibleDrops: []
+  dropAmount: 0
 --- !u!114 &9074881615906213710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +612,7 @@ MonoBehaviour:
   lastTimeAttacked: 0
   arrowPrefab: {fileID: 2321879815565336646, guid: 95ea1f986bbf3244f9a633249f0ad08c, type: 3}
   arrowSpeed: 15
-  safeDistance: 4
+  safeDistance: 8
 --- !u!1 &3885918622237026993
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,28 +15,23 @@ MonoBehaviour:
   itemType: 1
   itemName: Thornmail
   icon: {fileID: -1547736094, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  itemId: 99696cf4b6765ca46bd048c3576a2aec
   dropChance: 0
-  itemCooldown: 20
   equipmentType: 1
   itemEffects:
   - {fileID: 11400000, guid: 5ec07ca79b9e11140a6ba03d287486fd, type: 2}
-  strength: 20
+  itemCooldown: 20
+  strength: 0
   agility: 0
   intelligence: 0
   vitality: 5
-  damage: 15
-  critChance: 15
-  critPower: 100
-  maxHealth: 500
+  damage: -5
+  critChance: 0
+  critPower: 0
+  maxHealth: 20
   armor: 12
   evasion: 5
   magicResistance: 1
   fireDamage: 0
   iceDamage: 0
   lightningDamage: 0
-  craftMaterials:
-  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-    stackSize: 3
-  - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
-    stackSize: 3
+  craftMaterials: []
