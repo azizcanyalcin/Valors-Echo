@@ -22,10 +22,6 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
             saveManagers = FindAllSaveManagers(); // this was outside of the if
-            foreach (var saveManager in saveManagers)
-            {
-                Debug.Log($"Save Managers:" + saveManager);
-            }
         }
     }
     void Start()

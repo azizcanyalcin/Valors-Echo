@@ -26,18 +26,18 @@ public class UIManager : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-        skillTreeUI.SetActive(true);  
+        skillTreeUI.SetActive(true);
         characterUI.SetActive(true);
         inGameUI.SetActive(true);
-        transition.gameObject.SetActive(true); 
+        transition.gameObject.SetActive(true);
     }
 
     private void Start()
     {
-        Switch(inGameUI); 
+        Switch(inGameUI);
         skillTreeUI.SetActive(false);
         characterUI.SetActive(false);
-        
+
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
@@ -56,7 +56,9 @@ public class UIManager : MonoBehaviour, ISaveManager
 
         // Close all menus except InGameUI with "Esc"
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             CloseAllMenusExceptInGame();
+        }
     }
 
     public void Switch(GameObject menu)
@@ -124,6 +126,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         if (!inGameUI.activeSelf)
         {
             inGameUI.SetActive(true);
+            GameManager.instance.PauseGame(false);
         }
     }
 

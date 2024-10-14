@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341184235395410862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -58,18 +58,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
   - {fileID: 11400000, guid: 58fa1fb7ab0b5f849a92162e2e21b29e, type: 2}
   - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
-  - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-  - {fileID: 11400000, guid: 9d98d8b5a9ddb5641a10918b1d1066a5, type: 2}
-  - {fileID: 11400000, guid: f7a2354201717994183150cc8e1006bd, type: 2}
-  - {fileID: 11400000, guid: 6af0769c8e682b74cba5eabbe7834a68, type: 2}
-  - {fileID: 11400000, guid: 486ace4ca75436849b5fae614b93c7e4, type: 2}
-  - {fileID: 11400000, guid: 8e148cdf68c9b4c4fbd4fc17324461e9, type: 2}
-  - {fileID: 11400000, guid: 99696cf4b6765ca46bd048c3576a2aec, type: 2}
   inventorySlotParent: {fileID: 0}
   stashSlotParent: {fileID: 0}
   equipmentSlotParent: {fileID: 0}
   statSlotParent: {fileID: 0}
-  itemDatabase: []
+  itemDatabase:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 8e148cdf68c9b4c4fbd4fc17324461e9, type: 2}
+  - {fileID: 11400000, guid: 486ace4ca75436849b5fae614b93c7e4, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: f7a2354201717994183150cc8e1006bd, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 7a4ffec58889919428c4bb7cfdf71dd5, type: 2}
+  - {fileID: 11400000, guid: 99696cf4b6765ca46bd048c3576a2aec, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 01a45c93d42b93c4087d38daf4472768, type: 2}
+  - {fileID: 11400000, guid: 6af0769c8e682b74cba5eabbe7834a68, type: 2}
+  - {fileID: 11400000, guid: 9d98d8b5a9ddb5641a10918b1d1066a5, type: 2}
+  - {fileID: 11400000, guid: 8768aef4123b24c4f9465bed9456d28f, type: 2}
+  - {fileID: 11400000, guid: 58fa1fb7ab0b5f849a92162e2e21b29e, type: 2}
+  - {fileID: 11400000, guid: 8209fda67c563c946aa276c8c616b080, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+  - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
   loadedItems: []
   loadedEquipments: []
 --- !u!222 &562812887339036634
