@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc347b40cfd06245b5adb1816161d6a, type: 3}
+  m_Name: Mid Heal Potion
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Heal Potion
+  icon: {fileID: 548113150, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  itemId: 17ee2eb8c0a8ca64daf8a83a1b754938
+  dropChance: 100
+  itemCooldown: 120
+  equipmentType: 3
+  itemEffects:
+  - {fileID: 11400000, guid: 0345d90b73d272c4ba4226002c2441a6, type: 2}
+  strength: 0
+  agility: 0
+  intelligence: 0
+  vitality: 0
+  damage: 0
+  critChance: 0
+  critPower: 0
+  maxHealth: 0
+  armor: 0
+  evasion: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  lightningDamage: 0
+  craftMaterials: []

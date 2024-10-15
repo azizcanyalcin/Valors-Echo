@@ -15,11 +15,11 @@ MonoBehaviour:
   itemType: 1
   itemName: Broken Armor
   icon: {fileID: -965925972, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
-  dropChance: 50.3
+  itemId: 7a4ffec58889919428c4bb7cfdf71dd5
+  dropChance: 100
   itemCooldown: 0
   equipmentType: 1
-  itemEffects:
-  - {fileID: 11400000, guid: 0d3a799b61126ea408a80f74466293bd, type: 2}
+  itemEffects: []
   strength: 0
   agility: 0
   intelligence: 0
@@ -27,11 +27,15 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  maxHealth: 15
-  armor: 5
-  evasion: 0
+  maxHealth: 150
+  armor: 10
+  evasion: 5
   magicResistance: 0
   fireDamage: 0
   iceDamage: 0
   lightningDamage: 0
-  craftMaterials: []
+  craftMaterials:
+  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
+    stackSize: 1
+  - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+    stackSize: 1

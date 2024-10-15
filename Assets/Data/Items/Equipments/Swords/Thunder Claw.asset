@@ -14,28 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Thunder Claw
-  icon: {fileID: 367297872, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  dropChance: 0
+  icon: {fileID: 397739693, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  itemId: 58fa1fb7ab0b5f849a92162e2e21b29e
+  dropChance: 100
+  itemCooldown: 0
   equipmentType: 0
   itemEffects:
   - {fileID: 11400000, guid: 3a6e7ca8ffac35e4f80a1e4f7f3716b4, type: 2}
-  itemCooldown: 0
-  strength: 1
+  strength: 10
   agility: 0
-  intelligence: 2
+  intelligence: 7
   vitality: 0
-  damage: 12
-  critChance: 0
-  critPower: 0
+  damage: 250
+  critChance: 10
+  critPower: 200
   maxHealth: 0
   armor: 0
   evasion: 0
   magicResistance: 0
   fireDamage: 0
   iceDamage: 0
-  lightningDamage: 5
+  lightningDamage: 30
   craftMaterials:
+  - itemData: {fileID: 11400000, guid: 388ff4c6cd48efa43ad5102310649f1e, type: 2}
+    stackSize: 1
+  - itemData: {fileID: 11400000, guid: 56b38d6c38ce88046b6e68d532ae9e36, type: 2}
+    stackSize: 1
   - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
-    stackSize: 1
-  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-    stackSize: 1
+    stackSize: 5

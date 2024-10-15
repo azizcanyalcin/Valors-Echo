@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Blazehearth
-  icon: {fileID: -1208026197, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  icon: {fileID: 1352044876, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   itemId: 01a45c93d42b93c4087d38daf4472768
   dropChance: 10.4
   itemCooldown: 3
   equipmentType: 0
   itemEffects:
   - {fileID: 11400000, guid: e0d1dc6d12ad7a0419f0a1d5fa91d432, type: 2}
-  strength: 25
-  agility: 2
+  strength: 20
+  agility: 0
   intelligence: 0
-  vitality: 2
-  damage: 100
+  vitality: 10
+  damage: 150
   critChance: 25
   critPower: 200
-  maxHealth: 0
+  maxHealth: 50
   armor: 0
   evasion: 0
   magicResistance: 0
@@ -36,9 +36,9 @@ MonoBehaviour:
   iceDamage: 0
   lightningDamage: 0
   craftMaterials:
-  - itemData: {fileID: 11400000, guid: 58fa1fb7ab0b5f849a92162e2e21b29e, type: 2}
-    stackSize: 1
   - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
     stackSize: 2
   - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
     stackSize: 2
+  - itemData: {fileID: 11400000, guid: 388ff4c6cd48efa43ad5102310649f1e, type: 2}
+    stackSize: 1

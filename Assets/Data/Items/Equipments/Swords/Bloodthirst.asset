@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Bloodthirst
-  icon: {fileID: -1944902997, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  icon: {fileID: 678717410, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  itemId: 6af0769c8e682b74cba5eabbe7834a68
   dropChance: 0
+  itemCooldown: 0
   equipmentType: 0
   itemEffects:
   - {fileID: 11400000, guid: 3e05cbb4098f65d44a90c743bbd22fa7, type: 2}
-  itemCooldown: 0
   strength: 0
   agility: 0
   intelligence: 0
@@ -36,6 +37,6 @@ MonoBehaviour:
   lightningDamage: 0
   craftMaterials:
   - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-    stackSize: 1
-  - itemData: {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-    stackSize: 1
+    stackSize: 2
+  - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
+    stackSize: 5
