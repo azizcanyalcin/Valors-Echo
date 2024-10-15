@@ -4937,8 +4937,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.97, y: 0.31, z: 0}
-  m_LocalScale: {x: 1.3689, y: 1.3689, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2144854313951629287}
   - {fileID: 3785775918423781564}
@@ -5054,28 +5054,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength:
-    baseValue: 20
+    baseValue: 5
     modifiers: 
   agility:
     baseValue: 0
     modifiers: 
   intelligence:
-    baseValue: 1
+    baseValue: 0
     modifiers: 
   vitality:
-    baseValue: 2
+    baseValue: 1
     modifiers: 
   damage:
-    baseValue: 50
+    baseValue: 25
     modifiers: 
   critChance:
-    baseValue: 10
+    baseValue: 5
     modifiers: 
   critPower:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 250
     modifiers: 
   armor:
     baseValue: 0
@@ -5087,13 +5087,13 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   fireDamage:
-    baseValue: 3
+    baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 2
+    baseValue: 0
     modifiers: 
   lightningDamage:
-    baseValue: 1
+    baseValue: 0
     modifiers: 
   isBurning: 0
   isFrozen: 0
@@ -5156,11 +5156,9 @@ MonoBehaviour:
   dropPrefab: {fileID: 4551926125324593401, guid: e736d2b2d0ab0f847850ff67463e7952, type: 3}
   possibleDrops:
   - {fileID: 11400000, guid: ee5899f04f6921d4987aff39ffb73b10, type: 2}
-  - {fileID: 11400000, guid: 7a4ffec58889919428c4bb7cfdf71dd5, type: 2}
   - {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
-  - {fileID: 11400000, guid: 8768aef4123b24c4f9465bed9456d28f, type: 2}
-  - {fileID: 11400000, guid: 8209fda67c563c946aa276c8c616b080, type: 2}
-  dropAmount: 2
+  - {fileID: 11400000, guid: 9e102f4e4fa68914eb8884a348213ece, type: 2}
+  dropAmount: 3
 --- !u!1 &2659866347812518407
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5445,7 @@ Transform:
   m_GameObject: {fileID: 4112568830920963048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.048, y: -0.248, z: 0}
+  m_LocalPosition: {x: 0.048, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
