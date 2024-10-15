@@ -22,22 +22,17 @@ public class DruidBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (druid.DistanceToPlayer() <= druid.attackCheckRadius)
+
+        if (CanRootAttack())
+            stateMachine.ChangeState(druid.rootAttackState);
+        if (CanAshThrow())
+            stateMachine.ChangeState(druid.ashThrowState);
+        if (druid.stats.currentHealth <= druid.stats.maxHealth.GetValue() / 50 && CanHeal())
+            stateMachine.ChangeState(druid.healState);
+        if (druid.IsPlayerDetected().distance < druid.attackDistance && CanFireAttack())
         {
             stateTimer = druid.battleTime;
-            if (CanRootAttack())
-                stateMachine.ChangeState(druid.rootAttackState);
-            else if (druid.stats.currentHealth <= druid.stats.maxHealth.GetValue() / 50 && CanHeal())
-                stateMachine.ChangeState(druid.healState);
-            else if (CanFireAttack())
-            {
-                if (druid.DistanceToPlayer() >= druid.attackDistance)
-                    stateMachine.ChangeState(druid.walkingFireState);
-                else
-                    stateMachine.ChangeState(druid.fireAttackState);
-            }
-            else if (CanAshThrow())
-                stateMachine.ChangeState(druid.ashThrowState);
+            stateMachine.ChangeState(druid.fireAttackState);
         }
         else
         {

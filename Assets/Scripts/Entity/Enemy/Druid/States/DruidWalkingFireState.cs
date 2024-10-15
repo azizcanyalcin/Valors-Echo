@@ -19,10 +19,17 @@ public class DruidWalkingFireState : EnemyState
     public override void Update()
     {
         base.Update();
-
-        druid.SetVelocityToZero();
         if (triggerCalled)
             stateMachine.ChangeState(druid.battleState);
+
+        druid.SetVelocity(druid.moveSpeed * druid.facingDirection, rb.velocity.y);
+
+        if (druid.IsWallDetected() || !druid.IsGroundDetected())
+        {
+            druid.Flip();
+            druid.SetVelocityToZero();
+            stateMachine.ChangeState(druid.idleState);
+        }
     }
 
     public override void Exit()
