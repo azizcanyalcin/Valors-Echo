@@ -18,12 +18,6 @@ public class BodIdleState : EnemyState
     public override void Update()
     {
         base.Update();
-
-        // if (Vector2.Distance(player.transform.position, bod.transform.position) < 7)
-        //     bod.isTriggered = true;
-
-        if (Input.GetKeyDown(KeyCode.Tab)) stateMachine.ChangeState(bod.teleportState);
-
         if (stateTimer < 0 && bod.isTriggered) stateMachine.ChangeState(bod.battleState);
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArcherIdleState : ArcherGroundedState
 {
-   
     public ArcherIdleState(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Archer archer) : base(enemy, stateMachine, animatorBoolName, archer)
     {
     }

@@ -19,7 +19,7 @@ public class EyeMoveState : EnemyState
     {
         base.Update();
         eye.SetVelocity(eye.moveSpeed * eye.facingDirection, rb.velocity.y);
-        if(eye.IsPlayerInRadius() <= eye.attackCheckRadius) stateMachine.ChangeState(eye.battleState);
+        if(eye.DistanceToPlayer() <= eye.attackCheckRadius) stateMachine.ChangeState(eye.battleState);
     }
 
     public override void Exit()

@@ -23,7 +23,7 @@ public class EyeBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (eye.IsPlayerInRadius() <= eye.attackCheckRadius)
+        if (eye.DistanceToPlayer() <= eye.attackCheckRadius)
         {
             stateTimer = eye.battleTime;
             if (CanAttack())

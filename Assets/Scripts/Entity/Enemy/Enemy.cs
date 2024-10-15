@@ -81,7 +81,7 @@ public class Enemy : Entity
     public virtual void AnimationSpecialAttackTrigger() { }
     public virtual void AnimationThirdAttackTrigger() { }
     public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, 50, whatIsPlayer);
-    public virtual float IsPlayerInRadius()
+    public virtual float DistanceToPlayer()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         return Vector3.Distance(transform.position, player.transform.position);
