@@ -11,6 +11,7 @@ public class Archer : Enemy
     [SerializeField] private GameObject arrowShowerPrefab;
     [SerializeField] private GameObject beamExtensionPrefab;
     [SerializeField] private float arrowSpeed;
+    [SerializeField] private float beamExtensionXOffset;
     [Header("Jump")]
     public Vector2 jump;
     public float jumpCooldown;
@@ -110,8 +111,9 @@ public class Archer : Enemy
     }
     public void AnimationUltimateTrigger()
     {
-        GameObject beamExtension = Instantiate(beamExtensionPrefab, new Vector3(transform.position.x + (20 * facingDirection), transform.position.y + 0.302f), Quaternion.identity);
+        GameObject beamExtension = Instantiate(beamExtensionPrefab, new Vector3(transform.position.x + (beamExtensionXOffset * facingDirection), transform.position.y + 0.297f), Quaternion.identity);
         beamExtension.GetComponent<BeamExtension>().SetupBeam(stats);
+        Destroy(beamExtension, 3f);
     }
     public bool IsGroundBehind()
     {

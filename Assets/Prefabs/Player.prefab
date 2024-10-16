@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3718211887522285080}
   - component: {fileID: 4631727910888378941}
   - component: {fileID: 5067757396214239764}
+  - component: {fileID: 5991764406270313054}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -86,6 +87,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a9449567bb74ad42a1b4e396dddfa52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleX: 1.2
+  scaleY: 1.2
+  interval: 0.5
+--- !u!114 &5991764406270313054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377880484826266009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2096e64ff7e812743b893e7a2f365e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1408035529839681572
@@ -5616,11 +5632,11 @@ MonoBehaviour:
   knockBackPower: {x: 5, y: 5}
   knockBackDuration: 0.5
   attackCheck: {fileID: 787433253135439622}
-  attackCheckRadius: 0.8
+  attackCheckRadius: 0.83
   groundCheck: {fileID: 6519262773273366785}
-  groundCheckDistance: 0.47
+  groundCheckDistance: 0.66
   wallCheck: {fileID: 3018386783474188781}
-  wallCheckDistance: 0.12
+  wallCheckDistance: 0.33
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -5750,31 +5766,31 @@ MonoBehaviour:
     baseValue: 2
     modifiers: 
   agility:
-    baseValue: 1
+    baseValue: 5
     modifiers: 
   intelligence:
-    baseValue: 20
+    baseValue: 5
     modifiers: 
   vitality:
     baseValue: 2
     modifiers: 
   damage:
-    baseValue: 500
+    baseValue: 150
     modifiers: 
   critChance:
     baseValue: 20
     modifiers: 
   critPower:
-    baseValue: 150
+    baseValue: 200
     modifiers: 
   maxHealth:
-    baseValue: 1500
+    baseValue: 1000
     modifiers: 
   armor:
-    baseValue: 10
+    baseValue: 5
     modifiers: 
   evasion:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   magicResistance:
     baseValue: 10
