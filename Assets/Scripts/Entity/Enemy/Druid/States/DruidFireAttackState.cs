@@ -21,6 +21,7 @@ public class DruidFireAttackState : EnemyState
         base.Update();
 
         druid.SetVelocityToZero();
+        druid.FlipToPlayer();
         if (triggerCalled)
             stateMachine.ChangeState(druid.battleState);
     }

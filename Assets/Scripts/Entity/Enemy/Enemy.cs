@@ -118,7 +118,7 @@ public class Enemy : Entity
         yield return new WaitForSeconds(seconds);
         FreezeTime(false);
     }
-    public virtual void CheckFlip()
+    public virtual void FlipToPlayer()
     {
         float playerX = player.transform.position.x;
         float enemyX = transform.position.x;

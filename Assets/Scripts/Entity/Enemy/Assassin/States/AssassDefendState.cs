@@ -34,7 +34,7 @@ public class AssassDefendState : EnemyState
         base.Update();
 
         assass.SetVelocityToZero();
-        assass.CheckFlip();
+        assass.FlipToPlayer();
         HealOverTime();
         if (triggerCalled)
             stateMachine.ChangeState(assass.battleState);

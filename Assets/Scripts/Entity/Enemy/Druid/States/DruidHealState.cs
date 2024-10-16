@@ -4,11 +4,8 @@ using UnityEngine;
 public class DruidHealState : EnemyState
 {
     Druid druid;
-    Player player => PlayerManager.instance.player;
     int defaultArmor;
     int defaultMagicResistance;
-    float healInterval = 0.25f;
-    float lastHealTime;
 
     public DruidHealState(Enemy enemy, EnemyStateMachine stateMachine, string animatorBoolName, Druid druid) : base(enemy, stateMachine, animatorBoolName)
     {
@@ -24,9 +21,6 @@ public class DruidHealState : EnemyState
 
         druid.stats.armor.SetValue(999);
         druid.stats.magicResistance.SetValue(999);
-
-        // Initialize heal timer
-        lastHealTime = Time.time;
     }
 
     public override void Update()
@@ -34,24 +28,9 @@ public class DruidHealState : EnemyState
         base.Update();
 
         druid.SetVelocityToZero();
-        druid.CheckFlip();
-        HealOverTime();
+        druid.FlipToPlayer();
         if (triggerCalled)
             stateMachine.ChangeState(druid.battleState);
-    }
-
-    private void HealOverTime()
-    {
-        if (Time.time >= lastHealTime + healInterval)
-        {
-            Heal();
-            lastHealTime = Time.time;
-        }
-    }
-    private void Heal()
-    {
-        druid.stats.currentHealth += druid.stats.maxHealth.GetValue() / 95;
-        druid.stats.TakeDamage(1); // quick fix for updating health ui
     }
     public override void Exit()
     {

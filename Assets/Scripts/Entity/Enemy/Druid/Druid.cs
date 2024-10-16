@@ -57,15 +57,22 @@ public class Druid : Enemy
     }
     public void DruidRootTrigger()
     {
-        GameObject root = Instantiate(rootPrefab, new Vector3(player.transform.position.x, player.transform.position.y - 0.4f), Quaternion.identity);
+        float groundY = player.GetGroundYPosition();
+
+        GameObject root = Instantiate(rootPrefab, new Vector3(player.transform.position.x, groundY + 1), Quaternion.identity);
         root.GetComponent<RootController>().SetupRoot(stats);
-        GameObject root2 = Instantiate(rootPrefab, new Vector3(player.transform.position.x + 2, player.transform.position.y - 0.4f), Quaternion.identity);
+        GameObject root2 = Instantiate(rootPrefab, new Vector3(player.transform.position.x + 2, groundY + 1), Quaternion.identity);
         root2.GetComponent<RootController>().SetupRoot(stats);
     }
     public void DruidAshTrigger()
     {
         GameObject ash = Instantiate(ashPrefab, new Vector3(player.transform.position.x, player.transform.position.y + 0.1f), Quaternion.identity);
         ash.GetComponent<AshController>().SetupAsh(stats);
+    }
+    public void DruidHealTrigger()
+    {
+        stats.currentHealth += stats.maxHealth.GetValue() / 5;
+        stats.TakeDamage(1);
     }
 
     public override void Die()

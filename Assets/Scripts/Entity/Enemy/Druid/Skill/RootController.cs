@@ -18,7 +18,7 @@ public class RootController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayer))
         {
             // Deal damage to the player
-            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 2.5f);
+            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 1f);
             OnRootHit();
         }
     }

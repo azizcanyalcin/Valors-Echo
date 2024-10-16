@@ -16,6 +16,7 @@ public class DruidMoveState : DruidGroundedState
     public override void Update()
     {
         base.Update();
+        druid.FlipToPlayer();
         druid.SetVelocity(druid.moveSpeed * druid.facingDirection, rb.velocity.y);
 
         if (druid.IsWallDetected() || !druid.IsGroundDetected())

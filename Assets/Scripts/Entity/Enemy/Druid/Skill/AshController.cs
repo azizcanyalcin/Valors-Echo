@@ -18,7 +18,7 @@ public class AshController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayer))
         {
-            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 1);
+            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 1f);
             OnAshHit();
         }
     }

@@ -34,7 +34,7 @@ public class ArcherDefendState : EnemyState
         base.Update();
 
         archer.SetVelocityToZero();
-        archer.CheckFlip();
+        archer.FlipToPlayer();
         HealOverTime();
         if (triggerCalled)
             stateMachine.ChangeState(archer.battleState);

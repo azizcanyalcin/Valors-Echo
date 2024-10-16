@@ -19,6 +19,7 @@ public class DruidWalkingFireState : EnemyState
     public override void Update()
     {
         base.Update();
+        druid.FlipToPlayer();
         if (triggerCalled)
             stateMachine.ChangeState(druid.battleState);
 

@@ -19,7 +19,7 @@ public class DruidAshThrowState : EnemyState
     public override void Update()
     {
         base.Update();
-
+        druid.FlipToPlayer();
         druid.SetVelocityToZero();
         if (triggerCalled)
             stateMachine.ChangeState(druid.battleState);

@@ -57,7 +57,18 @@ public class Entity : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance * facingDirection, wallCheck.position.y));
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
+    public float GetGroundYPosition()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, whatIsGround);
 
+        if (hit.collider != null)
+        {
+            return hit.point.y;
+        }
+
+
+        return transform.position.y;
+    }
 
     public virtual void Flip()
     {
