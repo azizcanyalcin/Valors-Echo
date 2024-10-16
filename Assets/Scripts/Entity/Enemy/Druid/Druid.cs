@@ -66,8 +66,18 @@ public class Druid : Enemy
     }
     public void DruidAshTrigger()
     {
-        GameObject ash = Instantiate(ashPrefab, new Vector3(player.transform.position.x, player.transform.position.y + 0.1f), Quaternion.identity);
+        GameObject ash = Instantiate(ashPrefab, new Vector3(player.transform.position.x, player.transform.position.y), Quaternion.identity);
         ash.GetComponent<AshController>().SetupAsh(stats);
+
+        // Create the mirrored version of the ash
+        GameObject mirroredAsh = Instantiate(ashPrefab, new Vector3(player.transform.position.x + .8f, player.transform.position.y), Quaternion.identity);
+
+        // Mirror the second ash by flipping its scale along the X-axis
+        Vector3 mirroredScale = mirroredAsh.transform.localScale;
+        mirroredScale.x *= -1; // Flip the X scale
+        mirroredAsh.transform.localScale = mirroredScale;
+
+        mirroredAsh.GetComponent<AshController>().SetupAsh(stats);
     }
     public void DruidHealTrigger()
     {

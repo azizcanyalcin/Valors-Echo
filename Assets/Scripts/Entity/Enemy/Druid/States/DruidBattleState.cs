@@ -40,6 +40,12 @@ public class DruidBattleState : EnemyState
     private void HandleStateTransitions()
     {
         stateTimer = druid.battleTime;
+        if (druid.stats.currentHealth <= druid.stats.maxHealth.GetValue() / 2 && CanHeal())
+        {
+            stateMachine.ChangeState(druid.healState);
+            return;
+        }
+
         if (CanRootAttack())
         {
             stateMachine.ChangeState(druid.rootAttackState);
@@ -52,12 +58,6 @@ public class DruidBattleState : EnemyState
             return;
         }
 
-        if (druid.stats.currentHealth <= druid.stats.maxHealth.GetValue() / 2 && CanHeal())
-        {
-            stateMachine.ChangeState(druid.healState);
-            return;
-        }
-
         if (druid.IsPlayerDetected().distance < druid.attackDistance && CanFireAttack() && druid.IsPlayerDetected().distance != 0)
         {
             Debug.Log($"Druid is player detected log: " + druid.IsPlayerDetected().distance);
@@ -66,7 +66,6 @@ public class DruidBattleState : EnemyState
             return;
         }
     }
-
     private void Move()
     {
         if (druid.IsPlayerDetected().distance < druid.attackDistance - 0.25f) return;
