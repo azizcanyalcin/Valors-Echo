@@ -60,7 +60,7 @@ public class AshController : MonoBehaviour
         }
         vignette.intensity.value = 1;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(blindnessTime);
 
         timeElapsed = 0f;
         while (timeElapsed < 0.5f)
