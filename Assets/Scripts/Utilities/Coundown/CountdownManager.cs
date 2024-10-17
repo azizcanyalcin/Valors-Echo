@@ -4,8 +4,6 @@ using TMPro;
 public class CountdownManager : MonoBehaviour
 {
     public float countdownTime = 900f;
-    public TextMeshProUGUI countdownText;
-
     [SerializeField] private bool isCountdownActive = false;
     public static CountdownManager instance;
 
@@ -27,11 +25,6 @@ public class CountdownManager : MonoBehaviour
         if (isCountdownActive)
         {
             countdownTime -= Time.deltaTime;
-
-            if (countdownText != null)
-            {
-                countdownText.text = FormatTime(countdownTime);
-            }
 
             if (countdownTime <= 0)
             {
