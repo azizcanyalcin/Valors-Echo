@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Healing Potion
-  icon: {fileID: -410334530, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  icon: {fileID: 1206954855, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   itemId: 486ace4ca75436849b5fae614b93c7e4
   dropChance: 100
-  itemCooldown: 60
+  itemCooldown: 120
   equipmentType: 3
   itemEffects:
   - {fileID: 11400000, guid: 8ae964e4a5ca62a43a3e289eaf3ad27e, type: 2}
@@ -38,7 +38,5 @@ MonoBehaviour:
   craftMaterials:
   - itemData: {fileID: 11400000, guid: 9e102f4e4fa68914eb8884a348213ece, type: 2}
     stackSize: 1
-  - itemData: {fileID: 0}
-    stackSize: 0
   - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}
     stackSize: 1

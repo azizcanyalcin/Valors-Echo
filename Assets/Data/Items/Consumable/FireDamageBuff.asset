@@ -16,8 +16,8 @@ MonoBehaviour:
   itemName: Apple
   icon: {fileID: 341602073, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   itemId: 8e148cdf68c9b4c4fbd4fc17324461e9
-  dropChance: 0
-  itemCooldown: 0
+  dropChance: 100
+  itemCooldown: 120
   equipmentType: 3
   itemEffects:
   - {fileID: 11400000, guid: 0d3a799b61126ea408a80f74466293bd, type: 2}
@@ -37,7 +37,7 @@ MonoBehaviour:
   lightningDamage: 0
   craftMaterials:
   - itemData: {fileID: 11400000, guid: 9e102f4e4fa68914eb8884a348213ece, type: 2}
-    stackSize: 3
+    stackSize: 2
   - itemData: {fileID: 11400000, guid: 50e23e586802d084cb742235f8dfd026, type: 2}
     stackSize: 1
   - itemData: {fileID: 11400000, guid: 2f4902377c20dba459a6a8c3a58dac8a, type: 2}

@@ -224,7 +224,7 @@ public class Inventory : MonoBehaviour, ISaveManager
         {
             if (stashDictionary.TryGetValue(material.itemData, out InventoryItem stashItem))
             {
-                if (stashItem.stackSize <= material.stackSize)
+                if (stashItem.stackSize < material.stackSize)
                 {
                     Debug.Log($"Not enough material.");
                     AudioManager.instance.PlaySFX(45, PlayerManager.instance.player.transform, false);
