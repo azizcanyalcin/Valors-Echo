@@ -1,2 +1,2 @@
 # Valors-Echo
-2D Platformer RPG Game
+Valor's Echo is a 2D action RPG where players take on the role of a warrior on a quest through the mystical Verdant Highlands. Featuring a rich story, strategic combat, and skill-based progression, the game immerses players in a world filled with quests, powerful enemies, and magical environments. Players can unlock new abilities, gather rare items, and make choices that shape the fate of the realm.
