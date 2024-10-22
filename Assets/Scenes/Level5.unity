@@ -8945,46 +8945,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1139357514840368286, guid: ef1986aff8e72e444a4d97c09bc847f2, type: 3}
   m_PrefabInstance: {fileID: 5521398345450869861}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1679383535
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
-    - _WidthHeightRadius: {r: -1.1602, g: 0, b: 8, a: 0}
-  m_BuildTextureStacks: []
 --- !u!224 &1684595362 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1139357514840368286, guid: ef1986aff8e72e444a4d97c09bc847f2, type: 3}
@@ -10696,46 +10656,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075944714}
   m_CullTransparentMesh: 1
---- !u!21 &2105823270
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0.3904762, g: 0.089999996, b: 0.6, a: 0.31}
-    - _WidthHeightRadius: {r: -863.9996, g: 90.215, b: 80, a: 0}
-  m_BuildTextureStacks: []
 --- !u!4 &2117657818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 724113904893810818, guid: 3649b02e07df24b47a713c8cda798ee8, type: 3}
@@ -29005,38 +28925,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 716932214672874511, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716932214672874511, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716932214672874511, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716932214672874511, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 716932214672874511, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 81
-      objectReference: {fileID: 0}
-    - target: {fileID: 958263586579299846, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: eyePrefab
-      value: 
-      objectReference: {fileID: 3605778378361032154, guid: ad303af68b662064dbafc1ccd3796a77, type: 3}
     - target: {fileID: 1608799234582771002, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1679383535}
+      objectReference: {fileID: 1918724284}
     - target: {fileID: 2297135946213161499, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2105823270}
+      objectReference: {fileID: 1711365410}
     - target: {fileID: 2746985777063759567, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.670002
@@ -29080,54 +28976,6 @@ PrefabInstance:
     - target: {fileID: 3306370749020528341, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
       propertyPath: m_Name
       value: Druid
-      objectReference: {fileID: 0}
-    - target: {fileID: 3306370749020528341, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6626924290881408273, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6626924290881408273, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6626924290881408273, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1040.6191
-      objectReference: {fileID: 0}
-    - target: {fileID: 6626924290881408273, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6626924290881408273, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: armor.baseValue
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: damage.baseValue
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: maxHealth.baseValue
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: fireDamage.baseValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: intelligence.baseValue
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654090888815470706, guid: 71c3cd6e7ed97434e947f754dbb75708, type: 3}
-      propertyPath: magicResistance.baseValue
-      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
