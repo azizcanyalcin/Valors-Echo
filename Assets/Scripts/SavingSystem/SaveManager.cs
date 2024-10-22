@@ -7,9 +7,10 @@ public class SaveManager : MonoBehaviour
     public static SaveManager instance;
 
     [SerializeField] private string fileName;
+    [SerializeField] private string filePath = "idbfs/azoleite1199";
     [SerializeField] private bool canEncrypt;
     private GameData gameData;
-    private List<ISaveManager> saveManagers;
+    private List<ISaveManager> saveManagers; //
     private FileManager fileManager;
 
     private void Awake()
@@ -26,13 +27,13 @@ public class SaveManager : MonoBehaviour
     }
     void Start()
     {
-        fileManager = new FileManager(Application.persistentDataPath, fileName, canEncrypt);
+        fileManager = new FileManager(filePath, fileName, canEncrypt);
         LoadGame();
     }
     [ContextMenu("Fresh Start")]
     public async void DeleteDatabase()
     {
-        fileManager = new FileManager(Application.persistentDataPath, fileName, canEncrypt);
+        fileManager = new FileManager(filePath, fileName, canEncrypt);
         await fileManager.DeleteAsync();
     }
     public void NewGame()

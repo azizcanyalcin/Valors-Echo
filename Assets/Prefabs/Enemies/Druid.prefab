@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3306370749020528341}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 63.670002, y: 5.88, z: -0.034270037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -394,13 +394,13 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   intelligence:
-    baseValue: 30
+    baseValue: 35
     modifiers: 
   vitality:
     baseValue: 30
     modifiers: 
   damage:
-    baseValue: 100
+    baseValue: 90
     modifiers: 
   critChance:
     baseValue: 0
@@ -409,16 +409,16 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 5000
+    baseValue: 10000
     modifiers: 
   armor:
-    baseValue: 20
+    baseValue: 75
     modifiers: 
   evasion:
     baseValue: 0
     modifiers: 
   magicResistance:
-    baseValue: 20
+    baseValue: 75
     modifiers: 
   fireDamage:
     baseValue: 30
@@ -525,6 +525,7 @@ MonoBehaviour:
   lastTimeAttacked: 0
   rootPrefab: {fileID: 1608532515851362093, guid: 4c2cbb99ad6f9e040ba0bd1106565f93, type: 3}
   ashPrefab: {fileID: 5980997113389390275, guid: 782554c10f62de24d8d613bf8ade5455, type: 3}
+  eyePrefab: {fileID: 3605778378361032154, guid: ad303af68b662064dbafc1ccd3796a77, type: 3}
   healCooldown: 15
   fireAttackCooldown: 4
   ashThrowCooldown: 5
@@ -567,11 +568,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6490177409467798532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: -457}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 81}
   m_SizeDelta: {x: 155.0949, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1408676374529874927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -703,7 +704,7 @@ RectTransform:
   m_Father: {fileID: 9200996827677425424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.3723145, y: 0}
   m_SizeDelta: {x: -1.1602, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -828,10 +829,10 @@ RectTransform:
   - {fileID: 1780091742715489698}
   m_Father: {fileID: 6490177409467798532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 52.348877, y: 24}
-  m_SizeDelta: {x: -879.3808, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 35}
+  m_SizeDelta: {x: 1040.6191, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &5505899842119865861
 MonoBehaviour:
