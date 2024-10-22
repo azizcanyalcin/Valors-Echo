@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 public class CrystalSkillController : MonoBehaviour
 {
