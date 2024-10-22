@@ -86,6 +86,7 @@ public class Player : Entity
         base.Start();
         fx = GetComponent<PlayerFx>();
         skill = SkillManager.instance;
+        CloseInteractionKey();
 
         stateMachine.Initialize(idleState);
 
@@ -97,7 +98,7 @@ public class Player : Entity
     {
         if (!isPlayerActive) return;
         if (Time.timeScale == 0) return;
-        
+
         base.Update();
 
         stateMachine.currentState.Update();
@@ -202,6 +203,21 @@ public class Player : Entity
     {
         knockBackPower = new Vector2(0, 0);
     }
+
+    private void CloseInteractionKey()
+    {
+        GameObject interactionKeyImage = GameObject.FindWithTag("InteractionKey");
+
+        if (interactionKeyImage != null)
+        {
+            interactionKeyImage.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("No GameObject found with the tag 'InteractionKey'");
+        }
+    }
+
     public override void Die()
     {
         base.Die();

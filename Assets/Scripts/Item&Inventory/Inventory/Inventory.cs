@@ -42,6 +42,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
+        //DontDestroyOnLoad(gameObject); // zzz
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }

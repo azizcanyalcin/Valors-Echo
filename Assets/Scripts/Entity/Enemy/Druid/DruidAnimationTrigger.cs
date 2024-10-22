@@ -7,4 +7,5 @@ public class DruidAnimationTrigger : EnemyAnimationTrigger
     private void RootTrigger() => druid.DruidRootTrigger();
     private void AshTrigger() => druid.DruidAshTrigger();
     private void HealTrigger() => druid.DruidHealTrigger();
+    private void FindPlayer() => druid.DruidPlayerPositionTrigger();
 }

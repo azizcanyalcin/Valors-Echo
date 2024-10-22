@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         characterUI.SetActive(true);
         inGameUI.SetActive(true);
         transition.gameObject.SetActive(true);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

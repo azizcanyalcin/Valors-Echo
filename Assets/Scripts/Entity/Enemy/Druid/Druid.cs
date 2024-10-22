@@ -6,6 +6,8 @@ public class Druid : Enemy
     [Header("Druid")]
     [SerializeField] public GameObject rootPrefab;
     [SerializeField] public GameObject ashPrefab;
+    [SerializeField] public GameObject eyePrefab;
+    private Vector3 lastKnownPlayerPosition;
 
     [Header("Cooldowns")]
     public float healCooldown;
@@ -55,13 +57,17 @@ public class Druid : Enemy
     {
         base.Update();
     }
+    public void DruidPlayerPositionTrigger()
+    {
+        lastKnownPlayerPosition = player.transform.position;
+    }
     public void DruidRootTrigger()
     {
         float groundY = player.GetGroundYPosition();
 
-        GameObject root = Instantiate(rootPrefab, new Vector3(player.transform.position.x, groundY + 1), Quaternion.identity);
+        GameObject root = Instantiate(rootPrefab, new Vector3(lastKnownPlayerPosition.x, groundY + 1), Quaternion.identity);
         root.GetComponent<RootController>().SetupRoot(stats);
-        GameObject root2 = Instantiate(rootPrefab, new Vector3(player.transform.position.x + 2, groundY + 1), Quaternion.identity);
+        GameObject root2 = Instantiate(rootPrefab, new Vector3(lastKnownPlayerPosition.x + 2, groundY + 1), Quaternion.identity);
         root2.GetComponent<RootController>().SetupRoot(stats);
     }
     public void DruidAshTrigger()
@@ -83,6 +89,7 @@ public class Druid : Enemy
     {
         stats.currentHealth += stats.maxHealth.GetValue() / 5;
         stats.TakeDamage(1);
+        Instantiate(eyePrefab, new Vector3(player.transform.position.x + Random.Range(-7,7) , player.transform.position.y + 5), Quaternion.identity);
     }
 
     public override void Die()

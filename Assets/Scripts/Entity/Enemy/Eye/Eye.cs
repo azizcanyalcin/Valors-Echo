@@ -38,6 +38,7 @@ public class Eye : Enemy
         aiPath = GetComponent<AIPath>();
 
         player = PlayerManager.instance.player;
+        destinationSetter.target = player.transform;
     }
     protected override void Update()
     {

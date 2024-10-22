@@ -77,9 +77,16 @@ public class CharacterStats : MonoBehaviour
         fx = GetComponent<EntityFX>();
 
         critPower.SetValue(100);
+        StartCoroutine(InitializeStats());
+    }
 
+    private IEnumerator InitializeStats()
+    {
+        yield return new WaitForSeconds(1f);
         maxHealth.SetValue(maxHealth.GetValue() + vitality.GetValue() * 5);
         currentHealth = maxHealth.GetValue();
+
+        TakeDamage(1); // hotfix for ui update
     }
 
     protected virtual void Update()
