@@ -91,13 +91,17 @@ public class Druid : Enemy
         stats.TakeDamage(1);
         Instantiate(eyePrefab, new Vector3(player.transform.position.x + Random.Range(-7, 7), player.transform.position.y + 5), Quaternion.identity);
     }
-    public void DruidRingAudioTrigger()
+    public void DruidBellSFXTrigger()
     {
-        AudioManager.instance.PlaySFX(48, transform, true);
+        AudioManager.instance.PlaySFX(48, transform, false);
         AudioManager.instance.StopSFX(48, true);
 
     }
-    public void DruidFireAudioTrigger()
+    public void DruidAshThrowSFXTrigger()
+    {
+        AudioManager.instance.PlaySFX(50, transform, false);
+    }
+    public void DruidFireAttackSFXStopTrigger()
     {
         AudioManager.instance.StopSFX(46, true);
     }

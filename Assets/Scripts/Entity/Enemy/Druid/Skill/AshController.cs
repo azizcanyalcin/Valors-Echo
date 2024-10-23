@@ -43,7 +43,10 @@ public class AshController : MonoBehaviour
 
         OnAshHit();
     }
-
+    public void PlayAshClawSFX()
+    {
+        AudioManager.instance.PlaySFX(49, transform, true);
+    }
     private void OnAshHit()
     {
         GetComponent<BoxCollider2D>().enabled = false;

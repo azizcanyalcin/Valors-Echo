@@ -14,7 +14,6 @@ public class DruidRootAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        AudioManager.instance.PlaySFX(37, druid.transform, false);
         druid.FlipToPlayer();
     }
     public override void Update()

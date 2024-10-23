@@ -14,7 +14,6 @@ public class DruidAshThrowState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        AudioManager.instance.PlaySFX(37, druid.transform, false);
     }
     public override void Update()
     {
