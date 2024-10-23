@@ -4,7 +4,7 @@ using TMPro;
 public class CountdownManager : MonoBehaviour
 {
     public float countdownTime = 900f;
-    [SerializeField] private bool isCountdownActive = false;
+    public bool isCountdownActive = false;
     public static CountdownManager instance;
 
     private void Awake()

@@ -22,6 +22,8 @@ public class PlayerJumpState : PlayerState
             stateMachine.ChangeState(player.airState);
         if (Input.GetKeyDown(KeyCode.Mouse0))
             stateMachine.ChangeState(player.primaryAttackState);
+        if (player.isPlayerNearLadder)
+            stateMachine.ChangeState(player.climbState);
     }
     public override void Exit()
     {

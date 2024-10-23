@@ -16,6 +16,7 @@ public class Player : Entity
     [HideInInspector] public float coyoteTimer;
     public float jumpBufferTime;
     [HideInInspector] public float jumpBufferTimer;
+    public bool isPlayerNearLadder = false;
 
 
     [Header("Dash")]
@@ -47,6 +48,7 @@ public class Player : Entity
     public PlayerBlackHoleState blackHoleState { get; private set; }
 
     public PlayerDeadState deadState { get; private set; }
+    public PlayerClimbState climbState {get; private set;}
     #endregion
 
     #region Components
@@ -69,6 +71,7 @@ public class Player : Entity
         dashState = new PlayerDashState(this, stateMachine, "Dash");
         wallSlideState = new PlayerWallSlideState(this, stateMachine, "WallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
+        climbState = new PlayerClimbState(this,stateMachine,"Climb");
 
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
