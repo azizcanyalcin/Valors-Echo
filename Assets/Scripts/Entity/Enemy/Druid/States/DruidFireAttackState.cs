@@ -14,7 +14,7 @@ public class DruidFireAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        AudioManager.instance.PlaySFX(37, druid.transform, false);
+        AudioManager.instance.PlaySFX(46, druid.transform, true);
     }
     public override void Update()
     {
@@ -29,7 +29,6 @@ public class DruidFireAttackState : EnemyState
     public override void Exit()
     {
         base.Exit();
-
         druid.lastTimeAttacked = Time.time;
     }
 }

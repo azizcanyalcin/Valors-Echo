@@ -89,7 +89,7 @@ public class Player : Entity
         base.Start();
         fx = GetComponent<PlayerFx>();
         skill = SkillManager.instance;
-        CloseInteractionKey();
+        //CloseInteractionKey();
 
         stateMachine.Initialize(idleState);
 
