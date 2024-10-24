@@ -26,7 +26,7 @@ public class PlayerPrimaryAttackState : PlayerState
         }
 
         //player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.attackMovement[comboCounter].y);
-       // player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.rb.velocity.y);
+        // player.SetVelocity(player.attackMovement[comboCounter].x * attackDirection, player.rb.velocity.y);
 
         stateTimer = .1f;
     }
@@ -36,9 +36,8 @@ public class PlayerPrimaryAttackState : PlayerState
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Mathf.Sign(mousePosition.x - player.transform.position.x) != player.facingDirection)
             player.Flip();
-            
-            if (stateTimer < 0 && player.IsGroundDetected())
-                player.SetVelocityToZero();
+        if (stateTimer < 0 && player.IsGroundDetected())
+            player.SetVelocityToZero();
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }

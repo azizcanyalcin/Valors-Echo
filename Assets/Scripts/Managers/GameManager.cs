@@ -54,18 +54,15 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     public void SaveData(ref GameData data)
     {
-        // Save the player's lost currency and last position
         data.lostCurrencyAmount = lostCurrencyAmount;
         data.lostCurrencyX = player.transform.position.x;
         data.lostCurrencyY = player.transform.position.y;
 
-        // Save the last checkpoint ID
         data.lastCheckpoint = lastCheckpointId;
         data.checkpoints.Clear();
 
         data.isPlayerDeadOnce = player.isPlayerDeadOnce;
 
-        // Save each checkpoint's activation state
         foreach (Checkpoint checkpoint in checkpoints)
         {
             data.checkpoints.Add(checkpoint.id, checkpoint.isActive);
@@ -84,7 +81,7 @@ public class GameManager : MonoBehaviour, ISaveManager
                 }
             }
         }
-        lastCheckpointId = data.lastCheckpoint; // Ensure this value is loaded
+        lastCheckpointId = data.lastCheckpoint; 
     }
     
     private void LoadLostCurrency(GameData data)
@@ -110,19 +107,17 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     public string LastCheckpoint()
     {
-        // Simply return the last stored checkpoint ID, not the first active one
         return lastCheckpointId;
     }
 
     private void PlacePlayerToLastCheckpoint()
     {
-        // Make sure player is placed at the correct checkpoint based on the last activated one
         foreach (Checkpoint checkpoint in checkpoints)
         {
             if (checkpoint.id == lastCheckpointId)
             {
                 player.transform.position = checkpoint.transform.position;
-                return; // Break out once the correct checkpoint is found
+                return; 
             }
         }
     }

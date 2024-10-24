@@ -13,6 +13,7 @@ public class BodTeleportState : EnemyState
         base.Enter();
 
         bod.stats.SetImmunability(true);
+        AudioManager.instance.PlaySFX(56,bod.transform,false);
     }
 
     public override void Update()

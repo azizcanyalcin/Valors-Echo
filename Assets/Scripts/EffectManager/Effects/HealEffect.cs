@@ -7,10 +7,13 @@ public class HealEffect : ItemEffect
     [SerializeField] private float healPercentage;
     public override void ExecuteEffect(Transform transform)
     {
-        PlayerStats player = PlayerManager.instance.player.GetComponent<PlayerStats>();
+        Player player = PlayerManager.instance.player;
+        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+        
+        AudioManager.instance.PlaySFX(54, player.transform, false);
 
-        int healAmount = Mathf.RoundToInt(player.maxHealth.GetValue() * healPercentage);
+        int healAmount = Mathf.RoundToInt(playerStats.maxHealth.GetValue() * healPercentage);
 
-        player.IncreaseHealth(healAmount);
+        playerStats.IncreaseHealth(healAmount);
     }
 }

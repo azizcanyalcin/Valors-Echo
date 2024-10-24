@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
         if (audioSource.isPlaying)
         {
-            StopSFX(index, true);
+            StopSFX(index, false);
         }
 
         if (canFadeIn)

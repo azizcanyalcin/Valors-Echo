@@ -12,7 +12,6 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
-        AudioManager.instance.PlaySFX(2, player.transform, false);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
         player.fx.ScreenShake(player.fx.shakePowerHit);
 
@@ -22,8 +21,10 @@ public class PlayerAnimationTriggers : MonoBehaviour
             {
                 if (hit.TryGetComponent<EnemyStats>(out var enemy)) player.stats.DealPhysicalDamage(enemy, 1);
                 TriggerWeaponEffect(enemy);
+                AudioManager.instance.PlaySFX(1, player.transform, false);
             }
         }
+        AudioManager.instance.PlaySFX(2, player.transform, false);
     }
 
     public void TriggerWeaponEffect(EnemyStats enemy)

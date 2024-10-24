@@ -53,7 +53,7 @@ public class Bod : Enemy
     {
         base.Start();
 
-        
+
         stateMachine.Initialize(attackState);
 
     }
@@ -65,6 +65,8 @@ public class Bod : Enemy
     {
         GameObject newGrasp = Instantiate(graspPrefab, GraspPosition(), Quaternion.identity);
         newGrasp.GetComponent<GraspController>().SetupGrasp(stats);
+        AudioManager.instance.PlaySFX(57, transform, false);
+
     }
     private static Vector3 GraspPosition()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerState
 {
-    // Start is called before the first frame update
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, string animatorBoolName) : base(player, stateMachine, animatorBoolName)
     {
     }

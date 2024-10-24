@@ -142,5 +142,10 @@ public class Enemy : Entity
         base.ReturnDefaultSpeed();
         moveSpeed = defaultMoveSpeed;
     }
+    public override void Die()
+    {
+        base.Die();
+        AudioManager.instance.PlaySFX(53,transform,false);
+    }
 }
 
