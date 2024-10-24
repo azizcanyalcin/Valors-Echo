@@ -79,8 +79,6 @@ public class SwordSkillController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if (isReturning) //--> Commented out for deal damage when returning. Maybe I can change in the future.
-        //     return;
         if (collision.GetComponent<Enemy>() != null)
         {
             Enemy enemy = collision.GetComponent<Enemy>();
@@ -132,12 +130,13 @@ public class SwordSkillController : MonoBehaviour
             SwordDamage(enemyTarget[targetIndex].GetComponent<Enemy>());
             targetIndex = (targetIndex + 1) % enemyTarget.Count;
             bounceAmount--;
-
+            AudioManager.instance.PlaySFX(58, player.transform, false);
             if (bounceAmount <= 0)
             {
                 isBouncing = false;
                 isReturning = true;
             }
+
         }
     }
 
