@@ -46,8 +46,9 @@ public class AudioManager : MonoBehaviour
 
         if (canFadeIn)
         {
+            float defaultVolume = audioSource.volume;
             audioSource.volume = 0;
-            StartCoroutine(FadeInSFX(audioSource, 1f, 1f));
+            StartCoroutine(FadeInSFX(audioSource, defaultVolume, 1f));
         }
 
         audioSource.Play();
@@ -66,7 +67,7 @@ public class AudioManager : MonoBehaviour
     {
         if (sfx[index])
         {
-            if (canFadeOut) StartCoroutine(FadeOutSFX(sfx[index], 1f));
+            if (canFadeOut) StartCoroutine(FadeOutSFX(sfx[index], 2f));
             else sfx[index].Stop();
         }
     }
@@ -123,6 +124,7 @@ public class AudioManager : MonoBehaviour
 
         audioSource.volume = 0;
         audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 
 }
