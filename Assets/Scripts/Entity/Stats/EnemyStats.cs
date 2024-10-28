@@ -16,8 +16,8 @@ public class EnemyStats : CharacterStats
     [SerializeField] private float percentageModifier = .4f;
     private void Awake()
     {
-        if(EndGameManager.instance)
-            level = EndGameManager.instance.levelUpAmount;
+        if(EndGameManager.Instance)
+            level = EndGameManager.Instance.levelUpAmount;
     }
     protected override void Start()
     {
@@ -29,7 +29,6 @@ public class EnemyStats : CharacterStats
         enemy = GetComponent<Enemy>();
         itemDrop = GetComponent<ItemDrop>();
         healthBarUI = GetComponentInChildren<HealthBarUI>();
-        level = EndGameManager.instance.levelUpAmount;
 
     }
     private void ApplyLevelModifiers()
