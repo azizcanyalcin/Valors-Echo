@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "Level1";
+    [SerializeField] private string sceneName = "Level0";
     [SerializeField] private GameObject continueButton;
     [SerializeField] SceneTransitionUI transition;
 
