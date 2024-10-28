@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EndGameManager : MonoBehaviour, ISaveManager
@@ -15,25 +17,23 @@ public class EndGameManager : MonoBehaviour, ISaveManager
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     public void IncreaseLevelUpAmount()
     {
-        levelUpAmount++;
+        levelUpAmount += 1;
         SaveManager.instance.SaveGame();
     }
-
     public void LoadData(GameData data)
     {
-        Invoke(nameof(DelayedLoad), 0.1f);
+        StartCoroutine(LoadWithDelay(data));
     }
-
-    private void DelayedLoad(GameData data)
-    {
-        levelUpAmount = data.levelUpAmount;
-    }
-
     public void SaveData(ref GameData data)
     {
         data.levelUpAmount = levelUpAmount;
+    }
+
+    IEnumerator LoadWithDelay(GameData data)
+    {
+        yield return new WaitForSeconds(0.1f);
+        levelUpAmount = data.levelUpAmount;
     }
 }
