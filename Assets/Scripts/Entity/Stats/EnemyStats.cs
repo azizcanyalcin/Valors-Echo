@@ -16,7 +16,8 @@ public class EnemyStats : CharacterStats
     [SerializeField] private float percentageModifier = .4f;
     private void Awake()
     {
-        level = EndGameManager.instance.levelUpAmount;
+        if(EndGameManager.instance)
+            level = EndGameManager.instance.levelUpAmount;
     }
     protected override void Start()
     {
