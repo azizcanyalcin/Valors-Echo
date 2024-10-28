@@ -12,7 +12,6 @@ public class Blacksmith : InteractableObject
         player = PlayerManager.instance.player;
     }
 
-    // When player enters the trigger zone
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
@@ -22,7 +21,6 @@ public class Blacksmith : InteractableObject
         }
     }
 
-    // When player exits the trigger zone
     protected override void OnTriggerExit2D(Collider2D other)
     {
         base.OnTriggerExit2D(other);
