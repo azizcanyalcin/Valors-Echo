@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     [SerializeField] private float lostCurrencyX;
     [SerializeField] private float lostCurrencyY;
 
+
     private void Awake()
     {
         if (instance != null)
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour, ISaveManager
         LoadLostCurrency(data);
         LoadActiveCheckpoints(data);
         LoadPlayerInfo(data);
-        
+
         PlacePlayerToLastCheckpoint();
     }
 
@@ -81,9 +82,9 @@ public class GameManager : MonoBehaviour, ISaveManager
                 }
             }
         }
-        lastCheckpointId = data.lastCheckpoint; 
+        lastCheckpointId = data.lastCheckpoint;
     }
-    
+
     private void LoadLostCurrency(GameData data)
     {
         lostCurrencyAmount = data.lostCurrencyAmount;
@@ -104,7 +105,6 @@ public class GameManager : MonoBehaviour, ISaveManager
     {
         player.isPlayerDeadOnce = data.isPlayerDeadOnce;
     }
-
     public string LastCheckpoint()
     {
         return lastCheckpointId;
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour, ISaveManager
             if (checkpoint.id == lastCheckpointId)
             {
                 player.transform.position = checkpoint.transform.position;
-                return; 
+                return;
             }
         }
     }

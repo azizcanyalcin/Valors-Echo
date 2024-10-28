@@ -19,4 +19,8 @@ public class SceneTransitionHandler : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         PlayerManager.instance.player.isPlayerActive = true;
     }
+    public void StartSceneTransition()
+    {
+        StartCoroutine(SceneTransition(1));
+    }
 }

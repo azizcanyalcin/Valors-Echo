@@ -7,6 +7,6 @@ public class BlacksmithAnimationTrigger : MonoBehaviour
     private Blacksmith blacksmith => GetComponent<Blacksmith>();
     public void TriggerSmashEffect()
     {
-        AudioManager.instance.PlaySFX(43, blacksmith.transform, false);
+        AudioManager.instance.PlaySFX(43, blacksmith.transform);
     }
 }

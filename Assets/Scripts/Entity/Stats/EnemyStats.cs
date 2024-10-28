@@ -14,6 +14,10 @@ public class EnemyStats : CharacterStats
     [SerializeField] private int level = 1;
     [Range(0f, 1f)]
     [SerializeField] private float percentageModifier = .4f;
+    private void Awake()
+    {
+        level = EndGameManager.instance.levelUpAmount;
+    }
     protected override void Start()
     {
         soulsDropAmount.SetValue(100);
@@ -24,6 +28,7 @@ public class EnemyStats : CharacterStats
         enemy = GetComponent<Enemy>();
         itemDrop = GetComponent<ItemDrop>();
         healthBarUI = GetComponentInChildren<HealthBarUI>();
+        level = EndGameManager.instance.levelUpAmount;
 
     }
     private void ApplyLevelModifiers()
@@ -62,7 +67,10 @@ public class EnemyStats : CharacterStats
     {
         base.TakeDamage(damage);
     }
-
+    public void LevelUp(int levelAmount)
+    {
+        level = levelAmount;
+    }
     protected override void Die()
     {
         base.Die();
