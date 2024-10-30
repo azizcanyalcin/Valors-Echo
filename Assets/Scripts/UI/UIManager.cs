@@ -31,9 +31,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         characterUI.SetActive(true);
         inGameUI.SetActive(true);
         transition.gameObject.SetActive(true);
-        //DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
         Switch(inGameUI);
@@ -44,7 +42,6 @@ public class UIManager : MonoBehaviour, ISaveManager
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -59,16 +56,13 @@ public class UIManager : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.H))
             SwitchWithKey(instructions);
 
-        // Close all menus except InGameUI with "Esc"
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseAllMenusExceptInGame();
         }
         if (GetActiveMenu() == inGameUI && Input.GetKeyDown(KeyCode.Escape))
             SwitchWithKey(inGameMenu);
-
     }
-
     public void Switch(GameObject menu)
     {
         GameObject activeMenu = GetActiveMenu();
@@ -87,7 +81,6 @@ public class UIManager : MonoBehaviour, ISaveManager
                 GameManager.instance.PauseGame(true);
         }
     }
-
     public void SwitchWithKey(GameObject menu)
     {
         if (menu != null && menu.activeSelf)
@@ -99,7 +92,6 @@ public class UIManager : MonoBehaviour, ISaveManager
 
         Switch(menu);
     }
-
     private void SwitchToInGameUI()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -129,7 +121,6 @@ public class UIManager : MonoBehaviour, ISaveManager
             GameManager.instance.PauseGame(false);
         }
     }
-
     private GameObject GetActiveMenu()
     {
         foreach (Transform child in transform)
@@ -139,7 +130,6 @@ public class UIManager : MonoBehaviour, ISaveManager
         }
         return null;
     }
-
     public void SwitchToEndScreen()
     {
         if (transition != null)
@@ -152,20 +142,17 @@ public class UIManager : MonoBehaviour, ISaveManager
             restartButton.SetActive(true);
         }
     }
-
     IEnumerator EndScreen()
     {
         float fadeDuration = transition != null ? transition.fadeOutDuration : 1.5f;
         yield return new WaitForSeconds(fadeDuration);
         restartButton.SetActive(true);
     }
-
     public void RestartGameButton()
     {
         if (GameManager.instance != null)
             GameManager.instance.RestartScene();
     }
-
     public void LoadData(GameData data)
     {
         foreach (KeyValuePair<string, float> pair in data.volumeSettings)
@@ -175,7 +162,6 @@ public class UIManager : MonoBehaviour, ISaveManager
                 matchingSetting.LoadSlider(pair.Value);
         }
     }
-
     public void SaveData(ref GameData data)
     {
         data.volumeSettings.Clear();
