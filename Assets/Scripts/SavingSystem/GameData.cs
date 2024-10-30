@@ -24,7 +24,7 @@ public class GameData
         lostCurrencyX = 0;
         lostCurrencyY = 0;
         currency = 0;
-        levelUpAmount = 0;
+        //levelUpAmount = 0;
         
         isPlayerDeadOnce = false;
 

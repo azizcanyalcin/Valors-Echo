@@ -126,4 +126,14 @@ public class GameManager : MonoBehaviour, ISaveManager
     {
         Time.timeScale = pause ? 0 : 1;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void SwitchScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }

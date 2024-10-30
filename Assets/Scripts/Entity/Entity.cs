@@ -34,12 +34,12 @@ public class Entity : MonoBehaviour
     public System.Action onFlipped;
     protected virtual void Awake()
     {
-
+        stats = GetComponent<CharacterStats>();
     }
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<CharacterStats>();
+
         capsuleCollider = GetComponent<CapsuleCollider2D>();
 
         animator = GetComponentInChildren<Animator>();

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -58,7 +57,6 @@ public class SaveManager : MonoBehaviour
             saveManager.SaveData(ref gameData);
         }
         await fileManager.SaveAsync(gameData);
-
     }
     private void OnApplicationQuit()
     {
@@ -69,7 +67,6 @@ public class SaveManager : MonoBehaviour
         IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
         return new List<ISaveManager>(saveManagers);
     }
-
     public bool HasSavedData()
     {
         return fileManager.LoadAsync() != null;

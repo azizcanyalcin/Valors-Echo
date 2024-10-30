@@ -82,10 +82,9 @@ public class CharacterStats : MonoBehaviour
 
     private IEnumerator InitializeStats()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         maxHealth.SetValue(maxHealth.GetValue() + vitality.GetValue() * 5);
         currentHealth = maxHealth.GetValue();
-
         TakeDamage(1); // hotfix for ui update
     }
 
@@ -143,7 +142,7 @@ public class CharacterStats : MonoBehaviour
     }
     public virtual void OnEvasion()
     {
-        AudioManager.instance.PlaySFX(55,transform,false);
+        AudioManager.instance.PlaySFX(55, transform, false);
     }
     protected bool CanTargetAvoidAttack(CharacterStats target)
     {

@@ -16,11 +16,11 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        //DontDestroyOnLoad(gameObject);
         if (instance != null)
             Destroy(instance.gameObject);
         else
             instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {

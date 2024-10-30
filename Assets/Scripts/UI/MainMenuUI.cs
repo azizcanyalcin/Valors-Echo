@@ -9,7 +9,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
-        continueButton.SetActive(SaveManager.instance.HasSavedData());
+        //continueButton.SetActive(SaveManager.instance.HasSavedDataAsync());
     }
 
     public void ContinueGame()

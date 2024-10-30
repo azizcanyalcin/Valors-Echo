@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
     [SerializeField] private GameObject instructions;
+    [SerializeField] private GameObject inGameMenu;
 
     [Header("ToolTips")]
     public ItemToolTipUI itemToolTip;
@@ -63,11 +64,14 @@ public class UIManager : MonoBehaviour, ISaveManager
         {
             CloseAllMenusExceptInGame();
         }
+        if (GetActiveMenu() == inGameUI && Input.GetKeyDown(KeyCode.Escape))
+            SwitchWithKey(inGameMenu);
+
     }
 
     public void Switch(GameObject menu)
     {
-        GameObject activeMenu = GetActiveMenu(); 
+        GameObject activeMenu = GetActiveMenu();
 
         if (activeMenu != null && activeMenu != menu)
             activeMenu.SetActive(false);
@@ -86,10 +90,10 @@ public class UIManager : MonoBehaviour, ISaveManager
 
     public void SwitchWithKey(GameObject menu)
     {
-        if (menu != null && menu.activeSelf)  
+        if (menu != null && menu.activeSelf)
         {
             menu.SetActive(false);
-            SwitchToInGameUI(); 
+            SwitchToInGameUI();
             return;
         }
 
@@ -145,7 +149,7 @@ public class UIManager : MonoBehaviour, ISaveManager
         }
         else
         {
-            restartButton.SetActive(true);  
+            restartButton.SetActive(true);
         }
     }
 

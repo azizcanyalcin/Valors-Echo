@@ -20,7 +20,7 @@ public class EndGameManager : MonoBehaviour, ISaveManager
     public void IncreaseLevelUpAmount()
     {
         levelUpAmount += 1;
-        SaveManager.instance.SaveGame();
+        //SaveManager.instance.SaveGame();
     }
     public void LoadData(GameData data)
     {
@@ -28,12 +28,12 @@ public class EndGameManager : MonoBehaviour, ISaveManager
     }
     public void SaveData(ref GameData data)
     {
-        data.levelUpAmount = levelUpAmount;
+        //data.levelUpAmount = levelUpAmount;
     }
 
     IEnumerator LoadWithDelay(GameData data)
     {
         yield return new WaitForSeconds(0.1f);
-        levelUpAmount = data.levelUpAmount;
+        //levelUpAmount = data.levelUpAmount;
     }
 }
