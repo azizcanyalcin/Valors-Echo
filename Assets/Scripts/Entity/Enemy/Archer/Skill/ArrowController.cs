@@ -38,7 +38,7 @@ public class ArrowController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayer))
         {
             // Deal damage to the player
-            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 1);
+            stats.DealPhysicalDamage(collision.GetComponent<CharacterStats>(), 2);
             OnArrowHit(collision);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))

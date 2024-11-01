@@ -20,7 +20,7 @@ public class SkillManager : MonoBehaviour
             Destroy(instance.gameObject);
         else
             instance = this;
-        DontDestroyOnLoad(gameObject);
+        
     }
     private void Start()
     {
