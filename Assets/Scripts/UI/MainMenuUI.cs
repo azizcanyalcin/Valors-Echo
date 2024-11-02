@@ -15,6 +15,14 @@ public class MainMenuUI : MonoBehaviour
     {
         Application.Quit();
     }
+    public void PlayButtonClickSFX()
+    {
+        AudioManager.instance.PlaySFX(47);
+    }
+    public void PlayButtonHoverSFX()
+    {
+        AudioManager.instance.PlaySFX(46);
+    }
     IEnumerator SceneTransition(float delay) 
     {
         transition.FadeOut();
@@ -23,4 +31,5 @@ public class MainMenuUI : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
 }
