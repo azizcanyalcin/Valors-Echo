@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Archer : Enemy
 {
     Player player;
+    EventBinding<ArcherEvent> archerEventBinding;
+    [Header("UI")]
+    [SerializeField] private GameObject skillTreeTip;
     [Header("Archer")]
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject diagonalArrowPrefab;
@@ -62,16 +63,28 @@ public class Archer : Enemy
         deadState = new ArcherDeadState(this, stateMachine, "Dead", this);
         defendState = new ArcherDefendState(this, stateMachine, "Defend", this);
     }
-
     protected override void Start()
     {
         base.Start();
         stateMachine.Initialize(idleState);
         player = PlayerManager.instance.player;
     }
+    private void OnEnable()
+    {
+        archerEventBinding = new EventBinding<ArcherEvent>(HandleArcherDieEvent);
+        EventBus<ArcherEvent>.Register(archerEventBinding);
+    }
+    private void OnDisable()
+    {
+        EventBus<ArcherEvent>.Deregister(archerEventBinding);
+    }
     protected override void Update()
     {
         base.Update();
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            skillTreeTip.SetActive(false);
+        }
     }
 
     public override bool CanBeStunned()
@@ -131,8 +144,21 @@ public class Archer : Enemy
     public override void Die()
     {
         base.Die();
-
         stateMachine.ChangeState(deadState);
+        EventBus<ArcherEvent>.Raise(new ArcherEvent
+        {
+            isDead = true
+        });
+
+    }
+    private void HandleArcherDieEvent()
+    {
+        Debug.Log($"Archer is dead!");
+        Invoke(nameof(ActivateSkillTreeUI), 2f);
+    }
+    private void ActivateSkillTreeUI()
+    {
+        skillTreeTip.SetActive(true);
     }
 }
 

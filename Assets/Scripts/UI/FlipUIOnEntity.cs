@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InteractionUI : MonoBehaviour
+public class FlipUIOnEntity : MonoBehaviour
 {
     private Entity entity => GetComponentInParent<Entity>();
     private RectTransform rectTransform;
