@@ -4,8 +4,6 @@ public class Archer : Enemy
 {
     Player player;
     EventBinding<ArcherEvent> archerEventBinding;
-    [Header("UI")]
-    [SerializeField] private GameObject skillTreeTip;
     [Header("Archer")]
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject diagonalArrowPrefab;
@@ -81,10 +79,6 @@ public class Archer : Enemy
     protected override void Update()
     {
         base.Update();
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            skillTreeTip.SetActive(false);
-        }
     }
 
     public override bool CanBeStunned()
@@ -154,11 +148,7 @@ public class Archer : Enemy
     private void HandleArcherDieEvent()
     {
         Debug.Log($"Archer is dead!");
-        Invoke(nameof(ActivateSkillTreeUI), 2f);
     }
-    private void ActivateSkillTreeUI()
-    {
-        skillTreeTip.SetActive(true);
-    }
+
 }
 

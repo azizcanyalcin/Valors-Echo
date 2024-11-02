@@ -11,8 +11,6 @@ public class ActivateUI : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerManager.instance.player.isPlayerDeadOnce) Destroy(gameObject);
-        
         instructionDictionary = new Dictionary<KeyCode, GameObject>();
 
         for (int i = 0; i < instructionsUI.Count && i < instructionKeys.Count; i++)
@@ -29,6 +27,7 @@ public class ActivateUI : MonoBehaviour
     }
     private void Update()
     {
+        if (PlayerManager.instance.player.isPlayerDeadOnce) Destroy(gameObject);
         foreach (var key in instructionDictionary.Keys)
         {
             if (Input.GetKeyDown(key))
