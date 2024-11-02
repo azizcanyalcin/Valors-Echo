@@ -142,7 +142,7 @@ public class CharacterStats : MonoBehaviour
     }
     public virtual void OnEvasion()
     {
-        AudioManager.instance.PlaySFX(55, transform, false);
+        AudioManager.instance.PlaySFX(58, transform, false);
     }
     protected bool CanTargetAvoidAttack(CharacterStats target)
     {

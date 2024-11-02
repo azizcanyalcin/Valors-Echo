@@ -130,7 +130,7 @@ public class SwordSkillController : MonoBehaviour
             SwordDamage(enemyTarget[targetIndex].GetComponent<Enemy>());
             targetIndex = (targetIndex + 1) % enemyTarget.Count;
             bounceAmount--;
-            AudioManager.instance.PlaySFX(58, player.transform, false);
+            AudioManager.instance.PlaySFX(59, player.transform, false);
             if (bounceAmount <= 0)
             {
                 isBouncing = false;

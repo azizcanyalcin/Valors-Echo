@@ -69,7 +69,7 @@ public class Druid : Enemy
         root.GetComponent<RootController>().SetupRoot(stats);
         GameObject root2 = Instantiate(rootPrefab, new Vector3(lastKnownPlayerPosition.x + 2, groundY + 1), Quaternion.identity);
         root2.GetComponent<RootController>().SetupRoot(stats);
-        AudioManager.instance.PlaySFX(47, transform, true);
+        AudioManager.instance.PlaySFX(51, transform, true);
     }
     public void DruidAshTrigger()
     {
@@ -93,17 +93,17 @@ public class Druid : Enemy
     }
     public void DruidBellSFXTrigger()
     {
-        AudioManager.instance.PlaySFX(48, transform, false);
-        AudioManager.instance.StopSFX(48, true);
+        AudioManager.instance.PlaySFX(52, transform, false);
+        AudioManager.instance.StopSFX(52, true);
 
     }
     public void DruidAshThrowSFXTrigger()
     {
-        AudioManager.instance.PlaySFX(50, transform, false);
+        AudioManager.instance.PlaySFX(54, transform, false);
     }
     public void DruidFireAttackSFXStopTrigger()
     {
-        AudioManager.instance.StopSFX(46, true);
+        AudioManager.instance.StopSFX(50, true);
     }
 
     public override void Die()

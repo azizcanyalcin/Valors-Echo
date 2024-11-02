@@ -45,7 +45,7 @@ public class AshController : MonoBehaviour
     }
     public void PlayAshClawSFX()
     {
-        AudioManager.instance.PlaySFX(49, transform, true);
+        AudioManager.instance.PlaySFX(53, transform, true);
     }
     private void OnAshHit()
     {

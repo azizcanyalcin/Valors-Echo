@@ -164,7 +164,7 @@ public class SwordSkill : Skill
                 newSwordScript.InitializeBounce(true, bounceAmount, bounceSpeed);
                 break;
             case SwordType.Pierce:
-                AudioManager.instance.PlaySFX(47, player.transform, false);
+                AudioManager.instance.PlaySFX(48, player.transform, false);
                 newSwordScript.InitializePierce(pierceAmount);
                 break;
             case SwordType.Spin:

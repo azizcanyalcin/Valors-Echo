@@ -7,7 +7,7 @@ public class ThunderStrikeEffect : ItemEffect
     public override void ExecuteEffect(Transform transform)
     {
         GameObject newThunderStrike = Instantiate(thunderStrikePrefab, transform.position, Quaternion.identity);
-        AudioManager.instance.PlaySFX(51,transform,true);
+        AudioManager.instance.PlaySFX(56,transform,true);
         Destroy(newThunderStrike, 1f);
     }
 }

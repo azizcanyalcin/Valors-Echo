@@ -10,7 +10,7 @@ public class HealEffect : ItemEffect
         Player player = PlayerManager.instance.player;
         PlayerStats playerStats = player.GetComponent<PlayerStats>();
         
-        AudioManager.instance.PlaySFX(54, player.transform, false);
+        AudioManager.instance.PlaySFX(55, player.transform, false);
 
         int healAmount = Mathf.RoundToInt(playerStats.maxHealth.GetValue() * healPercentage);
 

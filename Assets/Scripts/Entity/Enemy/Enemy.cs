@@ -145,7 +145,7 @@ public class Enemy : Entity
     public override void Die()
     {
         base.Die();
-        AudioManager.instance.PlaySFX(53,transform,false);
+        AudioManager.instance.PlaySFX(57,transform,false);
     }
 }
 
