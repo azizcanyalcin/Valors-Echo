@@ -6,7 +6,7 @@ public class ActivateUI : MonoBehaviour
 {
     [SerializeField] private List<GameObject> instructionsUI;
     [SerializeField] private List<KeyCode> instructionKeys;
-    [SerializeField] private Dictionary<KeyCode, GameObject> instructionDictionary;
+    private Dictionary<KeyCode, GameObject> instructionDictionary;
     private int currentInstructionIndex = 0;
 
     private void Start()
@@ -18,6 +18,7 @@ public class ActivateUI : MonoBehaviour
             instructionDictionary[instructionKeys[i]] = instructionsUI[i];
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && instructionsUI.Count > 0)
@@ -25,9 +26,15 @@ public class ActivateUI : MonoBehaviour
             ShowInstruction(instructionKeys[0]);
         }
     }
+
     private void Update()
     {
-        if (PlayerManager.instance.player.isPlayerDeadOnce) Destroy(gameObject);
+        if (PlayerManager.instance.player.isPlayerDeadOnce)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         foreach (var key in instructionDictionary.Keys)
         {
             if (Input.GetKeyDown(key))
@@ -39,10 +46,16 @@ public class ActivateUI : MonoBehaviour
                     currentInstructionIndex++;
                     ShowInstruction(instructionKeys[currentInstructionIndex]);
                 }
+                else
+                {
+                    // Destroy the GameObject after the last UI is deactivated
+                    Destroy(gameObject);
+                }
                 break;
             }
         }
     }
+
     private void ShowInstruction(KeyCode key)
     {
         if (instructionDictionary.ContainsKey(key))
@@ -50,6 +63,7 @@ public class ActivateUI : MonoBehaviour
             instructionDictionary[key].SetActive(true);
         }
     }
+
     private void HideInstruction(KeyCode key)
     {
         if (instructionDictionary.ContainsKey(key))
