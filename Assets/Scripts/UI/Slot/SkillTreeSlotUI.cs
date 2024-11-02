@@ -56,6 +56,7 @@ public class SkillTreeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         uiManager.skillToolTip.ShowSkillToolTip(skillDescription, skillName, skillCost);
+        AudioManager.instance.PlaySFX(46);
     }
 
     public void OnPointerExit(PointerEventData eventData)

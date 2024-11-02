@@ -54,6 +54,8 @@ public class ItemSlotUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     {
         if (item == null) return;
         uiManager.itemToolTip.ShowItemTooltip(item.itemData as Equipment);
+        AudioManager.instance.PlaySFX(46);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)

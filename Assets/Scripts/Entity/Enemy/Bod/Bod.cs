@@ -65,7 +65,7 @@ public class Bod : Enemy
     {
         GameObject newGrasp = Instantiate(graspPrefab, GraspPosition(), Quaternion.identity);
         newGrasp.GetComponent<GraspController>().SetupGrasp(stats);
-        AudioManager.instance.PlaySFX(57, transform, false);
+        AudioManager.instance.PlaySFX(43, transform, false);
 
     }
     private static Vector3 GraspPosition()
@@ -106,7 +106,7 @@ public class Bod : Enemy
 
         return false;
     }
-    public void FindPosition()
+    public void Teleport()
     {
         float x = Random.Range(arena.bounds.min.x + 3, arena.bounds.max.x - 3);
         float y = Random.Range(arena.bounds.min.y + 3, arena.bounds.max.y - 3);
@@ -120,8 +120,9 @@ public class Bod : Enemy
 
         if (!groundBelow || IsOverlappingObjects())
         {
-            FindPosition();
+            Teleport();
         }
+        AudioManager.instance.PlaySFX(44, transform, false);
     }
 
     private RaycastHit2D GroundBelow() => Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, whatIsGround);

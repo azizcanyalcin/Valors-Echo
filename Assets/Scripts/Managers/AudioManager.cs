@@ -59,12 +59,27 @@ public class AudioManager : MonoBehaviour
             return;
         AudioSource audioSource = sfx[index];
         float playerDistance = source != null ? Vector2.Distance(PlayerManager.instance.player.transform.position, source.position) : 0f;
-        
+
         float volume = Mathf.Clamp(1 - (playerDistance / 15), 0, 1);
 
         audioSource.volume = volume;
 
         audioSource.Play();
+    }
+    public void PlaySFX(int index)
+    {
+        if (!canPlaySFX || index >= sfx.Length)
+            return;
+
+        AudioSource audioSource = sfx[index];
+
+        if (audioSource.isPlaying)
+        {
+            StopSFX(index, false);
+        }
+        
+        audioSource.Play();
+
     }
     public void PlayDelayedSFX(int index, Transform source, bool canFadeIn, float delay)
     {

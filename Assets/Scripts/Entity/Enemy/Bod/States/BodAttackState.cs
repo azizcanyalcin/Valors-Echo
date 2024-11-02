@@ -14,7 +14,7 @@ public class BodAttackState : EnemyState
         base.Enter();
 
         bod.teleportChance += 5;
-        AudioManager.instance.PlaySFX(1, bod.transform, false);
+        AudioManager.instance.PlaySFX(45, bod.transform, false);
     }
     public override void Update()
     {
