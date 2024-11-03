@@ -7,25 +7,25 @@ public class PoppingEffect : MonoBehaviour
     [SerializeField] private float scaleX = 1.2f;
     [SerializeField] private float scaleY = 1.2f;
     [SerializeField] private float interval = 0.5f;
-
     private void OnEnable()
     {
         StartPoppingEffect();
     }
-
     private void OnDisable()
     {
         StopPoppingEffect();
     }
-
     public void StartPoppingEffect()
     {
-        Transform targetTransform = GetComponent<RectTransform>() ?? transform;
-
-        if (targetTransform != null)
+        
+        if (TryGetComponent<RectTransform>(out var letterRectTransform))
         {
-            poppingTween = targetTransform.DOScale(new Vector3(scaleX, scaleY, 1f), interval)
+            poppingTween = letterRectTransform.DOScale(new Vector3(scaleX, scaleY, 1f), interval)
                 .SetLoops(-1, LoopType.Yoyo);
+        }
+        else
+        {
+            Debug.LogWarning("No RectTransform component found on this GameObject!");
         }
     }
 
