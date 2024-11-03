@@ -6,7 +6,7 @@ public class ParrySkill : Skill
 {
     [Header("Parry")]
     [SerializeField] private SkillTreeSlotUI parryUnlockButton;
-    public bool parryUnlocked {get; private set;}
+    public bool parryUnlocked {get;  set;}
 
     [Header("Restore Health")]
     [SerializeField] private SkillTreeSlotUI restoreHPUnlockButton;
