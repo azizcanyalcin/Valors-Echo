@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -123,16 +120,25 @@ public class TutorialManager : MonoBehaviour
 
     private void SpawnAttackDummy()
     {
-        instantiatedAttackDummy = Instantiate(attackDummy, new Vector3(player.transform.position.x + 2f, player.transform.position.y + 10), Quaternion.identity);
+        instantiatedAttackDummy = InstantiateDummy(2, 10, attackDummy);
         AudioManager.instance.PlayDelayedSFX(63, 0.2f);
         popUpIndex++;
     }
     private void SpawnTargetDummy()
     {
         player.skill.sword.swordUnlocked = true;
-        instantiatedTargetDummy = Instantiate(targetDummy, new Vector3(player.transform.position.x + 7f, player.transform.position.y + 10), Quaternion.identity);
+        instantiatedTargetDummy = InstantiateDummy(7, 10, targetDummy);
         AudioManager.instance.PlaySFX(63);
         popUpIndex++;
+    }
+    private GameObject InstantiateDummy(float xOffset, float yOffset, GameObject dummy)
+    {
+        if (player.transform.position.x >= 25)
+        {
+            xOffset *= -1;
+            return Instantiate(dummy, new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset), Quaternion.Euler(0, 180, 0));
+        }
+        return Instantiate(dummy, new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset), Quaternion.identity);
     }
 
 }
