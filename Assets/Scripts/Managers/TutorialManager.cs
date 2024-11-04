@@ -12,14 +12,13 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private GameObject attackDummy;
     [SerializeField] private GameObject targetDummy;
+    [SerializeField] private GameObject portal;
     private GameObject instantiatedAttackDummy;
     private GameObject instantiatedTargetDummy;
-    private PolygonCollider2D targetCollider;
 
     private void Start()
     {
         InitializePlayer();
-        targetCollider = targetDummy.GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
@@ -97,7 +96,11 @@ public class TutorialManager : MonoBehaviour
     }
     private void HandleSwordThrowCase()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse1)) MoveToNextStep();
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            portal.GetComponent<Collider2D>().isTrigger = true;
+            MoveToNextStep();
+        }
     }
     private void MoveToNextStep()
     {
