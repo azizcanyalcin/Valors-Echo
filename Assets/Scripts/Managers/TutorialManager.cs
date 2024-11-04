@@ -12,10 +12,14 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private GameObject attackDummy;
     [SerializeField] private GameObject targetDummy;
+    private GameObject instantiatedAttackDummy;
+    private GameObject instantiatedTargetDummy;
+    private PolygonCollider2D targetCollider;
 
     private void Start()
     {
         InitializePlayer();
+        targetCollider = targetDummy.GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
@@ -62,16 +66,17 @@ public class TutorialManager : MonoBehaviour
                 HandleCase(KeyCode.Q);
                 break;
             case 5:
-                HandleCase(KeyCode.V);
+                SpawnAttackDummy();
                 break;
             case 6:
-                HandleAttackCase();
-                popUpIndex++;
+                HandlePrimaryAttackCase();
                 break;
             case 7:
-                HandleCase(KeyCode.Mouse0);
+                SpawnTargetDummy();
                 break;
-
+            case 8:
+                HandleSwordThrowCase();
+                break;
         }
     }
     private void HandleCase(KeyCode key)
@@ -85,6 +90,14 @@ public class TutorialManager : MonoBehaviour
     private void HandleCase(KeyCode key, float delay)
     {
         if (Input.GetKeyDown(key)) Invoke(nameof(MoveToNextStep), delay);
+    }
+    private void HandlePrimaryAttackCase()
+    {
+        if (!instantiatedAttackDummy) MoveToNextStep();
+    }
+    private void HandleSwordThrowCase()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse1)) MoveToNextStep();
     }
     private void MoveToNextStep()
     {
@@ -105,8 +118,18 @@ public class TutorialManager : MonoBehaviour
 
     private void EnablePlayerParry() => player.skill.parry.parryUnlocked = true;
 
-    private void HandleAttackCase()
+    private void SpawnAttackDummy()
     {
-        Instantiate(attackDummy, new Vector3(player.transform.position.x + 1.5f, player.transform.position.y), Quaternion.identity);
+        instantiatedAttackDummy = Instantiate(attackDummy, new Vector3(player.transform.position.x + 2f, player.transform.position.y + 10), Quaternion.identity);
+        AudioManager.instance.PlayDelayedSFX(63, 0.2f);
+        popUpIndex++;
     }
+    private void SpawnTargetDummy()
+    {
+        player.skill.sword.swordUnlocked = true;
+        instantiatedTargetDummy = Instantiate(targetDummy, new Vector3(player.transform.position.x + 7f, player.transform.position.y + 10), Quaternion.identity);
+        AudioManager.instance.PlaySFX(63);
+        popUpIndex++;
+    }
+
 }

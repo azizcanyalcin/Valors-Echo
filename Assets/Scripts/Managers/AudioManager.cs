@@ -77,9 +77,23 @@ public class AudioManager : MonoBehaviour
         {
             StopSFX(index, false);
         }
-        
+
         audioSource.Play();
 
+    }
+    public void PlayDelayedSFX(int index, float delay)
+    {
+        if (!canPlaySFX || index >= sfx.Length)
+            return;
+
+        AudioSource audioSource = sfx[index];
+
+        if (audioSource.isPlaying)
+        {
+            StopSFX(index, false);
+        }
+
+        audioSource.PlayDelayed(delay);
     }
     public void PlayDelayedSFX(int index, Transform source, bool canFadeIn, float delay)
     {
