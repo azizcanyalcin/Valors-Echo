@@ -6,13 +6,14 @@ public class TutorialManager : MonoBehaviour
     private int popUpIndex;
     private Player player;
     private float playerDefaultJumpForce;
-
+    private float playerDefaultMoveSpeed;
     [SerializeField] private GameObject attackDummy;
     [SerializeField] private GameObject targetDummy;
+    [SerializeField] private GameObject obstacle;
     [SerializeField] private GameObject portal;
     private GameObject instantiatedAttackDummy;
     private GameObject instantiatedTargetDummy;
-
+    private GameObject instantiatedObstacle;
     private void Start()
     {
         InitializePlayer();
@@ -28,6 +29,7 @@ public class TutorialManager : MonoBehaviour
     {
         player = PlayerManager.instance.player;
         playerDefaultJumpForce = player.jumpForce;
+        playerDefaultMoveSpeed = player.moveSpeed;
     }
 
     private void UpdatePopUps()
@@ -44,18 +46,18 @@ public class TutorialManager : MonoBehaviour
         {
             case 0:
                 DisablePlayerSkills();
-                HandleCase(KeyCode.A, Inventory.instance.inventory.Count > 0);
+                HandleCase(KeyCode.D);
                 break;
             case 1:
                 EnablePlayerJump();
-                HandleCase(KeyCode.C);
-                break;
-            case 2:
                 HandleCase(KeyCode.Space);
                 break;
-            case 3:
+            case 2:
                 EnablePlayerDash();
                 HandleCase(KeyCode.LeftShift);
+                break;
+            case 3:
+                HandleCase(KeyCode.C, Inventory.instance.inventory.Count > 0);
                 break;
             case 4:
                 EnablePlayerParry();
@@ -63,16 +65,22 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 5:
                 SpawnAttackDummy();
+                popUpIndex++;
                 break;
             case 6:
                 HandlePrimaryAttackCase();
                 break;
             case 7:
                 SpawnTargetDummy();
+                popUpIndex++;
                 break;
             case 8:
                 HandleSwordThrowCase();
                 break;
+            case 9:
+                HandleObstacleCase();
+                break;
+
         }
     }
     private void HandleCase(KeyCode key)
@@ -93,9 +101,18 @@ public class TutorialManager : MonoBehaviour
     }
     private void HandleSwordThrowCase()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        if (CheckTargetHit())
         {
-            portal.GetComponent<Collider2D>().isTrigger = true;
+            SpawnObstacle();
+            SpawnTargetDummy();
+            MoveToNextStep();
+        }
+    }
+    private void HandleObstacleCase()
+    {
+        if (CheckTargetHit())
+        {
+            Destroy(instantiatedObstacle, 0.25f);
             MoveToNextStep();
         }
     }
@@ -103,6 +120,8 @@ public class TutorialManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(62);
         popUpIndex++;
+        Debug.Log($"Moved To Next Step!!");
+        Debug.Log($"Pop-up Index = " + popUpIndex);
     }
 
     private void DisablePlayerSkills()
@@ -120,16 +139,22 @@ public class TutorialManager : MonoBehaviour
 
     private void SpawnAttackDummy()
     {
-        instantiatedAttackDummy = InstantiateDummy(2, 10, attackDummy);
+        instantiatedAttackDummy = InstantiateDummy(3, 10, attackDummy);
         AudioManager.instance.PlayDelayedSFX(63, 0.2f);
-        popUpIndex++;
     }
     private void SpawnTargetDummy()
     {
         player.skill.sword.swordUnlocked = true;
-        instantiatedTargetDummy = InstantiateDummy(7, 10, targetDummy);
+        instantiatedTargetDummy = InstantiateDummy(10, 10, targetDummy);
         AudioManager.instance.PlaySFX(63);
-        popUpIndex++;
+
+    }
+    private void SpawnObstacle()
+    {
+        Destroy(instantiatedTargetDummy);
+        instantiatedObstacle = InstantiateDummy(5, 10, obstacle);
+        AudioManager.instance.PlaySFX(63);
+
     }
     private GameObject InstantiateDummy(float xOffset, float yOffset, GameObject dummy)
     {
@@ -139,6 +164,26 @@ public class TutorialManager : MonoBehaviour
             return Instantiate(dummy, new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset), Quaternion.Euler(0, 180, 0));
         }
         return Instantiate(dummy, new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset), Quaternion.identity);
+    }
+    private bool CheckTargetHit()
+    {
+        if (instantiatedTargetDummy)
+        {
+            if (Physics2D.OverlapCircle(instantiatedTargetDummy.transform.position, 1f, LayerMask.GetMask("Sword")))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (instantiatedTargetDummy)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(instantiatedTargetDummy.transform.position, 1f);
+        }
     }
 
 }

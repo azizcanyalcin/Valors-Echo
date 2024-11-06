@@ -62,6 +62,7 @@ public class SwordSkill : Skill
         base.Start();
         GenerateDots();
         InitializeUnlockButtons();
+        LayerMask.NameToLayer("Sword");
 
     }
     protected override void Update()

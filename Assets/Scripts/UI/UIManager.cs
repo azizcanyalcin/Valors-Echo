@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour, ISaveManager
@@ -27,12 +28,28 @@ public class UIManager : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
+        SetInitialMenuStates();
+    }
+
+    private void Start()
+    {
+        InitializeUI();
+    }
+
+    private void Update()
+    {
+        HandleInput();
+    }
+
+    private void SetInitialMenuStates()
+    {
         skillTreeUI.SetActive(true);
         characterUI.SetActive(true);
         inGameUI.SetActive(true);
         transition.gameObject.SetActive(true);
     }
-    private void Start()
+
+    private void InitializeUI()
     {
         Switch(inGameUI);
         skillTreeUI.SetActive(false);
@@ -42,74 +59,64 @@ public class UIManager : MonoBehaviour, ISaveManager
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
     }
-    private void Update()
+
+    private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-            SwitchWithKey(characterUI);
+        if (Input.GetKeyDown(KeyCode.C)) ToggleMenu(characterUI);
+        if (Input.GetKeyDown(KeyCode.V)) ToggleMenu(skillTreeUI);
+        if (Input.GetKeyDown(KeyCode.O)) ToggleMenu(optionsUI);
+        if (Input.GetKeyDown(KeyCode.H)) ToggleMenu(instructions);
 
-        if (Input.GetKeyDown(KeyCode.V))
-            SwitchWithKey(skillTreeUI);
-
-        if (Input.GetKeyDown(KeyCode.O))
-            SwitchWithKey(optionsUI);
-
-        if (Input.GetKeyDown(KeyCode.H))
-            SwitchWithKey(instructions);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseAllMenusExceptInGame();
+            if (GetActiveMenu() == inGameUI)
+                ToggleMenu(inGameMenu);
+            else
+                CloseAllMenusExceptInGame();
         }
-        if (GetActiveMenu() == inGameUI && Input.GetKeyDown(KeyCode.Escape))
-            SwitchWithKey(inGameMenu);
     }
+
     public void Switch(GameObject menu)
     {
-        GameObject activeMenu = GetActiveMenu();
+        var activeMenu = GetActiveMenu();
         if (activeMenu != null && activeMenu != menu)
             activeMenu.SetActive(false);
 
-        if (menu != null)
-            menu.SetActive(true);
+        menu?.SetActive(true);
 
-        if (GameManager.instance != null)
-        {
-            if (menu == inGameUI)
-                GameManager.instance.PauseGame(false);
-            else
-                GameManager.instance.PauseGame(true);
-        }
+        GameManager.instance?.PauseGame(menu != inGameUI);
     }
-    public void SwitchWithKey(GameObject menu)
+
+    public void ToggleMenu(GameObject menu)
     {
         if (menu != null && menu.activeSelf)
         {
             menu.SetActive(false);
             SwitchToInGameUI();
-            return;
         }
-
-        Switch(menu);
+        else
+        {
+            Switch(menu);
+        }
     }
+
     private void SwitchToInGameUI()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        if (transform.Cast<Transform>().All(child => !child.gameObject.activeSelf || child.GetComponent<SceneTransitionUI>() != null))
         {
-            if (transform.GetChild(i).gameObject.activeSelf && transform.GetChild(i).GetComponent<SceneTransitionUI>() == null)
-                return;
+            if (!inGameUI.activeSelf)
+                Switch(inGameUI);
         }
-
-        if (!inGameUI.activeSelf)
-            Switch(inGameUI);
     }
+
     private void CloseAllMenusExceptInGame()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (Transform child in transform)
         {
-            GameObject child = transform.GetChild(i).gameObject;
-
-            if (child != inGameUI && child.GetComponent<SceneTransitionUI>() == null)
+            var childGameObject = child.gameObject;
+            if (childGameObject != inGameUI && childGameObject.GetComponent<SceneTransitionUI>() == null)
             {
-                child.SetActive(false);
+                childGameObject.SetActive(false);
             }
         }
 
@@ -119,15 +126,14 @@ public class UIManager : MonoBehaviour, ISaveManager
             GameManager.instance.PauseGame(false);
         }
     }
+
     private GameObject GetActiveMenu()
     {
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject.activeSelf && child.GetComponent<SceneTransitionUI>() == null)
-                return child.gameObject;
-        }
-        return null;
+        return transform.Cast<Transform>()
+                        .FirstOrDefault(child => child.gameObject.activeSelf && child.GetComponent<SceneTransitionUI>() == null)
+                        ?.gameObject;
     }
+
     public void SwitchToEndScreen()
     {
         if (transition != null)
@@ -140,34 +146,34 @@ public class UIManager : MonoBehaviour, ISaveManager
             restartButton.SetActive(true);
         }
     }
-    IEnumerator EndScreen()
+
+    private IEnumerator EndScreen()
     {
         float fadeDuration = transition != null ? transition.fadeOutDuration : 1.5f;
         yield return new WaitForSeconds(fadeDuration);
         restartButton.SetActive(true);
     }
+
     public void RestartGameButton()
     {
-        if (GameManager.instance != null)
-            GameManager.instance.RestartScene();
+        GameManager.instance?.RestartScene();
     }
+
     public void LoadData(GameData data)
     {
-        foreach (KeyValuePair<string, float> pair in data.volumeSettings)
+        foreach (var pair in data.volumeSettings)
         {
-            VolumeSettingsUI matchingSetting = Array.Find(volumeSettings, setting => setting.param == pair.Key);
-            if (matchingSetting != null)
-                matchingSetting.LoadSlider(pair.Value);
+            var matchingSetting = volumeSettings.FirstOrDefault(setting => setting.param == pair.Key);
+            matchingSetting?.LoadSlider(pair.Value);
         }
     }
+
     public void SaveData(ref GameData data)
     {
         data.volumeSettings.Clear();
-
-        foreach (VolumeSettingsUI setting in volumeSettings)
+        foreach (var setting in volumeSettings)
         {
             data.volumeSettings.Add(setting.param, setting.slider.value);
         }
     }
 }
-
