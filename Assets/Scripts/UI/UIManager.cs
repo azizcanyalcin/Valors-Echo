@@ -55,7 +55,6 @@ public class UIManager : MonoBehaviour, ISaveManager
 
         if (Input.GetKeyDown(KeyCode.H))
             SwitchWithKey(instructions);
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseAllMenusExceptInGame();
@@ -66,7 +65,6 @@ public class UIManager : MonoBehaviour, ISaveManager
     public void Switch(GameObject menu)
     {
         GameObject activeMenu = GetActiveMenu();
-
         if (activeMenu != null && activeMenu != menu)
             activeMenu.SetActive(false);
 
@@ -75,7 +73,7 @@ public class UIManager : MonoBehaviour, ISaveManager
 
         if (GameManager.instance != null)
         {
-            if (menu == characterUI || menu == inGameUI)
+            if (menu == inGameUI)
                 GameManager.instance.PauseGame(false);
             else
                 GameManager.instance.PauseGame(true);
@@ -172,3 +170,4 @@ public class UIManager : MonoBehaviour, ISaveManager
         }
     }
 }
+
