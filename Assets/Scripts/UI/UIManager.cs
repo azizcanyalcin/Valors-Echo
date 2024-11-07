@@ -80,11 +80,36 @@ public class UIManager : MonoBehaviour, ISaveManager
     {
         var activeMenu = GetActiveMenu();
         if (activeMenu != null && activeMenu != menu)
-            activeMenu.SetActive(false);
+        {
+            // Do not deactivate inGameUI if characterUI is being activated
+            if (menu != characterUI || activeMenu != inGameUI)
+            {
+                activeMenu.SetActive(false);
+            }
+        }
 
         menu?.SetActive(true);
 
-        GameManager.instance?.PauseGame(menu != inGameUI);
+        // Pause the game only if neither characterUI nor inGameUI is active
+        if (menu != characterUI && menu != inGameUI)
+        {
+            GameManager.instance?.PauseGame(true);
+        }
+        else
+        {
+            GameManager.instance?.PauseGame(false);
+        }
+    }
+
+    private void SwitchToInGameUI()
+    {
+        // Ensure inGameUI is not closed if characterUI is active
+        if (transform.Cast<Transform>().All(child => !child.gameObject.activeSelf || child.GetComponent<SceneTransitionUI>() != null || child.gameObject == characterUI))
+        {
+            if (!inGameUI.activeSelf)
+                inGameUI.SetActive(true);
+        }
+        GameManager.instance?.PauseGame(false);
     }
 
     public void ToggleMenu(GameObject menu)
@@ -100,14 +125,6 @@ public class UIManager : MonoBehaviour, ISaveManager
         }
     }
 
-    private void SwitchToInGameUI()
-    {
-        if (transform.Cast<Transform>().All(child => !child.gameObject.activeSelf || child.GetComponent<SceneTransitionUI>() != null))
-        {
-            if (!inGameUI.activeSelf)
-                Switch(inGameUI);
-        }
-    }
 
     private void CloseAllMenusExceptInGame()
     {
@@ -126,6 +143,7 @@ public class UIManager : MonoBehaviour, ISaveManager
             GameManager.instance.PauseGame(false);
         }
     }
+
 
     private GameObject GetActiveMenu()
     {
