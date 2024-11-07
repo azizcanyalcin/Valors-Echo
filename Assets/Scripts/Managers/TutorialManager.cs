@@ -10,7 +10,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject attackDummy;
     [SerializeField] private GameObject targetDummy;
     [SerializeField] private GameObject obstacle;
-    [SerializeField] private GameObject portal;
+    [SerializeField] private SkillTreeSlotUI bounceSkill;
     private GameObject instantiatedAttackDummy;
     private GameObject instantiatedTargetDummy;
     private GameObject instantiatedObstacle;
@@ -78,9 +78,14 @@ public class TutorialManager : MonoBehaviour
                 HandleSwordThrowCase();
                 break;
             case 9:
+                HandleBounceUnlockCase();
+                break;
+            case 10:
                 HandleObstacleCase();
                 break;
-
+            case 11:
+                popUpIndex++;
+                break;
         }
     }
     private void HandleCase(KeyCode key)
@@ -99,10 +104,16 @@ public class TutorialManager : MonoBehaviour
     {
         if (!instantiatedAttackDummy) MoveToNextStep();
     }
+    private void HandleBounceUnlockCase()
+    {
+        if (bounceSkill.unlocked) MoveToNextStep();
+    }
     private void HandleSwordThrowCase()
     {
+        GameObject sword = GameObject.FindWithTag("Sword");
         if (CheckTargetHit())
         {
+            Destroy(sword);
             SpawnObstacle();
             SpawnTargetDummy();
             MoveToNextStep();
@@ -169,10 +180,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (instantiatedTargetDummy)
         {
-            if (Physics2D.OverlapCircle(instantiatedTargetDummy.transform.position, 1f, LayerMask.GetMask("Sword")))
-            {
-                return true;
-            }
+            Vector2 targetDummyOverlapCircle = new(instantiatedTargetDummy.transform.position.x, instantiatedTargetDummy.transform.position.y + .2f);
+            if (Physics2D.OverlapCircle(targetDummyOverlapCircle, 1f, LayerMask.GetMask("Sword"))) return true;
         }
         return false;
     }
