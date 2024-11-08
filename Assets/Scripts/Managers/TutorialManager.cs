@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     private float playerDefaultJumpForce;
     private float playerDefaultMoveSpeed;
     [SerializeField] private GameObject attackDummy;
+    [SerializeField] private SceneTransitionHandler sceneTransitionHandler;
     [SerializeField] private GameObject targetDummy;
     [SerializeField] private GameObject obstacle;
     [SerializeField] private SkillTreeSlotUI bounceSkill;
@@ -84,7 +86,6 @@ public class TutorialManager : MonoBehaviour
                 HandleObstacleCase();
                 break;
             case 11:
-                popUpIndex++;
                 break;
         }
     }
@@ -124,6 +125,7 @@ public class TutorialManager : MonoBehaviour
         if (CheckTargetHit())
         {
             Destroy(instantiatedObstacle, 0.25f);
+            sceneTransitionHandler.StartSceneTransition();
             MoveToNextStep();
         }
     }
