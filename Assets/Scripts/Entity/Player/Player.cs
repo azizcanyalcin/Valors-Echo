@@ -134,7 +134,7 @@ public class Player : Entity
     }
     private void CheckJumpBuffer()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) jumpBufferTimer = jumpBufferTime;
+        if (Input.GetButton("Jump")) jumpBufferTimer = jumpBufferTime;
         else jumpBufferTimer -= Time.deltaTime;
     }
 
@@ -145,7 +145,7 @@ public class Player : Entity
 
         if (!skill.dash.dashUnlocked) return;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill())
+        if (Input.GetButton("Dash") && SkillManager.instance.dash.CanUseSkill())
         {
             dashDirection = Input.GetAxisRaw("Horizontal");
 
