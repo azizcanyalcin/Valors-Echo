@@ -81,7 +81,7 @@ public class CharacterStats : MonoBehaviour
 
     private IEnumerator InitializeStats()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f); // Wait for other components to initialize
         maxHealth.SetValue(maxHealth.GetValue() + vitality.GetValue() * 5);
         currentHealth = maxHealth.GetValue();
         TakeDamage(1); // hotfix for ui update

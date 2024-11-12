@@ -3,16 +3,23 @@ using UnityEngine;
 
 public class Jax : InteractableObject
 {
-    public NPCConversation jaxDialogue;
+    public NPCConversation jaxDialogueLose;
+    public NPCConversation jaxDialogueWin;
+    private CountdownManager countdownManager;
+    private bool isWin = true;
 
     protected override void Start()
     {
         base.Start();
+        countdownManager = FindObjectOfType<CountdownManager>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
+        if (countdownManager.countdownTime > 0) isWin = true;
+        else isWin = false;
+        Debug.Log("Is Win: " + isWin);
     }
 
     protected override void OnTriggerExit2D(Collider2D other)
@@ -24,12 +31,18 @@ public class Jax : InteractableObject
     {
         if (other.CompareTag("Player"))
         {
-            HandleConversationStart();
+            if (isWin)
+            {
+                HandleConversationStart(jaxDialogueWin);
+                countdownManager.StopCountdown();
+            }
+            else if (!isWin)
+                HandleConversationStart(jaxDialogueLose);
             HandleConversationEnd();
         }
     }
 
-    private void HandleConversationStart()
+    private void HandleConversationStart(NPCConversation jaxDialogue)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {

@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour, ISaveManager
     }
     IEnumerator StartingItems()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
 
         foreach (Equipment equipment in loadedEquipments)
         {

@@ -15,7 +15,7 @@ public class Enemy : Entity
     public string lastAnimatorBoolName { get; private set; }
     public bool isTriggered;
     private Player player => PlayerManager.instance.player;
-
+    private EnemyStats enemyStats;
     [Header("Stun")]
     public float stunDuration;
     public Vector2 stunKnockBackPower;
@@ -39,12 +39,14 @@ public class Enemy : Entity
         base.Awake();
         defaultMoveSpeed = moveSpeed;
         stateMachine = new EnemyStateMachine();
+        enemyStats = GetComponent<EnemyStats>();
     }
     protected override void Start()
     {
         base.Start();
         fx = GetComponent<EntityFX>();
         cd = GetComponent<CapsuleCollider2D>();
+        StartCoroutine(SetImmune());
     }
     protected override void Update()
     {
@@ -142,10 +144,16 @@ public class Enemy : Entity
         base.ReturnDefaultSpeed();
         moveSpeed = defaultMoveSpeed;
     }
+    private IEnumerator SetImmune()
+    {
+        enemyStats.SetImmunability(true);
+        yield return new WaitForSeconds(1);
+        enemyStats.SetImmunability(false);
+    }
     public override void Die()
     {
         base.Die();
-        AudioManager.instance.PlaySFX(57,transform,false);
+        AudioManager.instance.PlaySFX(57, transform, false);
     }
 }
 
