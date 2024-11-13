@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading.Tasks;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
@@ -9,7 +10,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private string filePath = "idbfs/azoleite1199";
     [SerializeField] private bool canEncrypt;
     private GameData gameData;
-    private List<ISaveManager> saveManagers; //
+    private List<ISaveManager> saveManagers;
     private FileManager fileManager;
 
     private void Awake()
@@ -21,25 +22,29 @@ public class SaveManager : MonoBehaviour
         else
         {
             instance = this;
-            saveManagers = FindAllSaveManagers(); // this was outside of the if
+            //DontDestroyOnLoad(gameObject);
+            saveManagers = FindAllSaveManagers();
         }
     }
-    void Start()
+
+    async void Start()
     {
         fileManager = new FileManager(filePath, fileName, canEncrypt);
-        LoadGame();
+        await LoadGame();
     }
+
     [ContextMenu("Fresh Start")]
     public async void DeleteDatabase()
     {
-        fileManager = new FileManager(filePath, fileName, canEncrypt);
         await fileManager.DeleteAsync();
     }
+
     public void NewGame()
     {
         gameData = new GameData();
     }
-    public async void LoadGame()
+
+    public async Task LoadGame()
     {
         gameData = await fileManager.LoadAsync();
         if (gameData == null) NewGame();
@@ -48,9 +53,9 @@ public class SaveManager : MonoBehaviour
         {
             saveManager.LoadData(gameData);
         }
-
     }
-    public async void SaveGame()
+
+    public async Task SaveGame()
     {
         foreach (ISaveManager saveManager in saveManagers)
         {
@@ -58,17 +63,22 @@ public class SaveManager : MonoBehaviour
         }
         await fileManager.SaveAsync(gameData);
     }
-    private void OnApplicationQuit()
+
+    private async void OnApplicationQuit()
     {
-        SaveGame();
+        await SaveGame();
     }
+
     private List<ISaveManager> FindAllSaveManagers()
     {
         IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
         return new List<ISaveManager>(saveManagers);
     }
-    public bool HasSavedData()
+
+    public async Task<bool> HasSavedData()
     {
-        return fileManager.LoadAsync() != null;
+        var data = await fileManager.LoadAsync();
+        return data != null;
     }
 }
+

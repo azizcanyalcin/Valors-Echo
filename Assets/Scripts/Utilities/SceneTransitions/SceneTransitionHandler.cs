@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,21 +8,31 @@ public class SceneTransitionHandler : MonoBehaviour
     [SerializeField] private string sceneName;
     [SerializeField] protected SceneTransitionUI transition;
 
-    public virtual IEnumerator SceneTransition(float delay)
+    public virtual async Task SceneTransition(float delay)
     {
-        SaveManager.instance.SaveGame();
+        await SaveManager.instance.SaveGame();
         PlayerManager.instance.player.isPlayerActive = false;
         PlayerManager.instance.player.SetVelocityToZero();
         transition.FadeOut();
 
-        yield return new WaitForSeconds(delay);
+        await Task.Delay((int)(delay * 1000));
 
         SceneManager.LoadScene(sceneName);
         PlayerManager.instance.player.isPlayerActive = true;
-        SaveManager.instance.LoadGame();
+        await SaveManager.instance.LoadGame();
     }
+
     public void StartSceneTransition()
     {
-        StartCoroutine(SceneTransition(2));
+        StartCoroutine(SceneTransitionCoroutine(2));
+    }
+
+    private IEnumerator SceneTransitionCoroutine(float delay)
+    {
+        var task = SceneTransition(delay);
+        while (!task.IsCompleted)
+        {
+            yield return null;
+        }
     }
 }

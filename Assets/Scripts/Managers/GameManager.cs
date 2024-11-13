@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour, ISaveManager
         player = PlayerManager.instance.player;
     }
 
-    public void RestartScene()
+    public async void RestartScene()
     {
-        SaveManager.instance.SaveGame();
+        await SaveManager.instance.SaveGame();
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

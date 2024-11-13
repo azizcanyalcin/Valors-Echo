@@ -16,7 +16,7 @@ public class SceneTransitionManuel : InteractableObject
     {
         if (other.CompareTag("Player") && !isOpened && Input.GetKeyDown(KeyCode.E))
         {
-            transitionHandler.StartCoroutine(transitionHandler.SceneTransition(1.5f));
+            transitionHandler.StartSceneTransition();
         }
     }
     protected override void OnTriggerExit2D(Collider2D other)

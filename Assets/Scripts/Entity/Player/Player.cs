@@ -221,11 +221,11 @@ public class Player : Entity
         }
     }
 
-    public override void Die()
+    public override async void Die()
     {
         base.Die();
         isPlayerDeadOnce = true;
-        SaveManager.instance.SaveGame();
+        await SaveManager.instance.SaveGame();
         stateMachine.ChangeState(deadState);
     }
 }
