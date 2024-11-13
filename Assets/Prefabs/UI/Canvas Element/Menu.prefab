@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2524388693906063815}
   - component: {fileID: 225329487562888718}
   - component: {fileID: 9188032186227331609}
+  - component: {fileID: 1890908384134146819}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1890908384134146819}
         m_TargetAssemblyTypeName: SceneTransitionHandler, Assembly-CSharp
         m_MethodName: StartSceneTransition
         m_Mode: 1
@@ -133,6 +134,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1890908384134146819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428313597705178981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393fdea29453a4745b32595fba638cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Menu
+  transition: {fileID: 0}
 --- !u!1 &3049219574414183037
 GameObject:
   m_ObjectHideFlags: 0
