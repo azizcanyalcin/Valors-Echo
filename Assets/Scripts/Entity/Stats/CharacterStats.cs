@@ -80,7 +80,7 @@ public class CharacterStats : MonoBehaviour
 
     private IEnumerator InitializeStats()
     {
-        yield return new WaitForSeconds(0.2f); // Wait for other components to initialize
+        yield return new WaitForSeconds(0.1f); // Wait for other components to initialize
         currentHealth = GetMaxHealthValue();
     }
     public int GetMaxHealthValue()
