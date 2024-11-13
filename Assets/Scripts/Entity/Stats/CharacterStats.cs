@@ -69,7 +69,6 @@ public class CharacterStats : MonoBehaviour
     public bool isDead { get; private set; }
     public bool isImmune { get; private set; }
     public System.Action onHealthChanged;
-
     private EntityFX fx;
 
     protected virtual void Start()
@@ -81,12 +80,13 @@ public class CharacterStats : MonoBehaviour
 
     private IEnumerator InitializeStats()
     {
-        yield return new WaitForSeconds(0.1f); // Wait for other components to initialize
-        maxHealth.SetValue(maxHealth.GetValue() + vitality.GetValue() * 5);
-        currentHealth = maxHealth.GetValue();
-        TakeDamage(1); // hotfix for ui update
+        yield return new WaitForSeconds(0.2f); // Wait for other components to initialize
+        currentHealth = GetMaxHealthValue();
     }
-
+    public int GetMaxHealthValue()
+    {
+        return maxHealth.GetValue() + vitality.GetValue() * 5;
+    }
     protected virtual void Update()
     {
         if (isBurning) UpdateBurningStatus();

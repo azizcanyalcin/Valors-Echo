@@ -70,6 +70,9 @@ public class Druid : Enemy
         GameObject root2 = Instantiate(rootPrefab, new Vector3(lastKnownPlayerPosition.x + 2, groundY + 1), Quaternion.identity);
         root2.GetComponent<RootController>().SetupRoot(stats);
         AudioManager.instance.PlaySFX(51, transform, true);
+
+        Destroy(root, 2f);
+        Destroy(root2, 2f);
     }
     public void DruidAshTrigger()
     {
@@ -83,7 +86,8 @@ public class Druid : Enemy
         mirroredAsh.transform.localScale = mirroredScale;
 
         mirroredAsh.GetComponent<AshController>().SetupAsh(stats);
-        //AudioManager.instance.PlaySFX(47, transform, true);
+        Destroy(ash, 15f);
+        Destroy(mirroredAsh, 15f);
     }
     public void DruidHealTrigger()
     {

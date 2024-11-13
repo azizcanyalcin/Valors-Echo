@@ -147,8 +147,9 @@ public class Enemy : Entity
     private IEnumerator SetImmune()
     {
         enemyStats.SetImmunability(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         enemyStats.SetImmunability(false);
+        enemyStats.TakeDamage(1);
     }
     public override void Die()
     {
