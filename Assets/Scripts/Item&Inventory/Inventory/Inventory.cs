@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-        //DontDestroyOnLoad(gameObject); // zzz
+        //DontDestroyOnLoad(gameObject);
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
@@ -338,6 +338,7 @@ public class Inventory : MonoBehaviour, ISaveManager
                 }
             }
         }
+        Debug.Log("Items loaded from database");
     }
 
     public void SaveData(ref GameData data)

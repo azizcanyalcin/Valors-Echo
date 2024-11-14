@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public enum CursorState
 {
@@ -19,6 +20,7 @@ public class CursorManager : MonoBehaviour
 
     private void Start()
     {
+        currentCursorState = (CursorState)(-1);
         SetCursorState(CursorState.Default);
     }
 
@@ -52,3 +54,4 @@ public class CursorManager : MonoBehaviour
         Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
     }
 }
+
