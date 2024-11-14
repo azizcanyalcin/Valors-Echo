@@ -64,7 +64,6 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] private GameObject shockStrike;
     public int currentHealth;
-
     private bool isVulnerable;
     public bool isDead { get; private set; }
     public bool isImmune { get; private set; }
@@ -92,6 +91,7 @@ public class CharacterStats : MonoBehaviour
         if (isBurning) UpdateBurningStatus();
         if (isFrozen) UpdateFreezingStatus();
         if (isShocked) UpdateShockingStatus();
+            //Debug.Log(maxHealth.GetValue());
     }
     public virtual void TakeDamage(int damage)
     {

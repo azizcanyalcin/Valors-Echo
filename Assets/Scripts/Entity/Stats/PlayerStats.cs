@@ -5,13 +5,22 @@ using UnityEngine;
 public class PlayerStats : CharacterStats
 {
     private Player player;
+    private int startingHealth;
     protected override void Start()
     {
         base.Start();
 
         player = GetComponent<Player>();
+        startingHealth = GetMaxHealthValue();
     }
+    protected override void Update() {
 
+        if (startingHealth != GetMaxHealthValue())
+        {
+            currentHealth = GetMaxHealthValue();
+            startingHealth = GetMaxHealthValue();
+        }
+    }
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
