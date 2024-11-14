@@ -2848,6 +2848,7 @@ MonoBehaviour:
   lostCurrencyAmount: 0
   lostCurrencyX: 0
   lostCurrencyY: 0
+  cursorManager: {fileID: 7499959960111971761}
 --- !u!1 &2169486462163826955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4162,6 +4163,7 @@ Transform:
   - {fileID: 1487273446575796529}
   - {fileID: 4517345672552850686}
   - {fileID: 6247320466619842198}
+  - {fileID: 5132370184719443288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3150972114361727836
@@ -8755,6 +8757,56 @@ Transform:
   - {fileID: 2778518539887192291}
   m_Father: {fileID: 6247320466619842198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6477480187886650519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5132370184719443288}
+  - component: {fileID: 7499959960111971761}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5132370184719443288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477480187886650519}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6575697215652113296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7499959960111971761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477480187886650519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ecb1a13bddb8b4c8792dae8770972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 170c27ebbe132d541a0b2930fa9d278a, type: 3}
+  menuCursor: {fileID: 2800000, guid: e45f7a142d69beb4aaf50d9a57bde0bf, type: 3}
+  aimCursor: {fileID: 2800000, guid: 008717320abd30547a82bdd6a557aa6d, type: 3}
+  defaultHotspot: {x: 0, y: 0}
+  menuHotspot: {x: 0, y: 0}
+  aimHotspot: {x: 0, y: 0}
 --- !u!1 &6500719802958281879
 GameObject:
   m_ObjectHideFlags: 0
@@ -11331,7 +11383,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b15ae82bf4c10542884fd1239ffcb8b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.504
   m_Pitch: 1
   Loop: 1
   Mute: 0

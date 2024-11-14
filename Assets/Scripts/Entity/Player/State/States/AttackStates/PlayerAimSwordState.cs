@@ -13,6 +13,7 @@ public class PlayerAimSwordState : PlayerState
         base.Enter();
 
         player.skill.sword.SetDotsActive(true);
+        GameManager.instance.ChangeCursor(CursorState.Aim);
     }
     public override void Update()
     {
@@ -32,5 +33,6 @@ public class PlayerAimSwordState : PlayerState
         base.Exit();
 
         player.StartCoroutine("BusyFor", .2f);
+        GameManager.instance.ChangeCursor(CursorState.Default);
     }
 }

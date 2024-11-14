@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     public int lostCurrencyAmount;
     [SerializeField] private float lostCurrencyX;
     [SerializeField] private float lostCurrencyY;
+    [SerializeField] private CursorManager cursorManager;
 
 
     private void Awake()
@@ -121,7 +122,21 @@ public class GameManager : MonoBehaviour, ISaveManager
             }
         }
     }
-
+    public void ChangeCursor(CursorState state)
+    {
+        if (state == CursorState.Menu)
+        {
+            cursorManager.SetCursorState(CursorState.Menu);
+        }
+        else if (state == CursorState.Aim)
+        {
+            cursorManager.SetCursorState(CursorState.Aim);
+        }
+        else
+        {
+            cursorManager.SetCursorState(CursorState.Default);
+        }
+    }
     public void PauseGame(bool pause)
     {
         Time.timeScale = pause ? 0 : 1;
