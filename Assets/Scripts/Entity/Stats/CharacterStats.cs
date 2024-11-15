@@ -76,6 +76,7 @@ public class CharacterStats : MonoBehaviour
         fx = GetComponent<EntityFX>();
         critPower.SetValue(100);
         StartCoroutine(InitializeStats());
+        
     }
 
     private IEnumerator InitializeStats()

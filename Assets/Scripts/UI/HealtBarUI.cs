@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,16 +15,15 @@ public class HealthBarUI : MonoBehaviour
 
         UpdateHealthUI();
     }
-
-    private void OnEnable()
-    {
-        entity.onFlipped += FlipUI;
-        stats.onHealthChanged += UpdateHealthUI;
-    }
     private void UpdateHealthUI()
     {
         slider.maxValue = stats.maxHealth.GetValue();
         slider.value = stats.currentHealth;
+    }
+    private void OnEnable()
+    {
+        entity.onFlipped += FlipUI;
+        stats.onHealthChanged += UpdateHealthUI;
     }
     private void OnDisable()
     {

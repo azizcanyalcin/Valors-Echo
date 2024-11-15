@@ -6,20 +6,19 @@ public class PlayerStats : CharacterStats
 {
     private Player player;
     private int startingHealth;
+    private int maxHealthModifiers;
     protected override void Start()
     {
         base.Start();
 
         player = GetComponent<Player>();
-        startingHealth = GetMaxHealthValue();
-    }
-    protected override void Update() {
+        StartCoroutine(InitializeHealth());
 
-        if (startingHealth != GetMaxHealthValue())
-        {
-            currentHealth = GetMaxHealthValue();
-            startingHealth = GetMaxHealthValue();
-        }
+    }
+    private IEnumerator InitializeHealth()
+    {
+        yield return new WaitForSeconds(0.5f);
+        currentHealth = GetMaxHealthValue();
     }
     public override void TakeDamage(int damage)
     {
