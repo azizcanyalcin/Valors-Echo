@@ -43,7 +43,7 @@ public class Eye : Enemy
     protected override void Update()
     {
         base.Update();
-        if (DistanceToPlayer() <= attackCheckRadius || stats.currentHealth < stats.maxHealth.GetValue())
+        if (DistanceToPlayer() <= attackCheckRadius || stats.isAttacked) 
         {
             patrol.enabled = false;
             destinationSetter.enabled = true;

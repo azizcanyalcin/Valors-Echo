@@ -149,7 +149,7 @@ public class Enemy : Entity
         enemyStats.SetImmunability(true);
         yield return new WaitForSeconds(0.11f);
         enemyStats.SetImmunability(false);
-        enemyStats.TakeDamage(1);
+        enemyStats.IncreaseHealth(1);
     }
     public override void Die()
     {

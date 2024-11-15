@@ -67,6 +67,7 @@ public class CharacterStats : MonoBehaviour
     private bool isVulnerable;
     public bool isDead { get; private set; }
     public bool isImmune { get; private set; }
+    public bool isAttacked;
     public System.Action onHealthChanged;
     private EntityFX fx;
 
@@ -79,7 +80,7 @@ public class CharacterStats : MonoBehaviour
 
     private IEnumerator InitializeStats()
     {
-        yield return new WaitForSeconds(0.1f); // Wait for other components to initialize
+        yield return new WaitForSeconds(0f); // Wait for other components to initialize
         currentHealth = GetMaxHealthValue();
     }
     public int GetMaxHealthValue()
@@ -98,6 +99,7 @@ public class CharacterStats : MonoBehaviour
         if (isImmune) return;
 
         DecreaseHealth(damage);
+        isAttacked = true;
         //GetComponent<Entity>().DamageImpact(); // Quick fix for player freeze
         fx.StartCoroutine("FlashFX");
 
@@ -295,7 +297,7 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth += healthAmount;
         if (currentHealth > maxHealth.GetValue()) currentHealth = maxHealth.GetValue();
-        if (onHealthChanged != null) onHealthChanged();
+        onHealthChanged?.Invoke();
     }
     public virtual void IncreaseStat(int modifier, float duration, Stat stat)
     {
