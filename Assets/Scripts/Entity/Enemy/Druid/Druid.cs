@@ -91,7 +91,7 @@ public class Druid : Enemy
     }
     public void DruidHealTrigger()
     {
-        stats.currentHealth += stats.maxHealth.GetValue() / 5;
+        stats.currentHealth += stats.maxHealth.GetValue() / 10;
         stats.TakeDamage(1);
         Instantiate(eyePrefab, new Vector3(player.transform.position.x + Random.Range(-7, 7), player.transform.position.y + 5), Quaternion.identity);
     }
