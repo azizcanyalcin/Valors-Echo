@@ -689,7 +689,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 250
+    baseValue: 350
     modifiers: 
   armor:
     baseValue: 0
@@ -715,10 +715,11 @@ MonoBehaviour:
   debuffDuration: 2
   shockStrike: {fileID: 4985247474138150838, guid: 7f60a0cea732e934091ef2e0bc136bf0, type: 3}
   currentHealth: 0
+  isAttacked: 0
   soulsDropAmount:
-    baseValue: 0
+    baseValue: 100
     modifiers: 
-  level: 1
+  level: 0
   percentageModifier: 0.4
 --- !u!114 &1193648839413724207
 MonoBehaviour:
