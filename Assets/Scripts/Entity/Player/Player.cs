@@ -16,8 +16,12 @@ public class Player : Entity
     [HideInInspector] public float coyoteTimer;
     public float jumpBufferTime;
     [HideInInspector] public float jumpBufferTimer;
-    public bool isPlayerNearLadder = false;
 
+    [Header("Climb")]
+    [HideInInspector] public float climbCooldown = 0.5f;
+    [HideInInspector] public bool isPlayerNearLadder = false;
+    [HideInInspector] public float climbCooldownTimer;
+    [HideInInspector] public bool canClimb = true;
 
     [Header("Dash")]
     public float dashSpeed = 25f;
@@ -48,7 +52,7 @@ public class Player : Entity
     public PlayerBlackHoleState blackHoleState { get; private set; }
 
     public PlayerDeadState deadState { get; private set; }
-    public PlayerClimbState climbState {get; private set;}
+    public PlayerClimbState climbState { get; private set; }
     #endregion
 
     #region Components
@@ -71,7 +75,7 @@ public class Player : Entity
         dashState = new PlayerDashState(this, stateMachine, "Dash");
         wallSlideState = new PlayerWallSlideState(this, stateMachine, "WallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
-        climbState = new PlayerClimbState(this,stateMachine,"Climb");
+        climbState = new PlayerClimbState(this, stateMachine, "Climb");
 
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
@@ -112,6 +116,7 @@ public class Player : Entity
 
         CheckCoyoteTime();
         CheckJumpBuffer();
+        CheckClimbTime();
 
     }
 
@@ -137,7 +142,17 @@ public class Player : Entity
         if (Input.GetButton("Jump")) jumpBufferTimer = jumpBufferTime;
         else jumpBufferTimer -= Time.deltaTime;
     }
-
+    private void CheckClimbTime()
+    {
+        if (!canClimb)
+        {
+            climbCooldownTimer -= Time.deltaTime;
+            if (climbCooldownTimer <= 0)
+            {
+                canClimb = true;
+            }
+        }
+    }
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
     private void DashInput()
     {

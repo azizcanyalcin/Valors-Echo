@@ -21,7 +21,7 @@ public class PlayerClimbState : PlayerState
             player.stateMachine.ChangeState(player.idleState);
         if (Input.GetKeyDown(KeyCode.Space))
             player.stateMachine.ChangeState(player.jumpState);
-        
+
     }
     private void CheckForGround()
     {
@@ -32,6 +32,8 @@ public class PlayerClimbState : PlayerState
     {
         base.Exit();
         rb.gravityScale = 3.5f;
+        player.canClimb = false;
+        player.climbCooldownTimer = player.climbCooldown;
     }
 
 }
