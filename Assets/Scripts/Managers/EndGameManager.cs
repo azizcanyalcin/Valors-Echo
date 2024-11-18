@@ -22,13 +22,13 @@ public class EndGameManager : MonoBehaviour, ISaveManager
         levelUpAmount += 1;
         //SaveManager.instance.SaveGame();
     }
-    public void LoadData(GameData data)
+    public void LoadData(GameData data) 
     {
         StartCoroutine(LoadWithDelay(data));
     }
     public void SaveData(ref GameData data)
     {
-        //data.levelUpAmount = levelUpAmount;
+        data.levelUpAmount = levelUpAmount;
     }
 
     IEnumerator LoadWithDelay(GameData data)
